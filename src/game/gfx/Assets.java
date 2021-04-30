@@ -14,6 +14,7 @@ public class Assets {
     
     public static void init() {
         SpriteSheet sheet = new SpriteSheet(ImageLoader.loadImage("/textures/sheet.png"));
+		SpriteSheet hust = new SpriteSheet(ImageLoader.loadImage("/textures/husterplayer.png"));
         SpriteSheet floor = new SpriteSheet(ImageLoader.loadImage("/textures/floortileset.png"));
         SpriteSheet zombie = new SpriteSheet(ImageLoader.loadImage("/textures/Monster-zombie.png"));
         SpriteSheet fruits = new SpriteSheet(ImageLoader.loadImage("/textures/PathAndObjects.png"));
@@ -36,29 +37,29 @@ public class Assets {
         player_left = new BufferedImage[2];
         player_right = new BufferedImage[2];
 
-        player_down[0] = sheet.crop(width * 4, 0, width, height);
-        player_down[1] = sheet.crop(width * 5, 0, width, height);
-        player_up[0] = sheet.crop(width * 6, 0, width, height);
-        player_up[1] = sheet.crop(width * 7, 0, width, height);
-        player_left[0] = sheet.crop(width * 6, height, width, height);
-        player_left[1] = sheet.crop(width * 7, height, width, height);
-        player_right[0] = sheet.crop(width * 4, height, width, height);
-        player_right[1] = sheet.crop(width * 5, height, width, height);
+        player_down[0] = hust.crop(0, 0, width, height);
+        player_down[1] = hust.crop(width , 0, width, height);
+        player_up[0] = hust.crop(0, height*3, width, height);
+        player_up[1] = hust.crop(width , height*3, width, height);
+        player_left[0] = hust.crop(0, height, width, height);
+        player_left[1] = hust.crop(width , height, width, height);
+        player_right[0] = hust.crop(0, height*2, width, height);
+        player_right[1] = hust.crop(width, height*2, width, height);
         
         
         zombie_down = new BufferedImage[2];
         zombie_up = new BufferedImage[2];
-	zombie_left = new BufferedImage[2];
-	zombie_right = new BufferedImage[2];
+		zombie_left = new BufferedImage[2];
+		zombie_right = new BufferedImage[2];
 	
-        zombie_down[0] = sheet.crop(width * 4, height * 2, width, height);
-	zombie_down[1] = sheet.crop(width * 5, height * 2, width, height);
-        zombie_up[0] = sheet.crop(width * 6, height * 2, width, height);
-	zombie_up[1] = sheet.crop(width * 7, height * 2, width, height);
-	zombie_right[0] = sheet.crop(width * 4, height * 3, width, height);
-	zombie_right[1] = sheet.crop(width * 5, height * 3, width, height);
-	zombie_left[0] = sheet.crop(width * 6, height * 3, width, height);
-	zombie_left[1] = sheet.crop(width * 7, height * 3, width, height);
+        zombie_down[0] 	= hust.crop(width*12, 0, width, height);
+		zombie_down[1] 	= hust.crop(width*13, 0, width, height);
+        zombie_up[0]   	= hust.crop(width * 12, height * 3, width, height);
+		zombie_up[1]    = hust.crop(width * 13, height * 3, width, height);
+		zombie_right[0] = hust.crop(width * 12, height * 2, width, height);
+		zombie_right[1] = hust.crop(width * 13, height * 2, width, height);
+		zombie_left[0] 	= hust.crop(width * 12, height * 1, width, height);
+		zombie_left[1] 	= hust.crop(width * 13, height * 1, width, height);
 		
 		
 	zombie1_down = new BufferedImage[7];
