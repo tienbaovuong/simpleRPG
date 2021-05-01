@@ -15,7 +15,7 @@ public class Tile {
     public static Tile stonegrassTile = new StonegrassTile(6);
     public static Tile waterTile = new WaterTile(7);
     public static Tile woodTile = new WaterTile(8);
-    
+    public static Tile doorTile = new DoorTile(9);
     public static final int TILEWIDTH = 32, TILEHEIGHT = 32;
     
     protected BufferedImage texture;

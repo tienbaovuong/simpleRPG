@@ -158,32 +158,36 @@ public class Game implements Runnable {
                     Launcher laun = new Launcher();
                     q = 0;
                     player.setcore();
-                }else if(ck == 1) { 
-                    keyManager.refresh();
-                    q++;
-                    running = false;
-                    System.out.println(q);
-                    last = System.currentTimeMillis();
-                    System.out.println("Tong diem den vong  " + q + ": " + player.getScore() );
-                    if(q == 3) {
-                        gameWin();
-                        stop();
-                        Launcher lau = new Launcher();
-               		try {
-                            Thread.sleep(600);
-			} catch (InterruptedException e) {
-                            e.printStackTrace();
-			}
-                        q = 0;
-                        player.setcore();
+                }else if(ck == 1) {
+
+                    if( player.getX() == 32 && player.getY() == 64){
+                        keyManager.refresh();
+                        q++;
                         running = false;
-              
+                        System.out.println(q);
+                        last = System.currentTimeMillis();
+                        System.out.println("Tong diem den vong  " + q + ": " + player.getScore() );
+                        if(q == 3) {
+                            gameWin();
+                            stop();
+                            Launcher lau = new Launcher();
+                            try {
+                                Thread.sleep(600);
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                            q = 0;
+                            player.setcore();
+                            running = false;
+
+                        }
+
+                        System.out.println("--------");
+                        ck = 0;
+                        display.close();
+                        break;
                     }
-                        
-                    System.out.println("--------");
-                    ck = 0;
-                    display.close();
-                    break;
+
                 }
                  
             }
