@@ -71,7 +71,7 @@ public class World {
         entityManager.render(g);
         
         //Score 
-        Score score = new Score(handler.getWorld().getEntityManager().getPlayer().getScore());
+        Score score = new Score(handler.getWorld().getEntityManager().getPlayer().getScore(),handler.getWorld().getEntityManager().getPlayer().getHealth());
         Score.render(g);
     }
     
@@ -148,4 +148,21 @@ public class World {
     public void setNumberOfMonster(int numberOfMonster) {
         this.numberOfMonster += numberOfMonster;
     }
+
+	public int getSpawnX() {
+		return spawnX;
+	}
+
+	public void setSpawnX(int spawnX) {
+		this.spawnX = spawnX;
+	}
+
+	public int getSpawnY() {
+		return spawnY;
+	}
+
+	public void setSpawnY(int spawnY) {
+		this.spawnY = spawnY;
+	}
+    
 }

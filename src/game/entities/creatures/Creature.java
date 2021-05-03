@@ -92,15 +92,15 @@ public abstract class Creature extends Entity {
         this.yMove = yMove;
     }
 
-    @Override
-    public int getHealth() {
-        return health;
-    }
+  //  @Override
+    //public int getHealth() {
+      //  return health;
+  //  }
 
-    @Override
-    public void setHealth(int health) {
-        this.health = health;
-    }
+    //@Override
+   // public void setHealth(int health) {
+ //       this.health = health;
+   // }
 
     public float getSpeed() {
         return speed;

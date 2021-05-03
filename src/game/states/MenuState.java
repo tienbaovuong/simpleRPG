@@ -4,6 +4,7 @@ import java.awt.Graphics;
 import java.io.IOException;
 
 import game.Handler;
+import game.entities.Entity;
 import game.gfx.Assets;
 import game.ui.UIImageButton;
 import game.ui.UIManager;
@@ -46,7 +47,7 @@ public class MenuState extends State {
     @Override
     public void render(Graphics g) {
         uiManager.render(g);
-        new Score(0);
+        new Score(0,0);
         long highestScore = Score.getHighestScoreFromFile();
         g.drawString("Highest Score: "+ highestScore, 350, 400);
     }

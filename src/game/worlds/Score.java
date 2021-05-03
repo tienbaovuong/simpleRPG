@@ -19,8 +19,8 @@ public class Score {
 	private static BufferedImage scoreImagers = ImageLoader.loadImage("/textures/score.png");
 	private static BufferedImage player = ImageLoader.loadImage("/textures/husterplayer.png");
 	private static BufferedImage x= ImageLoader.loadImage("/textures/x.png");
-	public static int health=3;
-	public Score(long score) {
+	private static int health;
+	public Score(long score, int health) {
 		getHighestScoreFromFile();
 		setScore(score);
 		if (score > highestScore) {
@@ -31,6 +31,7 @@ public class Score {
 		for (int i = 0; i <= 9; ++i) {
 			setNumberImage(i);
 		}
+		setHealth(health);
 	}
 
 	private static void setNumberImage(int i) {
@@ -57,7 +58,9 @@ public class Score {
 	public static void setScore(long score) {
 		Score.score = score;
 	}
-	
+	public static void setHealth(int health) {
+		Score.health = health;
+	}
 	public static long getHighestScoreFromFile() {
 		try {
 			FileReader in = new FileReader("res/world/highestScore.txt");

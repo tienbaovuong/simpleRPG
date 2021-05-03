@@ -19,7 +19,7 @@ public class Player extends Creature {
     public static long score = 0;
     public Player(Handler handler, float x, float y) {
         super(handler, x, y, Creature.DEFAULT_CREATURE_WIDTH, Creature.DEFAULT_CREATURE_HEIGHT);
-        health = 3;
+        health=DEFAULT_HEALTH[level];
         bounds.x = 1;
         bounds.y = 1;
         bounds.width = 20;
@@ -88,6 +88,8 @@ public class Player extends Creature {
                     e.hurt(1);
                     return;
                 }else{
+                	this.setX(handler.getWorld().getSpawnX());
+                	this.setY(handler.getWorld().getSpawnY());
                     this.hurt(1);
                     return;
                 }   
