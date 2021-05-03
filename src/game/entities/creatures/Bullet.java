@@ -10,7 +10,7 @@ import game.tiles.Tile;
 
 public class Bullet extends Creature {
     
-    public static final float[] BULLET_SPEED = {2.0f, 4.0f};
+    public static final float[] BULLET_SPEED = {3.0f, 6.0f};
     private Creature owner;
     private float X,Y;
     public Bullet(Handler handler, Creature owner, float x, float y) {
@@ -31,8 +31,8 @@ public class Bullet extends Creature {
         // Create bound to check collision
         bounds.x = 3;
         bounds.y = 3;
-        bounds.width = width / 4;
-        bounds.height = height / 4;
+        bounds.width = width / 2;
+        bounds.height = height / 2;
     }
     
     @Override
@@ -44,7 +44,7 @@ public class Bullet extends Creature {
     @Override
     public void render(Graphics g) {
         g.drawImage(Assets.bullet, (int) (x), 
-                (int) (y), width / 4, height / 4, null);
+                (int) (y), width/2 , height/2, null);
         
     }
     

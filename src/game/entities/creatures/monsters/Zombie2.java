@@ -27,10 +27,10 @@ public class Zombie2 extends Zombie {
         yMove = 0;
   
         //Animation
-        animDown = new Animation(200, Assets.zombie_down);
-        animUp = new Animation(200, Assets.zombie_up);
-        animLeft = new Animation(200, Assets.zombie_left);
-        animRight = new Animation(200, Assets.zombie_right);
+        animDown = new Animation(200, Assets.monster_down);
+        animUp = new Animation(200, Assets.monster_up);
+        animLeft = new Animation(200, Assets.monster_left);
+        animRight = new Animation(200, Assets.monster_right);
         
         currentImage = animDown;
         

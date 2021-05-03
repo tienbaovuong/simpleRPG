@@ -8,7 +8,7 @@ import java.io.FileWriter;
 
 import game.entities.creatures.Player;
 import game.gfx.ImageLoader;
-
+import game.gfx.SpriteSheet;
 public class Score {
 	private static long score = Player.score;
 	private static int width = 32, height = 32;
@@ -17,7 +17,9 @@ public class Score {
 	private static BufferedImage scoreImage;
 	private static long highestScore;
 	private static BufferedImage scoreImagers = ImageLoader.loadImage("/textures/score.png");
-	
+	private static BufferedImage player = ImageLoader.loadImage("/textures/husterplayer.png");
+	private static BufferedImage x= ImageLoader.loadImage("/textures/x.png");
+	public static int health=3;
 	public Score(long score) {
 		getHighestScoreFromFile();
 		setScore(score);
@@ -30,7 +32,7 @@ public class Score {
 			setNumberImage(i);
 		}
 	}
-	
+
 	private static void setNumberImage(int i) {
 		//numberImager[i] = new BufferedImage(width, height,BufferedImage.TYPE_3BYTE_BGR);
 		numberImager[i] = board.getSubimage(i*width, 0, width, height);
@@ -38,15 +40,18 @@ public class Score {
         }
 	
 	public static void render(Graphics g) {
-                int nghin = (int)(score/1000) %10;
+        int nghin = (int)(score/1000) %10;
 		int tram = (int)(score/100) %10;
 		int chuc = (int)(score/10) %10 ;
 		int donVi = (int) score%10;
 		g.drawImage(scoreImagers, 0, 0,108, height, null);
-                g.drawImage(numberImager[nghin], 108, 3,width,height, null);
+        g.drawImage(numberImager[nghin], 108, 3,width,height, null);
 		g.drawImage(numberImager[tram], 108 + 32, 3,width,height, null);
 		g.drawImage(numberImager[chuc], 108 + 64, 3, width, height, null);
 		g.drawImage(numberImager[donVi], 108 + 96, 3, width, height, null);
+		g.drawImage(player.getSubimage(0, 64, 32, 32),600,0, width,height,null);
+		g.drawImage(x,632,0,width,height,null);
+		g.drawImage(numberImager[health],664,0, width,height,null);
 	}
 	
 	public static void setScore(long score) {

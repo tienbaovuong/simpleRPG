@@ -17,15 +17,14 @@ public class Player extends Creature {
     private ArrayList<Bullet> bullets;
     //Score
     public static long score = 0;
-    
     public Player(Handler handler, float x, float y) {
         super(handler, x, y, Creature.DEFAULT_CREATURE_WIDTH, Creature.DEFAULT_CREATURE_HEIGHT);
-        health = 1;
+        health = 3;
         bounds.x = 1;
         bounds.y = 1;
         bounds.width = 20;
         bounds.height = 30;
-        
+  
         //Animation
         animDown = new Animation(200, Assets.player_down);
         animUp = new Animation(200, Assets.player_up);
@@ -117,7 +116,7 @@ public class Player extends Creature {
         }
         attackTimer = 0;
     }
-
+    
     @Override
     public void die() {
     	handler.getGame().setDie_player(true);

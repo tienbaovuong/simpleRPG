@@ -17,7 +17,7 @@ public class Zombie1 extends Zombie {
 
     private int xStart, yStart;
     
-    private long lastAttackTimer, attackCooldown = 400, attackTimer = attackCooldown;
+    private long lastAttackTimer, attackCooldown = 800, attackTimer = attackCooldown;
    
     private ArrayList<Bullet> bullets;
     
@@ -124,7 +124,7 @@ public class Zombie1 extends Zombie {
     
     @Override
     public void moveX(){
-        if(xMove > 0){ //Tiếp tục di chuyển sang trái nếu không chạm vào tile và đi trong khoảng cố định 
+        if(xMove > 0){ //Tiáº¿p tá»¥c di chuyá»ƒn sang trÃ¡i náº¿u khÃ´ng cháº¡m vÃ o tile vÃ  Ä‘i trong khoáº£ng cá»‘ Ä‘á»‹nh 
             int tx = (int) (x + xMove + bounds.x + bounds.width) / Tile.TILEWIDTH;
             if((Math.abs(tx - xStart) < LIMIT[level]) && (!collisionWithTile(tx, (int) (y + bounds.y) / Tile.TILEHEIGHT) &&
                !collisionWithTile(tx, (int) (y + bounds.y + bounds.height) / Tile.TILEHEIGHT))){
@@ -132,11 +132,11 @@ public class Zombie1 extends Zombie {
             }else if(Math.abs(tx - xStart) >= LIMIT[level]) {
                 xMove = -xMove;
             }
-            else{ //Di chuyển đến sát bound của tile và quay lai 
+            else{ //Di chuyá»ƒn Ä‘áº¿n sÃ¡t bound cá»§a tile vÃ  quay lai 
                 x = tx * Tile.TILEWIDTH - bounds.x - bounds.width - 1;
                 xMove = -xMove;
             }
-        } else if (xMove < 0) { // Đi sang trái 
+        } else if (xMove < 0) { // Ä�i sang trÃ¡i 
             int tx = (int) (x + xMove + bounds.x) / Tile.TILEWIDTH;
             if((Math.abs(tx - xStart) < LIMIT[level]) && (!collisionWithTile(tx, (int) (y + bounds.y) / Tile.TILEHEIGHT) &&
                !collisionWithTile(tx, (int) (y + bounds.y + bounds.height) / Tile.TILEHEIGHT))){

@@ -7,11 +7,11 @@ import game.Handler;
 public abstract class Entity {
     
     public static final int[] DEFAULT_HEALTH = {3, 5};
-
+    public int health;
     protected Handler handler;
     protected float x, y;
     protected int width, height;
-    protected int health, level;
+    protected int  level;
     protected boolean active = true, food = false;
     protected Rectangle bounds;
     

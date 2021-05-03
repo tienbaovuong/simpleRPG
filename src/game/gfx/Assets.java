@@ -21,6 +21,7 @@ public class Assets {
         SpriteSheet fruits = new SpriteSheet(ImageLoader.loadImage("/textures/PathAndObjects.png"));
         SpriteSheet quit = new SpriteSheet(ImageLoader.loadImage("/textures/buttonsheet.png"));
         SpriteSheet scoreImages = new SpriteSheet(ImageLoader.loadImage("/textures/score.png"));
+        SpriteSheet bullets = new SpriteSheet(ImageLoader.loadImage("/textures/bullet.png"));
         
         scoreImage = scoreImages.crop(0, 0, 108, height);
 
@@ -139,7 +140,7 @@ public class Assets {
 		
         
 		door = doors.crop(0,0,width,height);
-	tree = floor.crop(width * 5, height * 7, width, height);
+		tree = floor.crop(width * 5, height * 7, width, height);
         dirt = floor.crop(width,height * 3, width, height);
         grass = floor.crop(0, height * 2, width, height);
         stone = floor.crop(0, 0, width, height);
@@ -148,6 +149,6 @@ public class Assets {
         water = floor.crop(width * 3, height * 5, width, height);
         stonegrass = floor.crop(width * 2, 0, width, height);
         
-        bullet = sheet.crop(0, height * 2, width, height);
+        bullet = bullets.crop(0, 0, width, height);
     }
 }
