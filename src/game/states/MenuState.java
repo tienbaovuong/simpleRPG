@@ -1,6 +1,6 @@
 package game.states;
 
-import java.awt.Graphics;
+import java.awt.*;
 import java.io.IOException;
 
 import game.Handler;
@@ -21,11 +21,11 @@ public class MenuState extends State {
         uiManager = new UIManager(handler);
         handler.getMouseManager().setUiManager(uiManager);
         
-        uiManager.addObject(new UIImageButton(336, 150, 128, 64, Assets.btn_start, () -> {
+        uiManager.addObject(new UIImageButton(336, 300, 128, 64, Assets.btn_start, () -> {
             c = new ChooseState(handler);
         }));
         
-        uiManager.addObject(new UIImageButton(336, 214, 128, 64, Assets.how_to_play_button, () ->{ 
+        uiManager.addObject(new UIImageButton(336, 364, 128, 64, Assets.how_to_play_button, () ->{
             try {
 		h=new HowToPlayState(handler);
             } catch (IOException e) {
@@ -33,7 +33,7 @@ public class MenuState extends State {
             }
         }));
         
-        uiManager.addObject(new UIImageButton(336, 278, 128, 64, Assets.quit_button, () ->{ 
+        uiManager.addObject(new UIImageButton(336, 428, 128, 64, Assets.quit_button, () ->{
             System.exit(0);
         }));
     }
@@ -46,10 +46,14 @@ public class MenuState extends State {
 
     @Override
     public void render(Graphics g) {
+        g.drawImage(Assets.backgroundMenu,0,0,800,608,null);
+        g.drawImage(Assets.logoMenu,225,112,371,76,null);
+
         uiManager.render(g);
         new Score(0,0);
         long highestScore = Score.getHighestScoreFromFile();
-        g.drawString("Highest Score: "+ highestScore, 350, 400);
+        g.setColor(Color.red);
+        g.drawString("Highest Score: "+ highestScore, 350, 520);
     }
 
     public UIManager getUiManager() {

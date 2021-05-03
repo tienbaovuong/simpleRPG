@@ -5,7 +5,7 @@ import java.awt.image.BufferedImage;
 public class Assets {
     private static final int width = 32, height = 32;
     public static BufferedImage dirt, grass, stone, tree, rock, fruit, water, 
-                                stonegrass, bullet, tutorial, wood, scoreImage, door;
+                                stonegrass, bullet, tutorial, wood, scoreImage, door,backgroundMenu,logoMenu;
     public static BufferedImage[] player_down, player_up, player_left, player_right;
     public static BufferedImage[] zombie_down, zombie_up, zombie_left, zombie_right;
     public static BufferedImage[] zombie1_down, zombie1_up, zombie1_left, zombie1_right;
@@ -19,20 +19,23 @@ public class Assets {
         SpriteSheet floor = new SpriteSheet(ImageLoader.loadImage("/textures/floortileset.png"));
         SpriteSheet zombie = new SpriteSheet(ImageLoader.loadImage("/textures/Monster-zombie.png"));
         SpriteSheet fruits = new SpriteSheet(ImageLoader.loadImage("/textures/PathAndObjects.png"));
-        SpriteSheet quit = new SpriteSheet(ImageLoader.loadImage("/textures/buttonsheet.png"));
+        SpriteSheet quit = new SpriteSheet(ImageLoader.loadImage("/textures/Newbutton.png"));
         SpriteSheet scoreImages = new SpriteSheet(ImageLoader.loadImage("/textures/score.png"));
         SpriteSheet bullets = new SpriteSheet(ImageLoader.loadImage("/textures/bullet.png"));
-        
+        SpriteSheet background = new SpriteSheet(ImageLoader.loadImage("/textures/backgroud1.jpg"));
+        SpriteSheet logo = new SpriteSheet(ImageLoader.loadImage("/textures/logo.png"));
+        logoMenu = logo.crop(0,0,371,76);
+        backgroundMenu = background.crop(0,0,800,608);
         scoreImage = scoreImages.crop(0, 0, 108, height);
 
         wood = sheet.crop(width, height, width, height);
         tutorial = ImageLoader.loadImage("/textures/Tutorial.png");
 
-        btn_start = sheet.crop(width * 6, height * 4, width * 2, height);
+        btn_start = quit.crop(0, 0, 270, 110);
       
-        how_to_play_button = ImageLoader.loadImage("/textures/How-to-Play-button229x96.png");
+        how_to_play_button = quit.crop(0,112,270,110);
         
-        quit_button = quit.crop(0, 0, 237, 89);
+        quit_button = quit.crop(0, 230, 270, 110);
 
         player_down = new BufferedImage[2];
         player_up = new BufferedImage[2];
