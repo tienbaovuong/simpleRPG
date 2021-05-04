@@ -21,7 +21,7 @@ public class Assets {
         SpriteSheet fruits = new SpriteSheet(ImageLoader.loadImage("/textures/PathAndObjects.png"));
         SpriteSheet quit = new SpriteSheet(ImageLoader.loadImage("/textures/Newbutton.png"));
         SpriteSheet scoreImages = new SpriteSheet(ImageLoader.loadImage("/textures/score.png"));
-        SpriteSheet bullets = new SpriteSheet(ImageLoader.loadImage("/textures/bullet.png"));
+        SpriteSheet bullets = new SpriteSheet(ImageLoader.loadImage("/textures/bomb.png"));
         SpriteSheet background = new SpriteSheet(ImageLoader.loadImage("/textures/backgroud1.jpg"));
         SpriteSheet logo = new SpriteSheet(ImageLoader.loadImage("/textures/logo.png"));
         logoMenu = logo.crop(0,0,371,76);
