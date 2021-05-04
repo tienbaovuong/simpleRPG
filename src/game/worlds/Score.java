@@ -17,7 +17,7 @@ public class Score {
 	private static BufferedImage scoreImage;
 	private static long highestScore;
 	private static BufferedImage scoreImagers = ImageLoader.loadImage("/textures/score.png");
-	private static BufferedImage player = ImageLoader.loadImage("/textures/husterplayer.png");
+	//private static BufferedImage player = ImageLoader.loadImage("/textures/husterplayer.png");
 	private static BufferedImage x= ImageLoader.loadImage("/textures/heart.png");
 	private static int health;
 	public Score(long score, int health) {
@@ -50,7 +50,7 @@ public class Score {
 		g.drawImage(numberImager[tram], 108 + 32, 3,width,height, null);
 		g.drawImage(numberImager[chuc], 108 + 64, 3, width, height, null);
 		g.drawImage(numberImager[donVi], 108 + 96, 3, width, height, null);
-		g.drawImage(player.getSubimage(0, 64, 32, 32),600,0, width,height,null);
+		//g.drawImage(player.getSubimage(0, 64, 32, 32),600,0, width,height,null);
 		g.drawImage(x,632,0,width,height,null);
 		g.drawImage(numberImager[health],664,0, width,height,null);
 	}
