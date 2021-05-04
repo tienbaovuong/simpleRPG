@@ -57,6 +57,8 @@ public class Bullet extends Creature {
                         this.setActive(false);
                         return;
                     } else if(e.equals(handler.getWorld().getEntityManager().getPlayer())) {
+                    	e.setX(handler.getWorld().getSpawnX());
+                    	e.setY(handler.getWorld().getSpawnY());
                         e.hurt(1);
                         this.setActive(false);
                         return;
