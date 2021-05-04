@@ -13,6 +13,10 @@ public class Assets {
     public static BufferedImage btn_start, how_to_play_button, quit_button;
     
     public static void init() {
+        SpriteSheet mapIcon = new SpriteSheet(ImageLoader.loadImage("/textures/mapchip.png"));
+        SpriteSheet background1 = new SpriteSheet(ImageLoader.loadImage("/textures/background.png"));
+
+
         SpriteSheet doors = new SpriteSheet(ImageLoader.loadImage("/textures/door.png"));
         SpriteSheet sheet = new SpriteSheet(ImageLoader.loadImage("/textures/sheet.png"));
 		SpriteSheet hust = new SpriteSheet(ImageLoader.loadImage("/textures/husterplayer.png"));
@@ -28,7 +32,7 @@ public class Assets {
         backgroundMenu = background.crop(0,0,800,608);
         scoreImage = scoreImages.crop(0, 0, 108, height);
 
-        wood = sheet.crop(width, height, width, height);
+        wood = background1.crop(352, 928, width, height);
         tutorial = ImageLoader.loadImage("/textures/Tutorial.png");
 
         btn_start = quit.crop(0, 0, 270, 110);
@@ -143,14 +147,14 @@ public class Assets {
 		
         
 		door = doors.crop(0,0,width,height);
-		tree = floor.crop(width * 5, height * 7, width, height);
-        dirt = floor.crop(width,height * 3, width, height);
-        grass = floor.crop(0, height * 2, width, height);
-        stone = floor.crop(0, 0, width, height);
-        rock = sheet.crop(0, height * 2, width, height);
-        fruit = fruits.crop(0, height * 4 , width , height);
+		tree = mapIcon.crop(width * 7, height * 0, width, height);
+        dirt = mapIcon.crop(width*2,height, width, height);
+        grass = mapIcon.crop(3*32, height * 0, width, height);
+        stone = mapIcon.crop(32, 0, width, height);
+        rock = background1.crop(320, 928, width, height);
+        fruit = mapIcon.crop(0, height * 1 , width , height);
         water = floor.crop(width * 3, height * 5, width, height);
-        stonegrass = floor.crop(width * 2, 0, width, height);
+        stonegrass = mapIcon.crop(width * 4, 0, width, height);
         
         bullet = bullets.crop(0, 0, width, height);
     }
