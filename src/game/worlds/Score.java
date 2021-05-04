@@ -18,7 +18,7 @@ public class Score {
 	private static long highestScore;
 	private static BufferedImage scoreImagers = ImageLoader.loadImage("/textures/score.png");
 	private static BufferedImage player = ImageLoader.loadImage("/textures/husterplayer.png");
-	private static BufferedImage x= ImageLoader.loadImage("/textures/x.png");
+	private static BufferedImage x= ImageLoader.loadImage("/textures/heart.png");
 	private static int health;
 	public Score(long score, int health) {
 		getHighestScoreFromFile();
