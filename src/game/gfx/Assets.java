@@ -5,8 +5,8 @@ import java.awt.image.BufferedImage;
 public class Assets {
     private static final int width = 32, height = 32;
     public static BufferedImage dirt, grass, stone, tree, rock, fruit, water, 
-                                stonegrass, bullet, tutorial, wood, scoreImage, door,backgroundMenu,logoMenu;
-    public static BufferedImage[] player_down, player_up, player_left, player_right;
+                                stonegrass,  tutorial, wood, scoreImage, door,backgroundMenu,logoMenu;
+    public static BufferedImage[] player_down, player_up, player_left, player_right, bullet;
     public static BufferedImage[] zombie_down, zombie_up, zombie_left, zombie_right;
     public static BufferedImage[] zombie1_down, zombie1_up, zombie1_left, zombie1_right;
     public static BufferedImage[] monster_down, monster_up, monster_left, monster_right;
@@ -16,7 +16,7 @@ public class Assets {
         SpriteSheet mapIcon = new SpriteSheet(ImageLoader.loadImage("/textures/mapchip.png"));
         SpriteSheet background1 = new SpriteSheet(ImageLoader.loadImage("/textures/background.png"));
 
-
+        
         SpriteSheet doors = new SpriteSheet(ImageLoader.loadImage("/textures/door.png"));
         SpriteSheet sheet = new SpriteSheet(ImageLoader.loadImage("/textures/sheet.png"));
 		SpriteSheet hust = new SpriteSheet(ImageLoader.loadImage("/textures/husterplayer.png"));
@@ -26,6 +26,9 @@ public class Assets {
         SpriteSheet quit = new SpriteSheet(ImageLoader.loadImage("/textures/Newbutton.png"));
         SpriteSheet scoreImages = new SpriteSheet(ImageLoader.loadImage("/textures/score.png"));
         SpriteSheet bullets = new SpriteSheet(ImageLoader.loadImage("/textures/bomb.png"));
+        SpriteSheet bullets2 = new SpriteSheet(ImageLoader.loadImage("/textures/bomb2.png"));
+        SpriteSheet bullets3 = new SpriteSheet(ImageLoader.loadImage("/textures/bomb3.png"));
+        SpriteSheet bullets4 = new SpriteSheet(ImageLoader.loadImage("/textures/bomb4.png"));
         SpriteSheet background = new SpriteSheet(ImageLoader.loadImage("/textures/backgroud1.jpg"));
         SpriteSheet logo = new SpriteSheet(ImageLoader.loadImage("/textures/logo.png"));
         logoMenu = logo.crop(0,0,371,76);
@@ -155,7 +158,10 @@ public class Assets {
         fruit = mapIcon.crop(0, height * 1 , width , height);
         water = floor.crop(width * 3, height * 5, width, height);
         stonegrass = mapIcon.crop(width * 4, 0, width, height);
-        
-        bullet = bullets.crop(0, 0, width, height);
+        bullet = new BufferedImage[4];
+        bullet[0] = bullets.crop(0, 0, width, height);
+        bullet[1]= bullets2.crop(0, 0, width, height);
+        bullet[2]= bullets3.crop(0, 0, width, height);
+        bullet[3]= bullets4.crop(0, 0, width, height);
     }
 }
