@@ -23,7 +23,7 @@ public class HowToPlayState{
     	uiManager = new UIManager(handler);
     	JFrame f = new JFrame();
         handler.getMouseManager().setUiManager(uiManager);
-	final JLabel tf =new JLabel(new ImageIcon("res/textures/tutorial.png"));
+        final JLabel tf =new JLabel(new ImageIcon("res/textures/tutorial.png"));
  
     	b1 = new JButton("Exit");    
         b1.setBounds(210,330,80,30);    
@@ -37,7 +37,7 @@ public class HowToPlayState{
         f.add(b1);
         f.getContentPane().add(new JScrollPane(tf));
         f.setSize(500,400);
-        f.setLocation(0,0);
+        f.setLocationRelativeTo(null);;
         f.setVisible(true);
     }
 }
