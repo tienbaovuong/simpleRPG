@@ -208,7 +208,7 @@ public class Game implements Runnable {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-    	gamewin.close();
+
     }
     public void gameOver() {
     	q=0;
@@ -224,7 +224,7 @@ public class Game implements Runnable {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-    	gameover.close();
+
     }
     
     public KeyManager getKeyManager() {
@@ -280,9 +280,9 @@ public class Game implements Runnable {
     }
     
     public synchronized void stop() {
-        if(!running)
+       /* if(!running)
             return;
-        running = false;
+        running = false; */
         thread.stop();
     }
     

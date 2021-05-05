@@ -1,9 +1,12 @@
 package game.states;
 
-import java.awt.Dimension;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.IOException;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
+import javax.swing.*;
+
+import game.Game;
 import game.Handler;
 import game.ui.UIManager;
 
@@ -13,19 +16,39 @@ public class Gameover  {
     private JFrame f;
 
     public Gameover(Handler handler) throws IOException{
-    	uiManager = new UIManager(handler);
-	f = new JFrame();
+        uiManager = new UIManager(handler);
+        f = new JFrame();
         handler.getMouseManager().setUiManager(uiManager);
-	final JLabel label2=new JLabel("YOU DIE ----Score: " 
+        final JLabel label2=new JLabel("YOU DIE  \n Score: "
                 + handler.getGame().getPlayer().getScore(),JLabel.CENTER);
-	label2.setPreferredSize(new Dimension(850, 600));
+        label2.setFont(new Font("Courier", Font.BOLD,40));
+        //label2.setPreferredSize(new Dimension(850, 600));
+        JPanel panel = new JPanel();
         f.getContentPane().add(label2);
         f.setSize(500,400);
         f.setLocation(336,214);
+        Dimension size = label2.getPreferredSize();
+        label2.setBounds(60, 100, size.width, size.height);
+        panel.setLayout(null);
+        panel.add(label2);
+        JButton okButton = new JButton("Back");
+        panel.add(okButton);
+        f.getContentPane().add(panel);
+        Dimension size1 = okButton.getPreferredSize();
+        okButton.setBounds(210, 300, size1.width, size1.height);
+        panel.setLayout(null);
+        f.add(panel);
         f.setVisible(true);
+        okButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                Game game = new Game("RPG GAME!", 800, 608);
+                game.start();
+                f.dispose();
+            }
+        });
     }
-    
+
     public void close() {
-	f.dispose();
+        f.dispose();
     }
 }
