@@ -11,6 +11,7 @@ import game.entities.Entity;
 import game.entities.EntityManager;
 import game.entities.creatures.Player;
 import game.gfx.Assets;
+import game.gfx.GameCamera;
 import game.input.KeyManager;
 import game.input.MouseManager;
 import game.states.GameState;
@@ -55,6 +56,10 @@ public class Game implements Runnable {
     private Handler handler;
     private Gameover gameover;
     private Gamewin gamewin;
+
+
+    //gamecamera
+    private GameCamera gameCamera;
     
     public Game(String title, int width, int height) {
         this.width = width;
@@ -74,6 +79,7 @@ public class Game implements Runnable {
         Assets.init();
         
         handler = new Handler(this);
+        gameCamera = new GameCamera(handler, 0, 0);
         player = new Player(handler, 0, 0);
         gameState = new GameState(handler, player,path);
         menuState = new MenuState(handler);
@@ -226,7 +232,11 @@ public class Game implements Runnable {
 		}
 
     }
-    
+    public GameCamera getGameCamera() {
+        return gameCamera;
+    }
+
+
     public KeyManager getKeyManager() {
         return keyManager;
     }
@@ -280,7 +290,7 @@ public class Game implements Runnable {
     }
     
     public synchronized void stop() {
-       /* if(!running)
+        /*if(!running)
             return;
         running = false;*/
         thread.stop();

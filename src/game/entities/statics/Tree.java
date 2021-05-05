@@ -28,8 +28,8 @@ public class Tree extends StaticEntity {
     
     @Override
     public void render(Graphics g) {
-        g.drawImage(Assets.wood, (int) (x),
-                (int) (y), width, height, null);
+        g.drawImage(Assets.wood, (int) (x-handler.getGame().getGameCamera().getxOffset()),
+                (int) (y-handler.getGame().getGameCamera().getyOffset()), width, height, null);
     }
     
     @Override

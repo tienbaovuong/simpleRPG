@@ -44,7 +44,8 @@ public class Zombie extends Creature {
     
     @Override
     public void render(Graphics g) {
-        g.drawImage(currentImage.getCurrentFrame(), (int) x, (int) y, width, height, null);
+        g.drawImage(currentImage.getCurrentFrame(), (int) (x-handler.getGame().getGameCamera().getxOffset()),
+                (int)(y-handler.getGame().getGameCamera().getyOffset()) , width, height, null);
     }
     
     @Override

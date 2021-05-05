@@ -29,8 +29,8 @@ public class Rock extends StaticEntity {
     
     @Override
     public void render(Graphics g) {
-        g.drawImage(Assets.rock, (int) (x),
-                (int) (y), width, height, null);
+        g.drawImage(Assets.rock, (int) (x - handler.getGame().getGameCamera().getxOffset()),
+                (int) (y-handler.getGame().getGameCamera().getyOffset()), width, height, null);
     }
     
    

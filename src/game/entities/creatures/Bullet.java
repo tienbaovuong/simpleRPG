@@ -44,17 +44,17 @@ public class Bullet extends Creature {
     @Override
     public void render(Graphics g) {
     	if(((int)(x)+(int)(y))%32 <8)
-        g.drawImage(Assets.bullet[0], (int) (x), 
-                (int) (y), width/2 , height/2, null);
-    	else if(((int)(x)+(int)(y))%32 <16) 
-    	g.drawImage(Assets.bullet[1], (int) (x), 
-                (int) (y), width/2 , height/2, null);
-    	else if(((int)(x)+(int)(y))%32 <24) 
-        g.drawImage(Assets.bullet[2], (int) (x), 
-                 (int) (y), width/2 , height/2, null);
+        g.drawImage(Assets.bullet[0], (int) (x-handler.getGame().getGameCamera().getxOffset()),
+                (int) (y-handler.getGame().getGameCamera().getyOffset()), width/2 , height/2, null);
+    	else if(((int)(x-handler.getGame().getGameCamera().getxOffset())+(int)(y-handler.getGame().getGameCamera().getyOffset()))%32 <16)
+    	g.drawImage(Assets.bullet[1], (int) (x-handler.getGame().getGameCamera().getxOffset()),
+                (int) (y-handler.getGame().getGameCamera().getyOffset()), width/2 , height/2, null);
+    	else if(((int)(x-handler.getGame().getGameCamera().getxOffset())+(int)(y-handler.getGame().getGameCamera().getyOffset()))%32 <24)
+        g.drawImage(Assets.bullet[2], (int) (x-handler.getGame().getGameCamera().getxOffset()),
+                 (int) (y-handler.getGame().getGameCamera().getyOffset()), width/2 , height/2, null);
     	else  
-        g.drawImage(Assets.bullet[3], (int) (x), 
-                 (int) (y), width/2 , height/2, null);
+        g.drawImage(Assets.bullet[3], (int) (x-handler.getGame().getGameCamera().getxOffset()),
+                 (int) (y-handler.getGame().getGameCamera().getyOffset()), width/2 , height/2, null);
     }
     
     public void checkAttacks() {

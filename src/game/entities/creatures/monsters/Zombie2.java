@@ -85,7 +85,8 @@ public class Zombie2 extends Zombie {
     
     @Override
     public void render(Graphics g) {
-        g.drawImage(currentImage.getCurrentFrame(), (int) x, (int) y, width, height, null);
+        g.drawImage(currentImage.getCurrentFrame(), (int) (x-handler.getGame().getGameCamera().getxOffset()),
+                (int) (y-handler.getGame().getGameCamera().getyOffset()), width, height, null);
         bullets.forEach((b) -> {
             b.render(g);
         });

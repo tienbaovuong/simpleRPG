@@ -55,6 +55,7 @@ public class Player extends Creature {
             if(!b.isActive())
                 it.remove();
         }
+        handler.getGame().getGameCamera().centerOnEntity(this);
         
     }
     
@@ -140,7 +141,8 @@ public class Player extends Creature {
 
     @Override
     public void render(Graphics g) {
-        g.drawImage(getCurrentAnimationFrame(), (int) (x), (int) (y), width, height, null);
+        g.drawImage(getCurrentAnimationFrame(), (int) (x-handler.getGame().getGameCamera().getxOffset()),
+                (int) (y-handler.getGame().getGameCamera().getyOffset()), width, height, null);
         bullets.forEach((b) -> {
             b.render(g);
         });

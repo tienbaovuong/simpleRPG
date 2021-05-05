@@ -10,6 +10,7 @@ import game.entities.creatures.monsters.Zombie1;
 import game.entities.creatures.monsters.Zombie2;
 import game.entities.statics.Rock;
 import game.entities.statics.Tree;
+import game.gfx.GameCamera;
 import game.tiles.Tile;
 import game.utils.Utils;
 
@@ -21,7 +22,8 @@ public class World {
     private int numberOfMonster, numberOfFood;
     private int[][] tile;
     private int[] monsters, food;
-    private EntityManager entityManager;    
+    private EntityManager entityManager;
+
     
     public World(Handler handler, Player player, String path) {
         this.handler = handler;
@@ -59,14 +61,21 @@ public class World {
     }
     
     public void render(Graphics g) {
-         
-        for(int y = 0; y < height; y++) {
-            for(int x = 0; x < width; x++) {
-                getTile(x,y).render(g,(int) (x * Tile.TILEWIDTH ),
-                        (int) (y * Tile.TILEHEIGHT));
+
+
+        int xStart = (int) Math.max(0, handler.getGame().getGameCamera().getxOffset()/Tile.TILEWIDTH);
+        int xEnd = (int) Math.min(width, (handler.getGame().getWidth() + handler.getGame().getGameCamera().getxOffset())/Tile.TILEWIDTH+1);
+        int yStart = (int)Math.max(0, handler.getGame().getGameCamera().getyOffset()/Tile.TILEWIDTH);
+        int yEnd = (int) Math.min(height, (handler.getGame().getHeight() + handler.getGame().getGameCamera().getyOffset())/Tile.TILEHEIGHT+1);
+
+        for(int y = yStart; y < yEnd; y++) {
+            for(int x = xStart; x < xEnd; x++) {
+                getTile(x,y).render(g,(int) (x * Tile.TILEWIDTH - handler.getGame().getGameCamera().getxOffset()),
+                        (int) (y * Tile.TILEHEIGHT-handler.getGame().getGameCamera().getyOffset()));
             }
         }
-        
+
+
         //Entities
         entityManager.render(g);
         

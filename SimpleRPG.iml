@@ -36,5 +36,6 @@
     </orderEntry>
     <orderEntry type="library" name="jlayer-1.0.1.4" level="project" />
     <orderEntry type="library" name="junit-3.8.2" level="project" />
+    <orderEntry type="library" name="jlayer-1.0.1" level="project" />
   </component>
 </module>
