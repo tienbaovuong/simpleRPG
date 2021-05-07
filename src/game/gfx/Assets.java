@@ -5,7 +5,7 @@ import java.awt.image.BufferedImage;
 public class Assets {
     private static final int width = 32, height = 32;
     public static BufferedImage dirt, grass, stone, tree, rock, fruit, water, 
-                                stonegrass,  tutorial, wood, scoreImage, door,backgroundMenu,logoMenu;
+                                stonegrass,  tutorial, wood, scoreImage, door,backgroundMenu,logoMenu, item;
     public static BufferedImage[] player_down, player_up, player_left, player_right, bullet;
     public static BufferedImage[] zombie_down, zombie_up, zombie_left, zombie_right;
     public static BufferedImage[] zombie1_down, zombie1_up, zombie1_left, zombie1_right;
@@ -15,8 +15,7 @@ public class Assets {
     public static void init() {
         SpriteSheet mapIcon = new SpriteSheet(ImageLoader.loadImage("/textures/mapchip.png"));
         SpriteSheet background1 = new SpriteSheet(ImageLoader.loadImage("/textures/background.png"));
-
-        
+        SpriteSheet items = new SpriteSheet(ImageLoader.loadImage("/textures/10oop.png"));
         SpriteSheet doors = new SpriteSheet(ImageLoader.loadImage("/textures/door.png"));
         SpriteSheet sheet = new SpriteSheet(ImageLoader.loadImage("/textures/sheet.png"));
 		SpriteSheet hust = new SpriteSheet(ImageLoader.loadImage("/textures/husterplayer.png"));
@@ -31,6 +30,8 @@ public class Assets {
         SpriteSheet bullets4 = new SpriteSheet(ImageLoader.loadImage("/textures/bomb4.png"));
         SpriteSheet background = new SpriteSheet(ImageLoader.loadImage("/textures/backgroud1.jpg"));
         SpriteSheet logo = new SpriteSheet(ImageLoader.loadImage("/textures/logo.png"));
+
+
         logoMenu = logo.crop(0,0,371,76);
         backgroundMenu = background.crop(0,0,800,608);
         scoreImage = scoreImages.crop(0, 0, 108, height);
@@ -148,7 +149,7 @@ public class Assets {
 		monster_left[2] = zombie.crop(width * 6, height * 10, width * 2, height * 2);
 		monster_left[3] = zombie.crop(width * 8, height * 10, width * 2, height * 2);
 		
-        
+        // solid
 		door = doors.crop(0,0,width,height);
 		tree = mapIcon.crop(width * 7, height * 0, width, height);
         dirt = mapIcon.crop(width*2,height, width, height);
@@ -158,10 +159,20 @@ public class Assets {
         fruit = mapIcon.crop(0, height * 1 , width , height);
         water = floor.crop(width * 3, height * 5, width, height);
         stonegrass = mapIcon.crop(width * 4, 0, width, height);
+
+        // bullet
         bullet = new BufferedImage[4];
         bullet[0] = bullets.crop(0, 0, width, height);
         bullet[1]= bullets2.crop(0, 0, width, height);
         bullet[2]= bullets3.crop(0, 0, width, height);
         bullet[3]= bullets4.crop(0, 0, width, height);
+
+        //item
+        item = items.crop(0, 0, width-1, height);
+
+
+
+
+
     }
 }

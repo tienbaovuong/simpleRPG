@@ -1,10 +1,13 @@
 package game.entities.creatures.monsters;
 
 import java.awt.Graphics;
+import java.util.Random;
+
 import game.Handler;
 import game.entities.creatures.Creature;
 import game.gfx.Animation;
 import game.gfx.Assets;
+import game.items.Item;
 
 public class Zombie extends Creature {
     
@@ -38,6 +41,8 @@ public class Zombie extends Creature {
     
     @Override
     public void die() {
+        Random rand = new Random();
+        handler.getWorld().getItemManager().addItem(Item.muoiOOP.createNew((int) x, (int) y));
         handler.getWorld().getEntityManager().getPlayer().setScore(BONUS[level]);
         handler.getWorld().setNumberOfMonster(-1);    
     }

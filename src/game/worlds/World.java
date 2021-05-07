@@ -11,6 +11,7 @@ import game.entities.creatures.monsters.Zombie2;
 import game.entities.statics.Rock;
 import game.entities.statics.Tree;
 import game.gfx.GameCamera;
+import game.items.ItemManager;
 import game.tiles.Tile;
 import game.utils.Utils;
 
@@ -24,10 +25,13 @@ public class World {
     private int[] monsters, food;
     private EntityManager entityManager;
 
+    private ItemManager itemManager;
+
     
     public World(Handler handler, Player player, String path) {
         this.handler = handler;
         entityManager = new EntityManager(handler, player);
+        itemManager = new ItemManager(handler);
         loadWorld(path);
         //Add monster
         for(int i = 0; i < monsters.length; i += 3) {
@@ -57,9 +61,12 @@ public class World {
     }
     
     public void tick() {
+        itemManager.tick();
         entityManager.tick();
     }
-    
+
+
+
     public void render(Graphics g) {
 
 
@@ -75,7 +82,8 @@ public class World {
             }
         }
 
-
+        //Items
+        itemManager.render(g);
         //Entities
         entityManager.render(g);
         
@@ -120,6 +128,15 @@ public class World {
                 tile[x][y] = Utils.parseInt(tokens[(x + y * width) + 6 + monsters.length + food.length]);
             }
         }
+    }
+
+    //get and set
+    public ItemManager getItemManager() {
+        return itemManager;
+    }
+
+    public void setItemManager(ItemManager itemManager) {
+        this.itemManager = itemManager;
     }
     
     public int getWidth() {

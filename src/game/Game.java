@@ -2,6 +2,8 @@ package game;
 
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -19,6 +21,7 @@ import game.states.Gameover;
 import game.states.Gamewin;
 import game.states.MenuState;
 import game.states.State;
+import javazoom.jl.decoder.JavaLayerException;
 
 public class Game implements Runnable {
     
@@ -158,7 +161,7 @@ public class Game implements Runnable {
                     die_player = false;
                     System.out.println(q);
                     last = System.currentTimeMillis();
-                    System.out.println("Tong diem den vong " + q + ": " + player.getScore());
+                    //System.out.println("Tong diem den vong " + q + ": " + player.getScore());
                     gameOver();
                     stop();
                     Launcher laun = new Launcher();
@@ -172,7 +175,7 @@ public class Game implements Runnable {
                         running = false;
                         System.out.println(q);
                         last = System.currentTimeMillis();
-                        System.out.println("Tong diem den vong  " + q + ": " + player.getScore() );
+                        //System.out.println("Tong diem den vong  " + q + ": " + player.getScore() );
                         if(q == 3) {
                             gameWin();
                             stop();
@@ -188,7 +191,7 @@ public class Game implements Runnable {
 
                         }
 
-                        System.out.println("--------");
+                        //System.out.println("--------");
                         ck = 0;
                         display.close();
                         break;
@@ -222,6 +225,7 @@ public class Game implements Runnable {
     	try {
 			gameover=new Gameover(handler);
 			try{
+
                 thread.sleep(600);
                 }
             catch(Exception e){
@@ -287,6 +291,7 @@ public class Game implements Runnable {
         running = true;        
         thread = new Thread(this);
         thread.start();
+
     }
     
     public synchronized void stop() {
