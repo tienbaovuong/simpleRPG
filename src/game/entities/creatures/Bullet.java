@@ -11,6 +11,7 @@ import game.tiles.Tile;
 public class Bullet extends Creature {
     
     public static final float[] BULLET_SPEED = {3.0f, 6.0f};
+    public static final int BULLET_NUMBER = 30;
     private Creature owner;
     private float X,Y;
     public Bullet(Handler handler, Creature owner, float x, float y) {

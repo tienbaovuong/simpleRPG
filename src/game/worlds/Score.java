@@ -12,15 +12,17 @@ import game.gfx.SpriteSheet;
 public class Score {
 	private static long score = Player.score;
 	private static int width = 32, height = 32;
-	private static BufferedImage[] numberImager = new BufferedImage[10];
+	private static BufferedImage[] numberImager = new BufferedImage[50];
 	private static BufferedImage board = ImageLoader.loadImage("/textures/yellownumber.png");
 	private static BufferedImage scoreImage;
 	private static long highestScore;
 	private static BufferedImage scoreImagers = ImageLoader.loadImage("/textures/score.png");
 	//private static BufferedImage player = ImageLoader.loadImage("/textures/husterplayer.png");
 	private static BufferedImage x= ImageLoader.loadImage("/textures/heart.png");
+	private static BufferedImage bomb = ImageLoader.loadImage("/textures/bomb.png");
 	private static int health;
-	public Score(long score, int health) {
+	private static int bullet_number;
+	public Score(long score, int health, int bullet_number) {
 		getHighestScoreFromFile();
 		setScore(score);
 		if (score > highestScore) {
@@ -32,6 +34,7 @@ public class Score {
 			setNumberImage(i);
 		}
 		setHealth(health);
+		setBullet_number(bullet_number);
 	}
 
 	private static void setNumberImage(int i) {
@@ -53,6 +56,10 @@ public class Score {
 		//g.drawImage(player.getSubimage(0, 64, 32, 32),600,0, width,height,null);
 		g.drawImage(x,632,0,width,height,null);
 		g.drawImage(numberImager[health],664,0, width,height,null);
+
+		g.drawImage(bomb, 632, 32, width, height, null);
+		g.drawImage(numberImager[(int)(bullet_number/10)%10], 664, 32, width, height, null );
+		g.drawImage(numberImager[(int)(bullet_number%10)], 664+32, 32, width, height, null );
 	}
 	
 	public static void setScore(long score) {
@@ -61,6 +68,11 @@ public class Score {
 	public static void setHealth(int health) {
 		Score.health = health;
 	}
+
+	public static void setBullet_number(int bullet_number) {
+		Score.bullet_number = bullet_number;
+	}
+
 	public static long getHighestScoreFromFile() {
 		try {
 			FileReader in = new FileReader("res/world/highestScore.txt");

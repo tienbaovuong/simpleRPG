@@ -16,6 +16,7 @@ public class Player extends Creature {
     private long lastAttackTimer, attackCooldown = 300, attackTimer = attackCooldown;
     //Bullet
     private ArrayList<Bullet> bullets;
+    private int bullet_number = 30;
     //Score
     public static long score = 0;
     public Player(Handler handler, float x, float y) {
@@ -60,8 +61,11 @@ public class Player extends Creature {
         while(it.hasNext()){
             Bullet b = it.next();
             b.tick();
-            if(!b.isActive())
+            if(!b.isActive()){
                 it.remove();
+                bullet_number--;
+            }
+
         }
         handler.getGame().getGameCamera().centerOnEntity(this);
         
@@ -108,25 +112,28 @@ public class Player extends Creature {
     }
     
     public void attack() {
-        if(handler.getKeyManager().space) {
-            attackTimer += System.currentTimeMillis() - lastAttackTimer;
-            lastAttackTimer = System.currentTimeMillis();
-            if(attackTimer < attackCooldown)
-                return;
-            if(isUp()){
-                bullets.add(new Bullet(handler,this, x + width / 4, y));
-               
-            } else if(isDown()) {
-                bullets.add(new Bullet(handler,this, x + width /4, y + height));
-                
-            }else if(isLeft()) {
-                bullets.add(new Bullet(handler,this, x - width / 2, y + height / 4));
-                
-            }else if(isRight()) {
-                bullets.add(new Bullet(handler,this, x + width, y + height / 4));
+
+            if(handler.getKeyManager().space) {
+                attackTimer += System.currentTimeMillis() - lastAttackTimer;
+                lastAttackTimer = System.currentTimeMillis();
+                if(attackTimer < attackCooldown)
+                    return;
+                if(isUp()){
+                    bullets.add(new Bullet(handler,this, x + width / 4, y));
+
+                } else if(isDown()) {
+                    bullets.add(new Bullet(handler,this, x + width /4, y + height));
+
+                }else if(isLeft()) {
+                    bullets.add(new Bullet(handler,this, x - width / 2, y + height / 4));
+
+                }else if(isRight()) {
+                    bullets.add(new Bullet(handler,this, x + width, y + height / 4));
+                }
             }
-        }
-        attackTimer = 0;
+            attackTimer = 0;
+
+
     }
     
     @Override
@@ -180,5 +187,12 @@ public class Player extends Creature {
     public void setcore() {
     	this.score = 0;
     }
-    
+
+    public int getBullet_number() {
+        return bullet_number;
+    }
+
+    public void setBullet_number(int bullet_number) {
+        this.bullet_number += bullet_number;
+    }
 }

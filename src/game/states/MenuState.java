@@ -50,7 +50,7 @@ public class MenuState extends State {
         g.drawImage(Assets.logoMenu,225,112,371,76,null);
 
         uiManager.render(g);
-        new Score(0,0);
+        new Score(0,0, 0);
         long highestScore = Score.getHighestScoreFromFile();
         g.setColor(Color.red);
         g.drawString("Highest Score: "+ highestScore, 350, 520);

@@ -88,7 +88,9 @@ public class World {
         entityManager.render(g);
         
         //Score 
-        Score score = new Score(handler.getWorld().getEntityManager().getPlayer().getScore(),handler.getWorld().getEntityManager().getPlayer().getHealth());
+        Score score = new Score(handler.getWorld().getEntityManager().getPlayer().getScore(),
+                handler.getWorld().getEntityManager().getPlayer().getHealth(),
+                handler.getWorld().getEntityManager().getPlayer().getBullet_number());
         Score.render(g);
     }
     

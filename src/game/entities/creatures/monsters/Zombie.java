@@ -14,7 +14,7 @@ public class Zombie extends Creature {
     protected static final int[] ZOMBIE_SPEED = {1, 3};
     private static final int[] BONUS = {50, 100};
     protected Animation animDown, animUp, animLeft, animRight, currentImage;
-    protected Item[] items = {Item.muoiOOP, Item.blood};
+    protected Item[] items = {Item.muoiOOP, Item.blood, Item.bomb};
     
     public Zombie(Handler handler, float x, float y) {
         super(handler, x, y, Creature.DEFAULT_CREATURE_WIDTH, Creature.DEFAULT_CREATURE_HEIGHT);
@@ -43,7 +43,7 @@ public class Zombie extends Creature {
     @Override
     public void die() {
         Random rand = new Random();
-        handler.getWorld().getItemManager().addItem(items[rand.nextInt(2)].createNew((int) x, (int) y));
+        handler.getWorld().getItemManager().addItem(items[rand.nextInt(3)].createNew((int) x, (int) y));
         handler.getWorld().getEntityManager().getPlayer().setScore(BONUS[level]);
         handler.getWorld().setNumberOfMonster(-1);    
     }
