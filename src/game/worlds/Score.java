@@ -54,12 +54,12 @@ public class Score {
 		g.drawImage(numberImager[chuc], 108 + 64, 3, width, height, null);
 		g.drawImage(numberImager[donVi], 108 + 96, 3, width, height, null);
 		//g.drawImage(player.getSubimage(0, 64, 32, 32),600,0, width,height,null);
-		g.drawImage(x,632,0,width,height,null);
-		g.drawImage(numberImager[health],664,0, width,height,null);
+		g.drawImage(x,580,0,width,height,null);
+		g.drawImage(numberImager[health],612,0, width,height,null);
 
-		g.drawImage(bomb, 632, 32, width, height, null);
-		g.drawImage(numberImager[(int)(bullet_number/10)%10], 664, 32, width, height, null );
-		g.drawImage(numberImager[(int)(bullet_number%10)], 664+32, 32, width, height, null );
+		g.drawImage(bomb, 664, 0, width, height, null);
+		g.drawImage(numberImager[(int)(bullet_number/10)%10], 696, 0, width, height, null );
+		g.drawImage(numberImager[(int)(bullet_number%10)], 696+32, 0, width, height, null );
 	}
 	
 	public static void setScore(long score) {

@@ -35,7 +35,7 @@ public class ItemManager {
                 }else if(i.id == 2){
                     handler.getWorld().getItemManager().getPlayer().setHealth(player.healing(1));
                 }else if(i.id == 1){
-                    handler.getWorld().getEntityManager().getPlayer().setBullet_number(5);
+                    handler.getWorld().getEntityManager().getPlayer().setBullet_number(7);
                 }
 
 
