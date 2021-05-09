@@ -19,7 +19,7 @@ public class World {
     
     private Handler handler;
     private int width, height;
-    private int spawnX, spawnY;
+    private int spawnX, spawnY, exitX, exitY;
     private int numberOfMonster, numberOfFood;
     private int[][] tile;
     private int[] monsters, food;
@@ -108,26 +108,29 @@ public class World {
         height = Utils.parseInt(tokens[1]);
         spawnX = Utils.parseInt(tokens[2]);
         spawnY = Utils.parseInt(tokens[3]);
-        
+        exitX = Utils.parseInt(tokens[4]);
+        exitY = Utils.parseInt(tokens[5]);
+
+
         //Monster
-        numberOfMonster = Utils.parseInt(tokens[4]);
+        numberOfMonster = Utils.parseInt(tokens[6]);
         monsters = new int[numberOfMonster * 3];
         for (int i = 0; i < monsters.length; i++) {
-                monsters[i] = Utils.parseInt(tokens[i + 5]);
+                monsters[i] = Utils.parseInt(tokens[i + 7]);
         }
         
         //Food
-        numberOfFood = Utils.parseInt(tokens[5 + monsters.length]);
+        numberOfFood = Utils.parseInt(tokens[7 + monsters.length]);
         food = new int[numberOfFood * 2];
         for (int i = 0; i < food.length; i++) {
-            food[i] = Utils.parseInt(tokens[i + 6 + monsters.length]);
+            food[i] = Utils.parseInt(tokens[i + 8 + monsters.length]);
         }
         
         //Tile
         tile = new int[width][height];
         for(int y = 0; y < height; y++) {
             for(int x = 0; x < width; x++){
-                tile[x][y] = Utils.parseInt(tokens[(x + y * width) + 6 + monsters.length + food.length]);
+                tile[x][y] = Utils.parseInt(tokens[(x + y * width) + 8 + monsters.length + food.length]);
             }
         }
     }
@@ -189,7 +192,15 @@ public class World {
 		return spawnY;
 	}
 
-	public void setSpawnY(int spawnY) {
+    public int getExitX() {
+        return exitX;
+    }
+
+    public int getExitY() {
+        return exitY;
+    }
+
+    public void setSpawnY(int spawnY) {
 		this.spawnY = spawnY;
 	}
     

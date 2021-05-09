@@ -127,8 +127,8 @@ public class Game implements Runnable {
     public void run() {
     	long last = 0;
     	String[] path=new String[3];
-    	path[0]="res/world/world1.txt";
-    	path[1]="res/world/world2.txt";
+    	path[1]="res/world/world1.txt";
+    	path[0]="res/world/world2.txt";
     	path[2]="res/world/world3.txt";
     	
     	while(true) {
@@ -168,8 +168,7 @@ public class Game implements Runnable {
                     q = 0;
                     player.setcore();
                 }else if(ck == 1) {
-
-                    if( player.getX() == 32 && player.getY() == 64){
+                    if( player.getX() == handler.getWorld().getExitX() && player.getY() == handler.getWorld().getExitY()){
                         keyManager.refresh();
                         q++;
                         running = false;

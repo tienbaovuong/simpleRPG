@@ -4,7 +4,7 @@ import java.awt.image.BufferedImage;
 
 public class Assets {
     private static final int width = 32, height = 32;
-    public static BufferedImage dirt, grass, stone, tree, rock, fruit, water, 
+    public static BufferedImage dirt, grass, stone, tree, rock, fruit, water, bridge,
                                 stonegrass,  tutorial, wood, scoreImage, door,backgroundMenu,logoMenu, item;
     public static BufferedImage[] player_down, player_up, player_left, player_right, bullet;
     public static BufferedImage[] zombie_down, zombie_up, zombie_left, zombie_right;
@@ -127,27 +127,23 @@ public class Assets {
 //		zombie1_up[5] = zombie.crop(width * 10, height * 6, width * 2, height * 2);
 //		zombie1_up[6] = zombie.crop(width * 12, height * 6, width * 2, height * 2);
                 
-		monster_down = new BufferedImage[4];
-		monster_up = new BufferedImage[4];
-		monster_left = new BufferedImage[4];
-		monster_right = new BufferedImage[4];
+		monster_down = new BufferedImage[3];
+		monster_up = new BufferedImage[3];
+		monster_left = new BufferedImage[3];
+		monster_right = new BufferedImage[3];
 		
-		monster_down[0] = zombie.crop(0, height * 8, width * 2, height * 2);
-		monster_down[1] = zombie.crop(width * 2, height * 8, width * 2, height * 2);
-		monster_down[2] = zombie.crop(width * 4, height * 8, width * 2, height * 2);
-		monster_down[3] = zombie.crop(width * 6, height * 8, width * 2, height * 2);
-		monster_up[0] = zombie.crop(width * 10, height * 10, width * 2, height * 2);
-		monster_up[1] = zombie.crop(width * 12, height * 10, width * 2, height * 2);
-		monster_up[2] = zombie.crop(0, height * 12, width * 2, height * 2);
-		monster_up[3] = zombie.crop(width * 2, height * 12, width * 2, height * 2);
-		monster_right[0] = zombie.crop(width * 8, height * 8, width * 2, height * 2);
-		monster_right[1] = zombie.crop(width * 10, height * 8, width * 2, height * 2);
-		monster_right[2] = zombie.crop(width * 12, height * 8, width * 2, height * 2);
-		monster_right[3] = zombie.crop(0, height * 10, width * 2, height * 2);
-		monster_left[0] = zombie.crop(width * 2, height * 10, width * 2, height * 2);
-		monster_left[1] = zombie.crop(width * 4, height * 10, width * 2, height * 2);
-		monster_left[2] = zombie.crop(width * 6, height * 10, width * 2, height * 2);
-		monster_left[3] = zombie.crop(width * 8, height * 10, width * 2, height * 2);
+		monster_down[0] = hust.crop(0, height * 4, width , height );
+		monster_down[1] = hust.crop(width * 1, height * 4, width , height );
+		monster_down[2] = hust.crop(width * 2, height * 4, width , height );
+		monster_up[0] = hust.crop(width * 0, height * 5, width , height );
+		monster_up[1] = hust.crop(width * 1, height * 5, width , height );
+		monster_up[2] = hust.crop(0, height * 2, width *5, height );
+		monster_right[0] = hust.crop(width * 0, height * 6, width , height );
+		monster_right[1] = hust.crop(width * 1, height * 6, width , height );
+		monster_right[2] = hust.crop(width * 2, height * 6, width , height );
+		monster_left[0] = hust.crop(width * 0, height * 7, width , height );
+		monster_left[1] = hust.crop(width * 1, height * 7, width , height );
+		monster_left[2] = hust.crop(width * 2, height * 7, width , height );
 		
         // solid
 		door = doors.crop(0,0,width,height);
@@ -159,6 +155,7 @@ public class Assets {
         fruit = mapIcon.crop(0, height * 1 , width , height);
         water = floor.crop(width * 3, height * 5, width, height);
         stonegrass = mapIcon.crop(width * 4, 0, width, height);
+        bridge =   mapIcon.crop(width * 6, 32, width, height);
 
         // bullet
         bullet = new BufferedImage[4];
