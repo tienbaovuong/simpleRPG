@@ -264,6 +264,7 @@ public class Game implements Runnable {
 
     public void setLevel(int level) {
         this.level = level;
+        this.getPlayer().setPlayer_health(this.getPlayer().DEFAULT_HEALTH[level]);
     }
 
     public Display getDisplay() {
