@@ -58,7 +58,7 @@ public class Score {
 		g.drawImage(numberImager[health],612,0, width,height,null);
 
 		g.drawImage(bomb, 664, 0, width, height, null);
-		g.drawImage(numberImager[(int)(bullet_number/10)%10], 696, 0, width, height, null );
+		g.drawImage(numberImager[(int)(bullet_number/10)], 696, 0, width, height, null );
 		g.drawImage(numberImager[(int)(bullet_number%10)], 696+32, 0, width, height, null );
 	}
 	

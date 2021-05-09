@@ -64,7 +64,7 @@ public class Player extends Creature {
             b.tick();
             if(!b.isActive()){
                 it.remove();
-                bullet_number--;
+                //bullet_number--;
             }
 
         }
@@ -115,10 +115,12 @@ public class Player extends Creature {
     public void attack() {
 
             if(handler.getKeyManager().space) {
+            	if(bullet_number<=0) return;
                 attackTimer += System.currentTimeMillis() - lastAttackTimer;
                 lastAttackTimer = System.currentTimeMillis();
                 if(attackTimer < attackCooldown)
                     return;
+                bullet_number--;
                 if(isUp()){
                     bullets.add(new Bullet(handler,this, x + width / 4, y));
 
