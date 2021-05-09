@@ -1,6 +1,7 @@
 package game.items;
 
 import game.Handler;
+import game.entities.creatures.Player;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -8,12 +9,19 @@ import java.util.Iterator;
 
 public class ItemManager {
     private Handler handler;
+    private Player player;
+
+
+
     private ArrayList<Item> items;
 
-    public ItemManager(Handler handler){
+    public ItemManager(Handler handler, Player player){
         this.handler = handler;
+        this.player = player;
         items = new ArrayList<Item>();
     }
+
+
 
     public void tick(){
         Iterator<Item> it = items.iterator();
@@ -22,6 +30,12 @@ public class ItemManager {
             i.tick();
             if(i.getCount() == Item.PICKED_UP){ // neu so luong bang so am thi xoa no khoi list
                 it.remove();
+                if(i.id == 0){
+                    handler.getWorld().getItemManager().getPlayer().setScore(100);
+                }else if(i.id == 2){
+                    handler.getWorld().getItemManager().getPlayer().setHealth(player.healing(1));
+                }
+
 
             }
         }
@@ -46,5 +60,19 @@ public class ItemManager {
 
     public void setHandler(Handler handler) {
         this.handler = handler;
+    }
+    public Player getPlayer() {
+        return player;
+    }
+
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
+    public ArrayList<Item> getItems() {
+        return items;
+    }
+
+    public void setItems(ArrayList<Item> items) {
+        this.items = items;
     }
 }

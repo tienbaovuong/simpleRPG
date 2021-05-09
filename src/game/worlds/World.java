@@ -31,7 +31,7 @@ public class World {
     public World(Handler handler, Player player, String path) {
         this.handler = handler;
         entityManager = new EntityManager(handler, player);
-        itemManager = new ItemManager(handler);
+        itemManager = new ItemManager(handler, player);
         loadWorld(path);
         //Add monster
         for(int i = 0; i < monsters.length; i += 3) {

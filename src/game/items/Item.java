@@ -2,6 +2,7 @@ package game.items;
 
 import game.Handler;
 import game.gfx.Assets;
+import game.gfx.ImageLoader;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -9,9 +10,11 @@ import java.awt.image.BufferedImage;
 public class Item {
 
     //handler
-
+    private static BufferedImage tym= ImageLoader.loadImage("/textures/heart.png");
     public static Item[] items = new Item[256];
     public static Item muoiOOP = new Item(Assets.item, "diamond", 0);
+    public static Item bomb = new Item(Assets.bullet[0], "bomb", 1);
+    public static Item blood = new Item(tym, "blood", 2);
     //public static new Item(Assets.item[1], "ruby", 1);
       //      new Item(Assets.item[2], "sapphire", 2)};
 
@@ -43,7 +46,9 @@ public class Item {
     public void tick(){
         if(handler.getWorld().getEntityManager().getPlayer().getCollisionBounds(0f, 0f).intersects(bounds)){
             count = PICKED_UP;
+
         }
+
 
     }
     public void render(Graphics g){

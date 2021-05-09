@@ -9,6 +9,7 @@ import game.Handler;
 import game.entities.Entity;
 import game.gfx.Animation;
 import game.gfx.Assets;
+import game.items.Item;
 
 public class Player extends Creature {
     //Attack timer
@@ -35,6 +36,13 @@ public class Player extends Creature {
         bullets = new ArrayList<Bullet>();
         
         
+    }
+    // hồi máu khi máu thấp hơn mặc định
+    public int healing(int x){
+        if(health<DEFAULT_HEALTH[level]){
+            return health+x;
+        }
+        return health;
     }
 
     @Override
@@ -96,6 +104,7 @@ public class Player extends Creature {
                 }   
             }
         }
+
     }
     
     public void attack() {
