@@ -29,15 +29,17 @@ public class HowToPlayState{
         b1.setBounds(210,330,80,30);    
         b1.addActionListener((ActionEvent e) -> {
             handler.getMouseManager().setUiManager(uiManager);
+            
             m=new MenuState(handler);
             f.dispose();  
         });
            
-        
+        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         f.add(b1);
         f.getContentPane().add(new JScrollPane(tf));
         f.setSize(500,400);
         f.setLocationRelativeTo(null);;
         f.setVisible(true);
+        f.setResizable(false);
     }
 }

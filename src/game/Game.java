@@ -127,8 +127,8 @@ public class Game implements Runnable {
     public void run() {
     	long last = 0;
     	String[] path=new String[3];
-    	path[1]="res/world/world1.txt";
-    	path[0]="res/world/world2.txt";
+    	path[0]="res/world/world1.txt";
+    	path[1]="res/world/world2.txt";
     	path[2]="res/world/world3.txt";
     	
     	while(true) {
@@ -164,9 +164,9 @@ public class Game implements Runnable {
                     //System.out.println("Tong diem den vong " + q + ": " + player.getScore());
                     gameOver();
                     stop();
-                    Launcher laun = new Launcher();
-                    q = 0;
-                    player.setcore();
+                    //Launcher laun = new Launcher();
+                    //q = 0;
+                    //player.setcore();
                 }else if(ck == 1) {
                     if( player.getX() == handler.getWorld().getExitX() && player.getY() == handler.getWorld().getExitY()){
                         keyManager.refresh();
@@ -178,15 +178,15 @@ public class Game implements Runnable {
                         if(q == 3) {
                             gameWin();
                             stop();
-                            Launcher lau = new Launcher();
-                            try {
-                                Thread.sleep(600);
-                            } catch (InterruptedException e) {
-                                e.printStackTrace();
-                            }
-                            q = 0;
-                            player.setcore();
-                            running = false;
+                            //Launcher lau = new Launcher();
+                            //try {
+                            //    Thread.sleep(600);
+                            //} catch (InterruptedException e) {
+                            //    e.printStackTrace();
+                            //}
+                            //q = 0;
+                            //player.setcore();
+                            //running = false;
 
                         }
 
@@ -204,6 +204,7 @@ public class Game implements Runnable {
     
     public void gameWin() {
     	q=0;
+    	player.setcore();
     	display.close();
     	try {
             gamewin=new Gamewin(handler);
@@ -220,6 +221,7 @@ public class Game implements Runnable {
     }
     public void gameOver() {
     	q=0;
+    	player.setcore();
     	display.close();
     	try {
 			gameover=new Gameover(handler);

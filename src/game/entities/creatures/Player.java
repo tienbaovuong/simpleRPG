@@ -16,12 +16,13 @@ public class Player extends Creature {
     private long lastAttackTimer, attackCooldown = 300, attackTimer = attackCooldown;
     //Bullet
     private ArrayList<Bullet> bullets;
-    private int bullet_number = 30;
+    private static int bullet_number = 30;
     //Score
     public static long score = 0;
+    private static int player_health=3;
     public Player(Handler handler, float x, float y) {
         super(handler, x, y, Creature.DEFAULT_CREATURE_WIDTH, Creature.DEFAULT_CREATURE_HEIGHT);
-        health=DEFAULT_HEALTH[level];
+   
         bounds.x = 1;
         bounds.y = 1;
         bounds.width = 20;
@@ -40,10 +41,10 @@ public class Player extends Creature {
     }
     // hồi máu khi máu thấp hơn mặc định
     public int healing(int x){
-        if(health<DEFAULT_HEALTH[level]){
-            return health+x;
+        if(player_health<DEFAULT_HEALTH[level]){
+            return player_health+x;
         }
-        return health;
+        return player_health;
     }
 
     @Override
@@ -135,7 +136,13 @@ public class Player extends Creature {
 
 
     }
-    
+    public void hurt(int amt) {
+        player_health -= amt;
+        if(player_health <= 0) {
+            active = false;
+            die();
+        }
+    }
     @Override
     public void die() {
     	handler.getGame().setDie_player(true);
@@ -186,6 +193,8 @@ public class Player extends Creature {
     }
     public void setcore() {
     	this.score = 0;
+    	this.player_health=3;
+    	this.bullet_number=30;
     }
 
     public int getBullet_number() {
@@ -195,4 +204,11 @@ public class Player extends Creature {
     public void setBullet_number(int bullet_number) {
         this.bullet_number += bullet_number;
     }
+	public int getPlayer_health() {
+		return player_health;
+	}
+	public  void setPlayer_health(int player_health) {
+		this.player_health = player_health;
+	}
+    
 }
