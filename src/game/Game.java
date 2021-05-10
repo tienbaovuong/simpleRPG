@@ -204,7 +204,6 @@ public class Game implements Runnable {
     
     public void gameWin() {
     	q=0;
-    	player.setcore();
     	display.close();
     	try {
             gamewin=new Gamewin(handler);
@@ -217,11 +216,10 @@ public class Game implements Runnable {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
+    	player.setcore();
     }
     public void gameOver() {
     	q=0;
-    	player.setcore();
     	display.close();
     	try {
 			gameover=new Gameover(handler);
@@ -235,7 +233,7 @@ public class Game implements Runnable {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
+    	player.setcore();
     }
     public GameCamera getGameCamera() {
         return gameCamera;
