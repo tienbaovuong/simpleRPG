@@ -4,7 +4,7 @@ import java.awt.image.BufferedImage;
 
 public class Assets {
     private static final int width = 32, height = 32;
-    public static BufferedImage dirt, grass, stone, tree, rock, fruit, water, bridge,
+    public static BufferedImage dirt, grass, stone, tree, rock, fruit, water, bridge,gameover,
                                 stonegrass,  tutorial, wood, scoreImage, door,backgroundMenu,logoMenu, item;
     public static BufferedImage[] player_down, player_up, player_left, player_right, bullet;
     public static BufferedImage[] zombie_down, zombie_up, zombie_left, zombie_right;
@@ -30,7 +30,9 @@ public class Assets {
         SpriteSheet bullets4 = new SpriteSheet(ImageLoader.loadImage("/textures/bomb4.png"));
         SpriteSheet background = new SpriteSheet(ImageLoader.loadImage("/textures/backgroud1.jpg"));
         SpriteSheet logo = new SpriteSheet(ImageLoader.loadImage("/textures/logo.png"));
+        SpriteSheet gameOver = new SpriteSheet(ImageLoader.loadImage("/textures/gameover.jpg"));
 
+        gameover = gameOver.crop(0,0,800,608);
 
         logoMenu = logo.crop(0,0,371,76);
         backgroundMenu = background.crop(0,0,800,608);

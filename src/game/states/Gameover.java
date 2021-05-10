@@ -25,8 +25,10 @@ public class Gameover {
         uiManager = new UIManager(handler);
         f = new JFrame();
         handler.getMouseManager().setUiManager(uiManager);
+
         final JLabel label2=new JLabel("<html>YOU DIE<br/> Score: "
                 + handler.getGame().getPlayer().getScore()+"<htmt/",JLabel.CENTER);
+        label2.setForeground(Color.red);
         label2.setFont(new Font("Courier", Font.BOLD,40));
         //label2.setPreferredSize(new Dimension(850, 600));
         JPanel panel = new JPanel();

@@ -27,7 +27,9 @@ public class Gamewin {
         handler.getMouseManager().setUiManager(uiManager);
 	final JLabel label2=new JLabel("YOU WIN \n Score: "
             + handler.getGame().getPlayer().getScore(),JLabel.CENTER);
+
         label2.setFont(new Font("Courier", Font.BOLD,40));
+        label2.setForeground(Color.red);
         //label2.setPreferredSize(new Dimension(850, 600));
         JPanel panel = new JPanel();
         f.getContentPane().add(label2);
