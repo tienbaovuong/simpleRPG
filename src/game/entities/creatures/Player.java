@@ -40,13 +40,11 @@ public class Player extends Creature {
         
     }
     // hồi máu khi máu thấp hơn mặc định
-    public int healing(int x){
+    public void healing(int x){
         if(player_health<DEFAULT_HEALTH[level]){
-            return player_health+x;
+        	player_health= player_health+x;
         }
-        return player_health;
     }
-
     @Override
     public void tick() {
         //Animation

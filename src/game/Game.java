@@ -32,12 +32,12 @@ public class Game implements Runnable {
     private EntityManager entityManager;
     private ArrayList<Entity> entity;
     private int ck=0;//kiểm tra số entity
-    private boolean chec=true;//khi stop thì dùng luôn.
+    //private boolean chec=true;//khi stop thì dùng luôn.
     private int q=0;
     private boolean die_player;
     private int level = 0;
     private boolean running = false;
-    private boolean choi_lai;
+    //private boolean choi_lai;
     
     private Thread thread;
     private BufferStrategy bs;
@@ -225,7 +225,7 @@ public class Game implements Runnable {
 			gameover=new Gameover(handler);
 			try{
 
-                thread.sleep(600);
+                thread.sleep(300);
                 }
             catch(Exception e){
                  e.printStackTrace();
