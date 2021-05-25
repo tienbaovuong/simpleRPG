@@ -17,11 +17,8 @@ public class Assets {
         SpriteSheet background1 = new SpriteSheet(ImageLoader.loadImage("/textures/background.png"));
         SpriteSheet items = new SpriteSheet(ImageLoader.loadImage("/textures/10oop.png"));
         SpriteSheet doors = new SpriteSheet(ImageLoader.loadImage("/textures/door.png"));
-        SpriteSheet sheet = new SpriteSheet(ImageLoader.loadImage("/textures/sheet.png"));
 		SpriteSheet hust = new SpriteSheet(ImageLoader.loadImage("/textures/husterplayer.png"));
         SpriteSheet floor = new SpriteSheet(ImageLoader.loadImage("/textures/floortileset.png"));
-        SpriteSheet zombie = new SpriteSheet(ImageLoader.loadImage("/textures/Monster-zombie.png"));
-        SpriteSheet fruits = new SpriteSheet(ImageLoader.loadImage("/textures/PathAndObjects.png"));
         SpriteSheet quit = new SpriteSheet(ImageLoader.loadImage("/textures/Newbutton.png"));
         SpriteSheet scoreImages = new SpriteSheet(ImageLoader.loadImage("/textures/score.png"));
         SpriteSheet bullets = new SpriteSheet(ImageLoader.loadImage("/textures/bomb.png"));
@@ -91,43 +88,7 @@ public class Assets {
 		zombie1_left[0] 	= hust.crop(width * 9, height * 5, width, height);
 		zombie1_left[1] 	= hust.crop(width * 10, height * 5, width, height);
 		
-//	zombie1_down = new BufferedImage[7];
-//	zombie1_up = new BufferedImage[7];
-//	zombie1_left = new BufferedImage[7];
-//	zombie1_right = new BufferedImage[7];
-//
-//	zombie1_down[0] = zombie.crop(0, 0, width * 2, height * 2);
-//	zombie1_down[1] = zombie.crop(width * 2, 0, width * 2, height * 2);
-//	zombie1_down[2] = zombie.crop(width * 4, 0, width * 2, height * 2);
-//	zombie1_down[3] = zombie.crop(width * 6, 0, width * 2, height * 2);
-//	zombie1_down[4] = zombie.crop(width * 8, 0, width * 2, height * 2);
-//	zombie1_down[5] = zombie.crop(width * 10, 0, width * 2, height * 2);
-//	zombie1_down[6] = zombie.crop(width * 12, 0, width * 2, height * 2);
-//
-//	zombie1_right[0] = zombie.crop(0, height * 2, width * 2, height * 2);
-//	zombie1_right[1] = zombie.crop(width * 2, height * 2, width * 2, height * 2);
-//	zombie1_right[2] = zombie.crop(width * 4, height * 2, width * 2, height * 2);
-//	zombie1_right[3] = zombie.crop(width * 6, height * 2, width * 2, height * 2);
-//	zombie1_right[4] = zombie.crop(width * 8, height * 2, width * 2, height * 2);
-//	zombie1_right[5] = zombie.crop(width * 10, height * 2, width * 2, height * 2);
-//	zombie1_right[6] = zombie.crop(width * 12, height * 2, width * 2, height * 2);
-//
-//
-//	zombie1_left[0] = zombie.crop(0, height * 4, width * 2, height * 2);
-//	zombie1_left[1] = zombie.crop(width * 2, height * 4, width * 2, height * 2);
-//	zombie1_left[2] = zombie.crop(width * 4, height * 4, width * 2, height * 2);
-//	zombie1_left[3] = zombie.crop(width * 6, height * 4, width * 2, height * 2);
-//	zombie1_left[4] = zombie.crop(width * 8, height * 4, width * 2, height * 2);
-//        zombie1_left[5] = zombie.crop(width * 10, height * 4, width * 2, height * 2);
-//	zombie1_left[6] = zombie.crop(width * 12, height * 4, width * 2, height * 2);
-//
-//		zombie1_up[0] = zombie.crop(0, height * 6, width * 2, height * 2);
-//		zombie1_up[1] = zombie.crop(width * 2, height * 6, width * 2, height * 2);
-//		zombie1_up[2] = zombie.crop(width * 4, height * 6, width * 2, height * 2);
-//		zombie1_up[3] = zombie.crop(width * 6, height * 6, width * 2, height * 2);
-//		zombie1_up[4] = zombie.crop(width * 8, height * 6, width * 2, height * 2);
-//		zombie1_up[5] = zombie.crop(width * 10, height * 6, width * 2, height * 2);
-//		zombie1_up[6] = zombie.crop(width * 12, height * 6, width * 2, height * 2);
+
                 
 		monster_down = new BufferedImage[3];
 		monster_up = new BufferedImage[3];
