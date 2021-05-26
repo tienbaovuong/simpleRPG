@@ -47,7 +47,7 @@ public class Game implements Runnable {
     public State currentState;
     public State gameState;
     public MenuState menuState;
-    public State howToPlayState;
+    //public State howToPlayState;
     public State highScoreState;
     public State quitState;
     
