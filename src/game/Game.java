@@ -86,8 +86,8 @@ public class Game implements Runnable {
         player = new Player(handler, 0, 0);
         gameState = new GameState(handler, player,path);
         menuState = new MenuState(handler);
-        
         if(q==0) {
+        	menuState.setActive(true);
         	State.setState(menuState);
         }
         

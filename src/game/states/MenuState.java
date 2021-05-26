@@ -15,7 +15,7 @@ public class MenuState extends State {
     private UIManager uiManager;
     private ChooseState c;
     private HowToPlayState h;
-    
+    private boolean isActive=false;
     public MenuState(Handler handler) {
         super(handler);
         uiManager = new UIManager(handler);
@@ -23,20 +23,23 @@ public class MenuState extends State {
         
         uiManager.addObject(new UIImageButton(336, 300, 128, 64, Assets.btn_start, () -> {
             //dispose();
+        	if(isActive)
         	c = new ChooseState(handler);
             
         }));
         
         uiManager.addObject(new UIImageButton(336, 364, 128, 64, Assets.how_to_play_button, () ->{
+        	if(isActive) {
             try {   
 		h=new HowToPlayState(handler);
 		//dispose();
             } catch (IOException e) {
 		e.printStackTrace();
             }
-        }));
+        }}));
         
         uiManager.addObject(new UIImageButton(336, 428, 128, 64, Assets.quit_button, () ->{
+        	if(isActive)
             System.exit(0);
         }));
     }
@@ -63,6 +66,10 @@ public class MenuState extends State {
     public UIManager getUiManager() {
         return uiManager;
     }
+
+	public void setActive(boolean isActive) {
+		this.isActive = isActive;
+	}
     
     
     
