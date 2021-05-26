@@ -43,7 +43,7 @@ public class Zombie extends Entity {
     @Override
     public void die() {
         Random rand = new Random();
-        handler.getWorld().getItemManager().addItem(items[rand.nextInt(1)].createNew((int) x, (int) y));
+        handler.getWorld().getItemManager().addItem(items[rand.nextInt(3)].createNew((int) x, (int) y));
         handler.getWorld().getEntityManager().getPlayer().setScore(BONUS[level]);
         handler.getWorld().setNumberOfMonster(-1);    
     }
