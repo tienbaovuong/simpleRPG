@@ -1,7 +1,7 @@
 package game.items;
 
 import game.Handler;
-import game.entities.creatures.Player;
+import game.entities.Player;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -36,9 +36,9 @@ public class ItemManager {
                     handler.getWorld().getItemManager().getPlayer().healing(1);
                 }else if(i.id == 1){
                     handler.getWorld().getEntityManager().getPlayer().setBullet_number(7);
+                }else if(i.id==3) {
+                	handler.getWorld().setNumberOfKey(-1);
                 }
-
-
             }
         }
     }

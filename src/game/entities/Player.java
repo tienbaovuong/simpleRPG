@@ -1,4 +1,4 @@
-package game.entities.creatures;
+package game.entities;
 
 import java.awt.Graphics;
 import java.awt.Rectangle;
@@ -6,12 +6,11 @@ import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.Iterator;
 import game.Handler;
-import game.entities.Entity;
 import game.gfx.Animation;
 import game.gfx.Assets;
 import game.items.Item;
 
-public class Player extends Creature {
+public class Player extends Entity {
     //Attack timer
     private long lastAttackTimer, attackCooldown = 300, attackTimer = attackCooldown;
     //Bullet
@@ -21,7 +20,7 @@ public class Player extends Creature {
     public static long score = 0;
     private static int player_health=3;
     public Player(Handler handler, float x, float y) {
-        super(handler, x, y, Creature.DEFAULT_CREATURE_WIDTH, Creature.DEFAULT_CREATURE_HEIGHT);
+        super(handler, x, y, Entity.DEFAULT_CREATURE_WIDTH, Entity.DEFAULT_CREATURE_HEIGHT);
    
         bounds.x = 1;
         bounds.y = 1;
@@ -95,11 +94,7 @@ public class Player extends Creature {
         for(Entity e : handler.getWorld().getEntityManager().getEntities()){
             if(e.equals(this))
                 continue;
-            if(e.getCollisionBounds(0, 0).intersects(ar)){
-                if(e.isFood()){
-                    e.hurt(1);
-                    return;
-                }else{
+            if(e.getCollisionBounds(0, 0).intersects(ar)){                
                 	this.setX(handler.getWorld().getSpawnX());
                 	this.setY(handler.getWorld().getSpawnY());
                     this.hurt(1);
@@ -107,8 +102,6 @@ public class Player extends Creature {
                 }   
             }
         }
-
-    }
     
     public void attack() {
 

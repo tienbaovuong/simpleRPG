@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import game.display.Display;
 import game.entities.Entity;
 import game.entities.EntityManager;
-import game.entities.creatures.Player;
+import game.entities.Player;
 import game.gfx.Assets;
 import game.gfx.GameCamera;
 import game.input.KeyManager;
@@ -31,7 +31,7 @@ public class Game implements Runnable {
     private Player player;
     private EntityManager entityManager;
     private ArrayList<Entity> entity;
-    private int ck=0;//kiểm tra số entity
+    //private int ck=0;//kiểm tra số entity
     //private boolean chec=true;//khi stop thì dùng luôn.
     private int q=0;
     private boolean die_player;
@@ -104,7 +104,6 @@ public class Game implements Runnable {
         State.getState().tick();
         entityManager = handler.getWorld().getEntityManager();
         entity = entityManager.getEntities();
-        ck = entity.size();
     }
     
     private void render() {
@@ -167,7 +166,7 @@ public class Game implements Runnable {
                     //Launcher laun = new Launcher();
                     //q = 0;
                     //player.setcore();
-                }else if(ck == 1) {
+                }else if(handler.getWorld().getNumberOfKey()==0) {
                     if( player.getX() == handler.getWorld().getExitX() && player.getY() == handler.getWorld().getExitY()){
                         keyManager.refresh();
                         q++;
@@ -190,8 +189,7 @@ public class Game implements Runnable {
 
                         }
 
-                        //System.out.println("--------");
-                        ck = 0;
+                        //System.out.println("--------");                      
                         display.close();
                         break;
                     }

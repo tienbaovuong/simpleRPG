@@ -1,15 +1,15 @@
-package game.entities.creatures.monsters;
+package game.entities.monsters;
 
 import java.awt.Graphics;
 import java.util.Random;
 
 import game.Handler;
-import game.entities.creatures.Creature;
+import game.entities.Entity;
 import game.gfx.Animation;
 import game.gfx.Assets;
 import game.items.Item;
 
-public class Zombie extends Creature {
+public class Zombie extends Entity {
     
     protected static final int[] ZOMBIE_SPEED = {1, 3};
     private static final int[] BONUS = {50, 100};
@@ -17,7 +17,7 @@ public class Zombie extends Creature {
     protected Item[] items = {Item.muoiOOP, Item.blood, Item.bomb};
     
     public Zombie(Handler handler, float x, float y) {
-        super(handler, x, y, Creature.DEFAULT_CREATURE_WIDTH, Creature.DEFAULT_CREATURE_HEIGHT);
+        super(handler, x, y, Entity.DEFAULT_CREATURE_WIDTH, Entity.DEFAULT_CREATURE_HEIGHT);
         level = handler.getGame().getLevel();
         bounds.x = 1;
         bounds.y = 1;
@@ -43,7 +43,7 @@ public class Zombie extends Creature {
     @Override
     public void die() {
         Random rand = new Random();
-        handler.getWorld().getItemManager().addItem(items[rand.nextInt(3)].createNew((int) x, (int) y));
+        handler.getWorld().getItemManager().addItem(items[rand.nextInt(1)].createNew((int) x, (int) y));
         handler.getWorld().getEntityManager().getPlayer().setScore(BONUS[level]);
         handler.getWorld().setNumberOfMonster(-1);    
     }

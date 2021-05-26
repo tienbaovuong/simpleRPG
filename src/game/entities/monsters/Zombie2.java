@@ -1,10 +1,10 @@
-package game.entities.creatures.monsters;
+package game.entities.monsters;
 
 import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.Iterator;
 import game.Handler;
-import game.entities.creatures.Bullet;
+import game.entities.Bullet;
 import game.gfx.Animation;
 import game.gfx.Assets;
 import game.tiles.Tile;

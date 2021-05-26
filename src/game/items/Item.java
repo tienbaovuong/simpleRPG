@@ -9,18 +9,12 @@ import java.awt.image.BufferedImage;
 
 public class Item {
 
-    //handler
-    private static BufferedImage tym= ImageLoader.loadImage("/textures/heart.png");
+    
     public static Item[] items = new Item[256];
     public static Item muoiOOP = new Item(Assets.item, "diamond", 0);
     public static Item bomb = new Item(Assets.bullet[0], "bomb", 1);
-    public static Item blood = new Item(tym, "blood", 2);
-    //public static new Item(Assets.item[1], "ruby", 1);
-      //      new Item(Assets.item[2], "sapphire", 2)};
-
-   // public static Item rubyItem = new Item(Assets.item[1], "ruby", 1);
-    //public static Item sapphireItem = new Item(Assets.item[2], "sapphire", 2);
-
+    public static Item blood = new Item(Assets.tym, "blood", 2);
+    public static Item key = new Item(Assets.key, "key",3);
     // class
     public static final int ITEMWIDTH = 32, ITEMHEIGHT = 32, PICKED_UP = -1;
     protected Handler handler;
@@ -36,6 +30,8 @@ public class Item {
         this.texture = texture;
         this.name = name;
         this.id = id;
+        this.x=x;
+        this.y=y;
         count = 1;
         bounds = new Rectangle(x, y, ITEMWIDTH, ITEMHEIGHT);
 

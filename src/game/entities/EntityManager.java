@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Iterator;
 import game.Handler;
-import game.entities.creatures.Player;
 
 public class EntityManager {
     private Handler handler;

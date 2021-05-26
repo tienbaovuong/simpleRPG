@@ -1,21 +1,20 @@
-package game.entities.creatures;
+package game.entities;
 
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import game.Handler;
-import game.entities.Entity;
-import game.entities.creatures.monsters.Zombie;
+import game.entities.monsters.Zombie;
 import game.gfx.Assets;
 import game.tiles.Tile;
 
-public class Bullet extends Creature {
+public class Bullet extends Entity {
     
     public static final float[] BULLET_SPEED = {3.0f, 6.0f};
     public static final int BULLET_NUMBER = 30;
-    private Creature owner;
+    private Entity owner;
     private float X,Y;
-    public Bullet(Handler handler, Creature owner, float x, float y) {
-        super(handler, x, y, Creature.DEFAULT_CREATURE_WIDTH, Creature.DEFAULT_CREATURE_HEIGHT);
+    public Bullet(Handler handler, Entity owner, float x, float y) {
+        super(handler, x, y, Entity.DEFAULT_CREATURE_WIDTH, Entity.DEFAULT_CREATURE_HEIGHT);
         level = this.handler.getGame().getLevel();
         this.owner = owner;
         X=x;
@@ -63,10 +62,7 @@ public class Bullet extends Creature {
         if(this.owner instanceof Zombie) {
             for(Entity e : handler.getWorld().getEntityManager().getEntities()) {
                 if(e.getCollisionBounds(0, 0).intersects(cb)){
-                    if(e.isFood()) {
-                        this.setActive(false);
-                        return;
-                    } else if(e.equals(handler.getWorld().getEntityManager().getPlayer())) {
+                     if(e.equals(handler.getWorld().getEntityManager().getPlayer())) {
                     	e.setX(handler.getWorld().getSpawnX());
                     	e.setY(handler.getWorld().getSpawnY());
                         e.hurt(1);
@@ -79,11 +75,7 @@ public class Bullet extends Creature {
             for(Entity e : handler.getWorld().getEntityManager().getEntities()) {
                 if(e.equals(this) || e.equals(this.owner))
                     continue;
-                if(e.getCollisionBounds(0, 0).intersects(cb)){
-                    if(e.isFood()){
-                        this.setActive(false);
-                        return;
-                    } else{
+                if(e.getCollisionBounds(0, 0).intersects(cb)){                                    
                         e.hurt(1);
                         this.setActive(false);
                         return;
@@ -91,9 +83,6 @@ public class Bullet extends Creature {
                 }
             }
         }
-        
-        
-    }
     
     @Override
     public void die()  {

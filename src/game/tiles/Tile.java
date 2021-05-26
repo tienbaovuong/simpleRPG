@@ -20,7 +20,7 @@ public class Tile {
     
     protected BufferedImage texture;
     protected final int id;
-    protected boolean solid, food=false;
+    protected boolean solid;
     
     public Tile(BufferedImage texture, int id) {
         this.texture = texture;
@@ -49,8 +49,5 @@ public class Tile {
         return id;
     }
 
-    public boolean isFood() {
-        return food;
-    }
     
 }

@@ -11,7 +11,8 @@ public class Assets {
     public static BufferedImage[] zombie1_down, zombie1_up, zombie1_left, zombie1_right;
     public static BufferedImage[] monster_down, monster_up, monster_left, monster_right;
     public static BufferedImage btn_start, how_to_play_button, quit_button;
-    
+    public static BufferedImage tym= ImageLoader.loadImage("/textures/heart.png");
+    public static BufferedImage key= ImageLoader.loadImage("/textures/key.png");
     public static void init() {
         SpriteSheet mapIcon = new SpriteSheet(ImageLoader.loadImage("/textures/mapchip.png"));
         SpriteSheet background1 = new SpriteSheet(ImageLoader.loadImage("/textures/background.png"));

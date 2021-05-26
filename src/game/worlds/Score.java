@@ -1,12 +1,13 @@
 package game.worlds;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
 
-import game.entities.creatures.Player;
+import game.entities.Player;
 import game.gfx.ImageLoader;
 import game.gfx.SpriteSheet;
 public class Score {
@@ -44,6 +45,8 @@ public class Score {
         }
 	
 	public static void render(Graphics g) {
+		g.setColor(Color.BLACK);
+		g.fillRect(0, 0, 800, 33);
         int nghin = (int)(score/1000) %10;
 		int tram = (int)(score/100) %10;
 		int chuc = (int)(score/10) %10 ;
