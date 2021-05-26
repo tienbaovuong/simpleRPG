@@ -12,8 +12,8 @@ import game.gfx.Assets;
 import game.tiles.Tile;
 
 public class Zombie1 extends Zombie {
-    private static final int[] LIMIT = {3,5};
-    private static final int[] BONUS = {100, 150};
+    private static final int[] LIMIT = {3,5,5};
+    private static final int[] BONUS = {100, 150,200};
 
     private int xStart, yStart;
     

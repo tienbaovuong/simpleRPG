@@ -8,7 +8,7 @@ import game.tiles.Tile;
 
 public abstract class Entity {
     
-    public static final int[] DEFAULT_HEALTH = {3, 5};
+    public static final int[] DEFAULT_HEALTH = {3, 5,7};
   
     protected Handler handler;
     protected float x, y;

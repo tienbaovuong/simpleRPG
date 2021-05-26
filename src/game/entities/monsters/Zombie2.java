@@ -11,7 +11,7 @@ import game.tiles.Tile;
 
 public class Zombie2 extends Zombie {    
     private long lastAttackTimer, attackCooldown = 1000, attackTimer = attackCooldown;
-    private static final int[] BONUS = {200, 400};
+    private static final int[] BONUS = {200, 400,500};
 
     private float xPlayer, yPlayer;
     private final float xZ, yZ;

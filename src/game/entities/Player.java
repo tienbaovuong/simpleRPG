@@ -15,6 +15,7 @@ public class Player extends Entity {
     private long lastAttackTimer, attackCooldown = 300, attackTimer = attackCooldown;
     //Bullet
     private ArrayList<Bullet> bullets;
+    public static final int[] BULLET_NUMBER = {30,50,50};
     private static int bullet_number = 30;
     //Score
     public static long score = 0;
@@ -193,7 +194,9 @@ public class Player extends Entity {
     public int getBullet_number() {
         return bullet_number;
     }
-
+    public void initBullet_number(int bullet_number) {
+    	this.bullet_number = bullet_number;
+    }
     public void setBullet_number(int bullet_number) {
         this.bullet_number += bullet_number;
     }

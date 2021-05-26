@@ -18,8 +18,7 @@ public abstract class State {
     
     public State(Handler handler) {
         this.handler = handler;
-    }
-    
+    }  
     public abstract void tick();
     
     public abstract void render(Graphics g);

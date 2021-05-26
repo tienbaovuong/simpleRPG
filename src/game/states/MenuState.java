@@ -22,12 +22,15 @@ public class MenuState extends State {
         handler.getMouseManager().setUiManager(uiManager);
         
         uiManager.addObject(new UIImageButton(336, 300, 128, 64, Assets.btn_start, () -> {
-            c = new ChooseState(handler);
+            //dispose();
+        	c = new ChooseState(handler);
+            
         }));
         
         uiManager.addObject(new UIImageButton(336, 364, 128, 64, Assets.how_to_play_button, () ->{
-            try {
+            try {   
 		h=new HowToPlayState(handler);
+		//dispose();
             } catch (IOException e) {
 		e.printStackTrace();
             }
@@ -52,8 +55,9 @@ public class MenuState extends State {
         uiManager.render(g);
         new Score(0,0, 0);
         long highestScore = Score.getHighestScoreFromFile();
-        g.setColor(Color.red);
-        g.drawString("Highest Score: "+ highestScore, 350, 520);
+        g.setColor(Color.black);
+        g.setFont(new Font("TimesRoman", Font.PLAIN, 40));
+        g.drawString("HighScore: "+ highestScore, 275, 250);
     }
 
     public UIManager getUiManager() {
