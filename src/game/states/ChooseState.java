@@ -76,6 +76,5 @@ public class ChooseState extends JFrame{
         setVisible(true);    
     }    
 
-    
-    
+
 }

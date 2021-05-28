@@ -14,6 +14,7 @@ public class Assets {
     public static BufferedImage tym= ImageLoader.loadImage("/textures/heart.png");
     public static BufferedImage key= ImageLoader.loadImage("/textures/key.png");
     public static void init() {
+        SpriteSheet Monster = new SpriteSheet(ImageLoader.loadImage("/textures/Monster.png"));
         SpriteSheet mapIcon = new SpriteSheet(ImageLoader.loadImage("/textures/mapchip.png"));
         SpriteSheet items = new SpriteSheet(ImageLoader.loadImage("/textures/10oop.png"));
         SpriteSheet doors = new SpriteSheet(ImageLoader.loadImage("/textures/door.png"));
@@ -63,14 +64,14 @@ public class Assets {
 		zombie_left = new BufferedImage[2];
 		zombie_right = new BufferedImage[2];
 	
-        zombie_down[0] 	= hust.crop(width*12, 0, width, height);
-		zombie_down[1] 	= hust.crop(width*13, 0, width, height);
-        zombie_up[0]   	= hust.crop(width * 12, height * 3, width, height);
-		zombie_up[1]    = hust.crop(width * 13, height * 3, width, height);
-		zombie_right[0] = hust.crop(width * 12, height * 2, width, height);
-		zombie_right[1] = hust.crop(width * 13, height * 2, width, height);
-		zombie_left[0] 	= hust.crop(width * 12, height * 1, width, height);
-		zombie_left[1] 	= hust.crop(width * 13, height * 1, width, height);
+        zombie_down[0] 	= Monster.crop(width*6, 4*height, width, height);
+		zombie_down[1] 	= Monster.crop(width*7, 4*height, width, height);
+        zombie_up[0]   	= Monster.crop(width * 6, height * 7, width, height);
+		zombie_up[1]    = Monster.crop(width * 7, height * 7, width, height);
+		zombie_right[0] = Monster.crop(width * 6, height * 6, width, height);
+		zombie_right[1] = Monster.crop(width * 7, height * 6, width, height);
+		zombie_left[0] 	= Monster.crop(width * 6, height * 5, width, height);
+		zombie_left[1] 	= Monster.crop(width * 7, height * 5, width, height);
 
 
 		zombie1_down = new BufferedImage[2];
@@ -78,33 +79,33 @@ public class Assets {
 		zombie1_left = new BufferedImage[2];
 		zombie1_right = new BufferedImage[2];
 
-		zombie1_down[0] 	= hust.crop(width*9, 4*height, width, height);
-		zombie1_down[1] 	= hust.crop(width*10, 4*height, width, height);
-		zombie1_up[0]   	= hust.crop(width * 9, height * 7, width, height);
-		zombie1_up[1]    = hust.crop(width * 10, height * 7, width, height);
-		zombie1_right[0] = hust.crop(width * 9, height * 6, width, height);
-		zombie1_right[1] = hust.crop(width * 10, height * 6, width, height);
-		zombie1_left[0] 	= hust.crop(width * 9, height * 5, width, height);
-		zombie1_left[1] 	= hust.crop(width * 10, height * 5, width, height);
+		zombie1_down[0] 	= Monster.crop(width*0, 4*height, width, height);
+		zombie1_down[1] 	= Monster.crop(width*1, 4*height, width, height);
+        zombie1_up[0]   	= Monster.crop(width * 0, 7*height, width, height);
+		zombie1_up[1]    = Monster.crop(width * 1, 7*height , width, height);
+		zombie1_right[0] = Monster.crop(width * 0, height * 6, width, height);
+		zombie1_right[1] = Monster.crop(width * 1, height * 6, width, height);
+		zombie1_left[0] 	= Monster.crop(width * 0, height * 5, width, height);
+		zombie1_left[1] 	= Monster.crop(width * 1, height * 5, width, height);
 		
-		
+
 		monster_down = new BufferedImage[3];
 		monster_up = new BufferedImage[3];
 		monster_left = new BufferedImage[3];
 		monster_right = new BufferedImage[3];
 		
-		monster_down[0] = hust.crop(0, height * 4, width , height );
-		monster_down[1] = hust.crop(width * 1, height * 4, width , height );
-		monster_down[2] = hust.crop(width * 2, height * 4, width , height );
-		monster_up[0] = hust.crop(width * 0, height * 5, width , height );
-		monster_up[1] = hust.crop(width * 1, height * 5, width , height );
-		monster_up[2] = hust.crop(0, height * 2, width *5, height );
-		monster_right[0] = hust.crop(width * 0, height * 6, width , height );
-		monster_right[1] = hust.crop(width * 1, height * 6, width , height );
-		monster_right[2] = hust.crop(width * 2, height * 6, width , height );
-		monster_left[0] = hust.crop(width * 0, height * 7, width , height );
-		monster_left[1] = hust.crop(width * 1, height * 7, width , height );
-		monster_left[2] = hust.crop(width * 2, height * 7, width , height );
+		monster_down[0] = Monster.crop(9*width, height * 4, width , height );
+		monster_down[1] = Monster.crop(width * 10, height * 4, width , height );
+		monster_down[2] = Monster.crop(width * 11, height * 4, width , height );
+		monster_up[0] = Monster.crop(width * 9, height * 5, width , height );
+		monster_up[1] = Monster.crop(width * 10, height * 5, width , height );
+		monster_up[2] = Monster.crop(width*11, height *5, width , height );
+		monster_right[0] = Monster.crop(width * 9, height * 6, width , height );
+		monster_right[1] = Monster.crop(width * 10, height * 6, width , height );
+		monster_right[2] = Monster.crop(width * 11, height * 6, width , height );
+		monster_left[0] = Monster.crop(width * 9, height * 7, width , height );
+		monster_left[1] = Monster.crop(width * 10, height * 7, width , height );
+		monster_left[2] = Monster.crop(width * 11, height * 7, width , height );
 		
         // solid
 		door = doors.crop(0,0,width,height);
