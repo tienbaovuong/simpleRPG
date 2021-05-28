@@ -69,14 +69,6 @@ public abstract class UIObject {
     public void setHeight(int height) {
         this.height = height;
     }
-
-//    public boolean isHovering() {
-//        return hovering;
-//    }
-//
-//    public void setHovering(boolean hovering) {
-//        this.hovering = hovering;
-//    }
     
     
 }

@@ -20,7 +20,6 @@ public class MenuState extends State {
         handler.getMouseManager().setUiManager(uiManager);
         
         uiManager.addObject(new UIImageButton(336, 300, 128, 64, Assets.btn_start, () -> {
-            //dispose();
         	if(isActive)
         	c = new ChooseState(handler);            
         }));

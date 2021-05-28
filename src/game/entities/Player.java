@@ -8,7 +8,6 @@ import java.util.Iterator;
 import game.Handler;
 import game.gfx.Animation;
 import game.gfx.Assets;
-import game.items.Item;
 
 public class Player extends Entity {
     //Attack timer

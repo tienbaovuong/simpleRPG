@@ -2,8 +2,6 @@ package game;
 
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -21,7 +19,6 @@ import game.states.Gameover;
 import game.states.Gamewin;
 import game.states.MenuState;
 import game.states.State;
-import javazoom.jl.decoder.JavaLayerException;
 
 public class Game implements Runnable {
     
@@ -42,11 +39,9 @@ public class Game implements Runnable {
     private Graphics g;
     
     //States
-    public State currentState;
     public State gameState;
     public MenuState menuState;
-    public State highScoreState;
-    public State quitState;
+
     
     //Input
     private KeyManager keyManager;
@@ -157,12 +152,9 @@ public class Game implements Runnable {
                     die_player = false;
                     System.out.println(q);
                     last = System.currentTimeMillis();
-                    //System.out.println("Tong diem den vong " + q + ": " + player.getScore());
                     gameOver();
                     stop();
-                    //Launcher laun = new Launcher();
-                    //q = 0;
-                    //player.setcore();
+
                 }else if(handler.getWorld().getNumberOfKey()==0) {
                     if( player.getX() == handler.getWorld().getExitX() && player.getY() == handler.getWorld().getExitY()){
                     	Player.score+= BONUS_SCORE[level];
@@ -171,23 +163,10 @@ public class Game implements Runnable {
                         running = false;
                         System.out.println(q);
                         last = System.currentTimeMillis();
-                        //System.out.println("Tong diem den vong  " + q + ": " + player.getScore() );
                         if(q == 3) {
                             gameWin();
                             stop();
-                            //Launcher lau = new Launcher();
-                            //try {
-                            //    Thread.sleep(600);
-                            //} catch (InterruptedException e) {
-                            //    e.printStackTrace();
-                            //}
-                            //q = 0;
-                            //player.setcore();
-                            //running = false;
-
                         }
-
-                        //System.out.println("--------");                      
                         display.close();
                         break;
                     }
@@ -292,14 +271,7 @@ public class Game implements Runnable {
     }
     
     public synchronized void stop() {
-        /*if(!running)
-            return;
-        running = false;*/
         thread.stop();
-    }
-    
-    public boolean isRunning() {
-	return running;
     }
 
 

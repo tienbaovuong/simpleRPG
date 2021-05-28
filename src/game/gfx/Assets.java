@@ -4,8 +4,8 @@ import java.awt.image.BufferedImage;
 
 public class Assets {
     private static final int width = 32, height = 32;
-    public static BufferedImage dirt, grass, wall, tree, rock, stone, water, bridge,gameover,
-                                flower,  tutorial, wood, scoreImage, door,backgroundMenu,logoMenu, item;
+    public static BufferedImage dirt, grass, wall, tree,  stone, water, bridge,gameover,
+                                flower,  tutorial,  scoreImage, door,backgroundMenu,logoMenu, item;
     public static BufferedImage[] player_down, player_up, player_left, player_right, bullet;
     public static BufferedImage[] zombie_down, zombie_up, zombie_left, zombie_right;
     public static BufferedImage[] zombie1_down, zombie1_up, zombie1_left, zombie1_right;
@@ -15,7 +15,6 @@ public class Assets {
     public static BufferedImage key= ImageLoader.loadImage("/textures/key.png");
     public static void init() {
         SpriteSheet mapIcon = new SpriteSheet(ImageLoader.loadImage("/textures/mapchip.png"));
-        SpriteSheet background1 = new SpriteSheet(ImageLoader.loadImage("/textures/background.png"));
         SpriteSheet items = new SpriteSheet(ImageLoader.loadImage("/textures/10oop.png"));
         SpriteSheet doors = new SpriteSheet(ImageLoader.loadImage("/textures/door.png"));
 		SpriteSheet hust = new SpriteSheet(ImageLoader.loadImage("/textures/husterplayer.png"));
@@ -36,7 +35,6 @@ public class Assets {
         backgroundMenu = background.crop(0,0,800,608);
         scoreImage = scoreImages.crop(0, 0, 108, height);
 
-        wood = background1.crop(352, 928, width, height);
         tutorial = ImageLoader.loadImage("/textures/Tutorial.png");
 
         btn_start = quit.crop(0, 0, 270, 110);
@@ -89,8 +87,7 @@ public class Assets {
 		zombie1_left[0] 	= hust.crop(width * 9, height * 5, width, height);
 		zombie1_left[1] 	= hust.crop(width * 10, height * 5, width, height);
 		
-
-                
+		
 		monster_down = new BufferedImage[3];
 		monster_up = new BufferedImage[3];
 		monster_left = new BufferedImage[3];
@@ -115,7 +112,6 @@ public class Assets {
         dirt = mapIcon.crop(width*2,height, width, height);
         grass = mapIcon.crop(3*32, height * 0, width, height);
         wall = mapIcon.crop(32, 0, width, height);
-        rock = background1.crop(320, 928, width, height);
         stone = mapIcon.crop(0, height * 1 , width , height);
         water = floor.crop(width * 3, height * 5, width, height);
         flower = mapIcon.crop(width * 4, 0, width, height);

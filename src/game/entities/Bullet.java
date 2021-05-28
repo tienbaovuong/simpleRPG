@@ -10,7 +10,7 @@ import game.tiles.Tile;
 public class Bullet extends Entity {
     
     public static final float[] BULLET_SPEED = {3.0f, 6.0f,6.0f};
-    //public static final int[] BULLET_NUMBER = {30,50,50};
+
     private Entity owner;
     private float X,Y;
     public Bullet(Handler handler, Entity owner, float x, float y) {
@@ -28,7 +28,6 @@ public class Bullet extends Entity {
         } 
         
         setMove();
-        // Create bound to check collision
         bounds.x = 3;
         bounds.y = 3;
         bounds.width = width / 2;

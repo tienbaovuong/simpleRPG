@@ -2,7 +2,6 @@ package game.items;
 
 import game.Handler;
 import game.gfx.Assets;
-import game.gfx.ImageLoader;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;

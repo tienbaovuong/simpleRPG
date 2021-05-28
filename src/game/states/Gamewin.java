@@ -4,9 +4,6 @@ import java.io.IOException;
 
 import game.Game;
 import game.Handler;
-import game.Launcher;
-import game.gfx.Assets;
-import game.ui.UIImageButton;
 import game.ui.UIManager;
 import java.awt.*;
 import java.awt.event.*;
@@ -14,7 +11,6 @@ import javax.swing.*;
 
 public class Gamewin {
     private UIManager uiManager;
-    private Handler handler;
     private JFrame f;
 
     public Gamewin(Handler handler) throws IOException{
@@ -26,7 +22,6 @@ public class Gamewin {
                 + handler.getGame().getPlayer().getScore()+"<htmt/",JLabel.CENTER);
         label2.setForeground(Color.red);
         label2.setFont(new Font("Courier", Font.BOLD,40));
-        //label2.setPreferredSize(new Dimension(850, 600));
         JPanel panel = new JPanel();
         f.getContentPane().add(label2);
         f.setSize(500,400);

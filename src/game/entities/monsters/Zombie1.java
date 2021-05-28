@@ -23,14 +23,12 @@ public class Zombie1 extends Zombie {
     
     public Zombie1(Handler handler, float x, float y) {
         super(handler, x, y);
-        //Animation
         animDown = new Animation(200, Assets.zombie1_down);
         animUp = new Animation(200, Assets.zombie1_up);
         animLeft = new Animation(200, Assets.zombie1_left);
         animRight = new Animation(200, Assets.zombie1_right);
         currentImage = animLeft;
         setMove();
-        // Toa do khoi tao
         xStart = (int) (x / Tile.TILEWIDTH);
         yStart = (int) (y / Tile.TILEHEIGHT);
         
@@ -40,11 +38,8 @@ public class Zombie1 extends Zombie {
     
     @Override
     public void tick() {
-        //Animation
         currentImage.tick();
-        //Movement
         move();
-        //Attack
         attack();
         
         Iterator<Bullet> it = bullets.iterator();
@@ -125,7 +120,7 @@ public class Zombie1 extends Zombie {
     
     @Override
     public void moveX(){
-        if(xMove > 0){ //Tiáº¿p tá»¥c di chuyá»ƒn sang trÃ¡i náº¿u khÃ´ng cháº¡m vÃ o tile vÃ  Ä‘i trong khoáº£ng cá»‘ Ä‘á»‹nh 
+        if(xMove > 0){
             int tx = (int) (x + xMove + bounds.x + bounds.width) / Tile.TILEWIDTH;
             if((Math.abs(tx - xStart) < LIMIT[level]) && (!collisionWithTile(tx, (int) (y + bounds.y) / Tile.TILEHEIGHT) &&
                !collisionWithTile(tx, (int) (y + bounds.y + bounds.height) / Tile.TILEHEIGHT))){
@@ -133,11 +128,11 @@ public class Zombie1 extends Zombie {
             }else if(Math.abs(tx - xStart) >= LIMIT[level]) {
                 xMove = -xMove;
             }
-            else{ //Di chuyá»ƒn Ä‘áº¿n sÃ¡t bound cá»§a tile vÃ  quay lai 
+            else{
                 x = tx * Tile.TILEWIDTH - bounds.x - bounds.width - 1;
                 xMove = -xMove;
             }
-        } else if (xMove < 0) { // Ä�i sang trÃ¡i 
+        } else if (xMove < 0) {
             int tx = (int) (x + xMove + bounds.x) / Tile.TILEWIDTH;
             if((Math.abs(tx - xStart) < LIMIT[level]) && (!collisionWithTile(tx, (int) (y + bounds.y) / Tile.TILEHEIGHT) &&
                !collisionWithTile(tx, (int) (y + bounds.y + bounds.height) / Tile.TILEHEIGHT))){
@@ -184,6 +179,4 @@ public class Zombie1 extends Zombie {
             }
         }
     }
-    
-
 }
