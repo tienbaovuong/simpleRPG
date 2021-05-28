@@ -1,14 +1,12 @@
 package game.states;
 
 import java.awt.*;
-import java.io.IOException;
 
 import game.Handler;
-import game.entities.Entity;
 import game.gfx.Assets;
 import game.ui.UIImageButton;
 import game.ui.UIManager;
-import game.worlds.Score;
+import game.worlds.ScoreBoard;
 
 public class MenuState extends State {
 
@@ -51,8 +49,8 @@ public class MenuState extends State {
         g.drawImage(Assets.logoMenu,225,112,371,76,null);
 
         uiManager.render(g);
-        new Score(0,0, 0);
-        long highestScore = Score.getHighestScoreFromFile();
+        new ScoreBoard(0,0, 0);
+        long highestScore = ScoreBoard.getHighestScoreFromFile();
         g.setColor(Color.black);
         g.setFont(new Font("TimesRoman", Font.PLAIN, 40));
         g.drawString("HighScore: "+ highestScore, 275, 250);

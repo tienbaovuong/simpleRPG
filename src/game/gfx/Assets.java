@@ -4,8 +4,8 @@ import java.awt.image.BufferedImage;
 
 public class Assets {
     private static final int width = 32, height = 32;
-    public static BufferedImage dirt, grass, stone, tree, rock, fruit, water, bridge,gameover,
-                                stonegrass,  tutorial, wood, scoreImage, door,backgroundMenu,logoMenu, item;
+    public static BufferedImage dirt, grass, wall, tree, rock, stone, water, bridge,gameover,
+                                flower,  tutorial, wood, scoreImage, door,backgroundMenu,logoMenu, item;
     public static BufferedImage[] player_down, player_up, player_left, player_right, bullet;
     public static BufferedImage[] zombie_down, zombie_up, zombie_left, zombie_right;
     public static BufferedImage[] zombie1_down, zombie1_up, zombie1_left, zombie1_right;
@@ -114,11 +114,11 @@ public class Assets {
 		tree = mapIcon.crop(width * 7, height * 0, width, height);
         dirt = mapIcon.crop(width*2,height, width, height);
         grass = mapIcon.crop(3*32, height * 0, width, height);
-        stone = mapIcon.crop(32, 0, width, height);
+        wall = mapIcon.crop(32, 0, width, height);
         rock = background1.crop(320, 928, width, height);
-        fruit = mapIcon.crop(0, height * 1 , width , height);
+        stone = mapIcon.crop(0, height * 1 , width , height);
         water = floor.crop(width * 3, height * 5, width, height);
-        stonegrass = mapIcon.crop(width * 4, 0, width, height);
+        flower = mapIcon.crop(width * 4, 0, width, height);
         bridge =   mapIcon.crop(width * 6, 32, width, height);
 
         // bullet

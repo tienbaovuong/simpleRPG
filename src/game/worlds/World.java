@@ -1,15 +1,13 @@
 package game.worlds;
 
 import java.awt.Graphics;
-import java.util.Random;
+
 import game.Handler;
 import game.entities.EntityManager;
 import game.entities.Player;
 import game.entities.monsters.Zombie;
 import game.entities.monsters.Zombie1;
 import game.entities.monsters.Zombie2;
-import game.gfx.Assets;
-import game.gfx.GameCamera;
 import game.items.Item;
 import game.items.ItemManager;
 import game.tiles.Tile;
@@ -84,10 +82,10 @@ public class World {
         entityManager.render(g);
         
         //Score 
-        Score score = new Score(handler.getWorld().getEntityManager().getPlayer().getScore(),
+        ScoreBoard score = new ScoreBoard(handler.getWorld().getEntityManager().getPlayer().getScore(),
                 handler.getWorld().getEntityManager().getPlayer().getPlayer_health(),
                 handler.getWorld().getEntityManager().getPlayer().getBullet_number());
-        Score.render(g);
+        ScoreBoard.render(g);
     }
     
     

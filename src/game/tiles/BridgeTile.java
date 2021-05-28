@@ -2,9 +2,9 @@ package game.tiles;
 
 import game.gfx.Assets;
 
-public class RockTile extends Tile {
+public class BridgeTile extends Tile {
 
-    public RockTile(int id) {
+    public BridgeTile(int id) {
         super(Assets.bridge, id);
         solid = false;
     }

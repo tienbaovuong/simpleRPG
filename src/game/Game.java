@@ -31,13 +31,11 @@ public class Game implements Runnable {
     private Player player;
     private EntityManager entityManager;
     private ArrayList<Entity> entity;
-    //private int ck=0;//kiểm tra số entity
-    //private boolean chec=true;//khi stop thì dùng luôn.
     private int q=0;
     private boolean die_player;
     private int level = 0;
     private boolean running = false;
-    //private boolean choi_lai;
+
     
     private Thread thread;
     private BufferStrategy bs;
@@ -47,7 +45,6 @@ public class Game implements Runnable {
     public State currentState;
     public State gameState;
     public MenuState menuState;
-    //public State howToPlayState;
     public State highScoreState;
     public State quitState;
     
@@ -126,9 +123,9 @@ public class Game implements Runnable {
     public void run() {
     	long last = 0;
     	String[] path=new String[3];
-    	path[2]="res/world/world1.txt";
+    	path[0]="res/world/world1.txt";
     	path[1]="res/world/world2.txt";
-    	path[0]="res/world/world3.txt";
+    	path[2]="res/world/world3.txt";
     	
     	while(true) {
             init(path[q]);

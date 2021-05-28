@@ -70,13 +70,13 @@ public abstract class UIObject {
         this.height = height;
     }
 
-    public boolean isHovering() {
-        return hovering;
-    }
-
-    public void setHovering(boolean hovering) {
-        this.hovering = hovering;
-    }
+//    public boolean isHovering() {
+//        return hovering;
+//    }
+//
+//    public void setHovering(boolean hovering) {
+//        this.hovering = hovering;
+//    }
     
     
 }

@@ -9,8 +9,8 @@ import java.io.FileWriter;
 
 import game.entities.Player;
 import game.gfx.ImageLoader;
-import game.gfx.SpriteSheet;
-public class Score {
+
+public class ScoreBoard {
 	private static long score = Player.score;
 	private static int width = 32, height = 32;
 	private static BufferedImage[] numberImager = new BufferedImage[50];
@@ -18,12 +18,11 @@ public class Score {
 	private static BufferedImage scoreImage;
 	private static long highestScore;
 	private static BufferedImage scoreImagers = ImageLoader.loadImage("/textures/score.png");
-	//private static BufferedImage player = ImageLoader.loadImage("/textures/husterplayer.png");
 	private static BufferedImage x= ImageLoader.loadImage("/textures/heart.png");
 	private static BufferedImage bomb = ImageLoader.loadImage("/textures/bomb.png");
 	private static int health;
 	private static int bullet_number;
-	public Score(long score, int health, int bullet_number) {
+	public ScoreBoard(long score, int health, int bullet_number) {
 		getHighestScoreFromFile();
 		setScore(score);
 		if (score > highestScore) {
@@ -39,9 +38,7 @@ public class Score {
 	}
 
 	private static void setNumberImage(int i) {
-		//numberImager[i] = new BufferedImage(width, height,BufferedImage.TYPE_3BYTE_BGR);
 		numberImager[i] = board.getSubimage(i*width, 0, width, height);
-		
         }
 	
 	public static void render(Graphics g) {
@@ -56,7 +53,6 @@ public class Score {
 		g.drawImage(numberImager[tram], 108 + 32, 3,width,height, null);
 		g.drawImage(numberImager[chuc], 108 + 64, 3, width, height, null);
 		g.drawImage(numberImager[donVi], 108 + 96, 3, width, height, null);
-		//g.drawImage(player.getSubimage(0, 64, 32, 32),600,0, width,height,null);
 		g.drawImage(x,580,0,width,height,null);
 		g.drawImage(numberImager[health],612,0, width,height,null);
 
@@ -66,14 +62,14 @@ public class Score {
 	}
 	
 	public static void setScore(long score) {
-		Score.score = score;
+		ScoreBoard.score = score;
 	}
 	public static void setHealth(int health) {
-		Score.health = health;
+		ScoreBoard.health = health;
 	}
 
 	public static void setBullet_number(int bullet_number) {
-		Score.bullet_number = bullet_number;
+		ScoreBoard.bullet_number = bullet_number;
 	}
 
 	public static long getHighestScoreFromFile() {
@@ -81,14 +77,14 @@ public class Score {
 			FileReader in = new FileReader("res/world/highestScore.txt");
 			BufferedReader br = new BufferedReader(in);
 			
-			Score.highestScore = Long.parseLong(br.readLine());
+			ScoreBoard.highestScore = Long.parseLong(br.readLine());
 			br.close();
 			in.close();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} 		
-		return Score.highestScore;
+		return ScoreBoard.highestScore;
 	}
 	
 	private static void updateHighestScore(long highestScore) {
@@ -102,6 +98,6 @@ public class Score {
 		
 	}
 	public static long getHighestScore() {
-		return Score.highestScore;
+		return ScoreBoard.highestScore;
 	}
 }

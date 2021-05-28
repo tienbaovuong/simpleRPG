@@ -39,9 +39,9 @@ public class UIManager {
         objects.add(o);
     }
     
-    public void removeObject(UIObject o) {
-        objects.remove(o);
-    }
+//    public void removeObject(UIObject o) {
+//        objects.remove(o);
+//    }
 
     public Handler getHandler() {
         return handler;

@@ -1,6 +1,5 @@
 package game;
-//import java.io.FileInputStream;
-//import java.io.FileNotFoundException;
+
 import javazoom.jl.decoder.JavaLayerException;
 import javazoom.jl.player.Player;
 import org.netbeans.modules.java.j2seproject.moduletask.classfile.ConstantPool;
