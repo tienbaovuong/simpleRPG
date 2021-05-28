@@ -15,8 +15,8 @@ public class Player extends Entity {
     private long lastAttackTimer, attackCooldown = 300, attackTimer = attackCooldown;
     //Bullet
     private ArrayList<Bullet> bullets;
-    public static final int[] BULLET_NUMBER = {30,50,50};
-    private static int bullet_number = 30;
+    public static final int[] BULLET_NUMBER = {40,60,60};
+    private static int bullet_number = 40;
     //Score
     public static long score = 0;
     private static int player_health=3;
@@ -24,9 +24,9 @@ public class Player extends Entity {
         super(handler, x, y, Entity.DEFAULT_CREATURE_WIDTH, Entity.DEFAULT_CREATURE_HEIGHT);
    
         bounds.x = 1;
-        bounds.y = 1;
-        bounds.width = 20;
-        bounds.height = 30;
+        bounds.y = 10;
+        bounds.width = 30;
+        bounds.height = 20;
   
         //Animation
         animDown = new Animation(200, Assets.player_down);

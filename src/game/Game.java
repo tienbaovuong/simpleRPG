@@ -63,7 +63,7 @@ public class Game implements Runnable {
 
     //gamecamera
     private GameCamera gameCamera;
-    
+    private int[] BONUS_SCORE= {500,100,1500};
     public Game(String title, int width, int height) {
         this.width = width;
         this.height = height;
@@ -168,6 +168,7 @@ public class Game implements Runnable {
                     //player.setcore();
                 }else if(handler.getWorld().getNumberOfKey()==0) {
                     if( player.getX() == handler.getWorld().getExitX() && player.getY() == handler.getWorld().getExitY()){
+                    	Player.score+= BONUS_SCORE[level];
                         keyManager.refresh();
                         q++;
                         running = false;
