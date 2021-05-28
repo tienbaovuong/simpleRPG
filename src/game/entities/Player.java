@@ -154,6 +154,14 @@ public class Player extends Entity {
             xMove = -speed;
         if(handler.getKeyManager().right)
             xMove = speed;
+        if(handler.getKeyManager().up &&handler.getKeyManager().shift) 
+        	yMove= -speed*(float)1.5;
+        if(handler.getKeyManager().down &&handler.getKeyManager().shift) 
+        	yMove= speed*(float)1.5;
+        if(handler.getKeyManager().left &&handler.getKeyManager().shift) 
+        	xMove= -speed*(float)1.5;
+        if(handler.getKeyManager().right &&handler.getKeyManager().shift) 
+        	xMove= speed*(float)1.5;
     }
 
     @Override
