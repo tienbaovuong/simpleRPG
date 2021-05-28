@@ -28,8 +28,7 @@ public class ChooseState extends JFrame{
                     Entity entity = it.next();
                     entity.setLevel(0);              
                 }
-                handler.getGame().menuState.setActive(false);
-                State.setState(handler.getGame().gameState);
+                ChooseCharacterState a = new ChooseCharacterState(handler);
                 dispose();
         });
     
@@ -44,8 +43,7 @@ public class ChooseState extends JFrame{
                     Entity entity = it.next();
                     entity.setLevel(1);
                 }
-                handler.getGame().menuState.setActive(false);
-                State.setState(handler.getGame().gameState);
+                ChooseCharacterState a = new ChooseCharacterState(handler);
                 dispose();
             }
         );
@@ -59,8 +57,7 @@ public class ChooseState extends JFrame{
                     Entity entity = it.next();
                     entity.setLevel(2);              
                 }
-                handler.getGame().menuState.setActive(false);
-                State.setState(handler.getGame().gameState);
+                ChooseCharacterState a = new ChooseCharacterState(handler);
                 dispose();
         });
         ButtonGroup bg = new ButtonGroup();    

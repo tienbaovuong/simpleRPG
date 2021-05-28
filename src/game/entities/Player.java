@@ -15,6 +15,10 @@ public class Player extends Entity {
     //Bullet
     private ArrayList<Bullet> bullets;
     public static final int[] BULLET_NUMBER = {40,60,60};
+
+
+
+
     private static int bullet_number = 40;
     //Score
     public static long score = 0;
@@ -28,11 +32,12 @@ public class Player extends Entity {
         bounds.height = 20;
   
         //Animation
-        animDown = new Animation(200, Assets.player_down);
-        animUp = new Animation(200, Assets.player_up);
-        animLeft = new Animation(200, Assets.player_left);
-        animRight = new Animation(200, Assets.player_right);
-        currentImage = animDown;
+
+            animDown = new Animation(200, Assets.player1_down);
+            animUp = new Animation(200, Assets.player1_up);
+            animLeft = new Animation(200, Assets.player1_left);
+            animRight = new Animation(200, Assets.player1_right);
+            currentImage = animDown;
         //Bullets
         bullets = new ArrayList<Bullet>();
         
@@ -54,6 +59,7 @@ public class Player extends Entity {
         //Attack 
         attack();
         checkAttacks();
+        setAnimation();
         //Bullet 
         Iterator<Bullet> it = bullets.iterator();
         while(it.hasNext()){
@@ -185,6 +191,27 @@ public class Player extends Entity {
         return currentImage.getCurrentFrame();
     }
 
+    public void setAnimation(){
+        if (characterNumber == 0){
+
+            animDown = new Animation(200, Assets.player1_down);
+            animUp = new Animation(200, Assets.player1_up);
+            animLeft = new Animation(200, Assets.player1_left);
+            animRight = new Animation(200, Assets.player1_right);
+            currentImage = animDown;
+        }
+        else if (characterNumber  == 1){
+            animDown = new Animation(200, Assets.player2_down);
+            animUp = new Animation(200, Assets.player2_up);
+            animLeft = new Animation(200, Assets.player2_left);
+            animRight = new Animation(200, Assets.player2_right);
+            currentImage = animDown;
+        }
+
+    }
+
+
+
     public long getScore() {
         return score;
     }
@@ -197,6 +224,7 @@ public class Player extends Entity {
     	this.player_health=3;
     	this.bullet_number=30;
     }
+
 
     public int getBullet_number() {
         return bullet_number;

@@ -9,7 +9,9 @@ import game.tiles.Tile;
 public abstract class Entity {
     
     public static final int[] DEFAULT_HEALTH = {3, 5,7};
-  
+
+    public static int characterNumber = 0 ;
+
     protected Handler handler;
     protected float x, y;
     protected int width, height;
@@ -168,9 +170,18 @@ public abstract class Entity {
     public Rectangle getBounds() {
         return bounds;
     }
+
     public void setLevel(int i) {
         this.level = i;
     }
+
+
+    public static int getCharacterNumber() {
+        return characterNumber;
+    }
+
+
+
     public float getxMove() {
         return xMove;
     }

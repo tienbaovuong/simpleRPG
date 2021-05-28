@@ -6,7 +6,12 @@ public class Assets {
     private static final int width = 32, height = 32;
     public static BufferedImage dirt, grass, wall, tree,  stone, water, bridge,gameover,
                                 flower,  tutorial,  scoreImage, door,backgroundMenu,logoMenu, item;
-    public static BufferedImage[] player_down, player_up, player_left, player_right, bullet;
+    public static BufferedImage[] player1_down, player1_up, player1_left, player1_right, bullet;
+
+    public static BufferedImage[] player2_down, player2_up, player2_left, player2_right;
+//    public static BufferedImage[] player3_down, player3_up, player3_left, player3_right;
+//    public static BufferedImage[] player4_down, player4_up, player4_left, player4_right;
+
     public static BufferedImage[] zombie_down, zombie_up, zombie_left, zombie_right;
     public static BufferedImage[] zombie1_down, zombie1_up, zombie1_left, zombie1_right;
     public static BufferedImage[] monster_down, monster_up, monster_left, monster_right;
@@ -18,7 +23,7 @@ public class Assets {
         SpriteSheet mapIcon = new SpriteSheet(ImageLoader.loadImage("/textures/mapchip.png"));
         SpriteSheet items = new SpriteSheet(ImageLoader.loadImage("/textures/10oop.png"));
         SpriteSheet doors = new SpriteSheet(ImageLoader.loadImage("/textures/door.png"));
-		SpriteSheet hust = new SpriteSheet(ImageLoader.loadImage("/textures/husterplayer.png"));
+		SpriteSheet hust = new SpriteSheet(ImageLoader.loadImage("/textures/character.png"));
         SpriteSheet floor = new SpriteSheet(ImageLoader.loadImage("/textures/floortileset.png"));
         SpriteSheet quit = new SpriteSheet(ImageLoader.loadImage("/textures/Newbutton.png"));
         SpriteSheet scoreImages = new SpriteSheet(ImageLoader.loadImage("/textures/score.png"));
@@ -44,19 +49,62 @@ public class Assets {
         
         quit_button = quit.crop(0, 230, 270, 110);
 
-        player_down = new BufferedImage[2];
-        player_up = new BufferedImage[2];
-        player_left = new BufferedImage[2];
-        player_right = new BufferedImage[2];
+        player1_down = new BufferedImage[2];
+        player1_up = new BufferedImage[2];
+        player1_left = new BufferedImage[2];
+        player1_right = new BufferedImage[2];
 
-        player_down[0] = hust.crop(0, 0, width, height);
-        player_down[1] = hust.crop(width , 0, width, height);
-        player_up[0] = hust.crop(0, height*3, width, height);
-        player_up[1] = hust.crop(width , height*3, width, height);
-        player_left[0] = hust.crop(0, height, width, height);
-        player_left[1] = hust.crop(width , height, width, height);
-        player_right[0] = hust.crop(0, height*2, width, height);
-        player_right[1] = hust.crop(width, height*2, width, height);
+        player1_down[0] = hust.crop(0, 4*height, width, height);
+        player1_down[1] = hust.crop(width , 4*height, width, height);
+        player1_up[0] = hust.crop(0, height*7, width, height);
+        player1_up[1] = hust.crop(width , height*7, width, height);
+        player1_left[0] = hust.crop(0, height*5, width, height);
+        player1_left[1] = hust.crop(width , height*5, width, height);
+        player1_right[0] = hust.crop(0, height*6, width, height);
+        player1_right[1] = hust.crop(width, height*6, width, height);
+
+        player2_down = new BufferedImage[2];
+        player2_up = new BufferedImage[2];
+        player2_left = new BufferedImage[2];
+        player2_right = new BufferedImage[2];
+
+        player2_down[0] = hust.crop(9*width, 4*height, width, height);
+        player2_down[1] = hust.crop(10*width , 4*height, width, height);
+        player2_up[0] = hust.crop(9*width, height*7, width, height);
+        player2_up[1] = hust.crop(10*width , height*7, width, height);
+        player2_left[0] = hust.crop(9*width, height*5, width, height);
+        player2_left[1] = hust.crop(width *10, height*5, width, height);
+        player2_right[0] = hust.crop(9*width, height*6, width, height);
+        player2_right[1] = hust.crop(width*10, height*6, width, height);
+
+//        player3_down = new BufferedImage[2];
+//        player3_up = new BufferedImage[2];
+//        player3_left = new BufferedImage[2];
+//        player3_right = new BufferedImage[2];
+//
+//        player3_down[0] = hust.crop(6*width, 0*height, width, height);
+//        player3_down[1] = hust.crop(7*width , 0*height, width, height);
+//        player3_up[0] = hust.crop(6*width, height*3, width, height);
+//        player3_up[1] = hust.crop(7*width , height*3, width, height);
+//        player3_left[0] = hust.crop(6*width, height*1, width, height);
+//        player3_left[1] = hust.crop(width *7, height*1, width, height);
+//        player3_right[0] = hust.crop(6*width, height*2, width, height);
+//        player3_right[1] = hust.crop(width*7, height*2, width, height);
+//
+//
+//        player4_down = new BufferedImage[2];
+//        player4_up = new BufferedImage[2];
+//        player4_left = new BufferedImage[2];
+//        player4_right = new BufferedImage[2];
+//
+//        player4_down[0] = hust.crop(6*width, 4*height, width, height);
+//        player4_down[1] = hust.crop(7*width , 4*height, width, height);
+//        player4_up[0] = hust.crop(6*width, height*7, width, height);
+//        player4_up[1] = hust.crop(7*width , height*7, width, height);
+//        player4_left[0] = hust.crop(6*width, height*5, width, height);
+//        player4_left[1] = hust.crop(width *7, height*5, width, height);
+//        player4_right[0] = hust.crop(6*width, height*6, width, height);
+//        player4_right[1] = hust.crop(width*7, height*6, width, height);
         
         
         zombie_down = new BufferedImage[2];
