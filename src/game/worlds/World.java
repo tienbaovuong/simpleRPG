@@ -58,6 +58,7 @@ public class World {
     public void tick() {
         itemManager.tick();
         entityManager.tick();
+        ScoreBoard.tick();
     }
 
 
@@ -83,9 +84,7 @@ public class World {
         entityManager.render(g);
         
         //Score 
-        ScoreBoard score = new ScoreBoard(handler.getWorld().getEntityManager().getPlayer().getScore(),
-                handler.getWorld().getEntityManager().getPlayer().getPlayer_health(),
-                handler.getWorld().getEntityManager().getPlayer().getBullet_number());
+        
         ScoreBoard.render(g);
     }
     

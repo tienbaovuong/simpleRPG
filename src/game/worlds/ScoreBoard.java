@@ -7,40 +7,45 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
 
+import game.Handler;
 import game.entities.Player;
 import game.gfx.ImageLoader;
 
 public class ScoreBoard {
+	private Handler handler;
 	private static long score = Player.score;
 	private static int width = 32, height = 32;
 	private static BufferedImage[] numberImager = new BufferedImage[50];
 	private static BufferedImage board = ImageLoader.loadImage("/textures/yellownumber.png");
-	private static BufferedImage scoreImage;
 	private static long highestScore;
 	private static BufferedImage scoreImagers = ImageLoader.loadImage("/textures/score.png");
 	private static BufferedImage x= ImageLoader.loadImage("/textures/heart.png");
 	private static BufferedImage bomb = ImageLoader.loadImage("/textures/bomb.png");
 	private static int health;
 	private static int bullet_number;
-	public ScoreBoard(long score, int health, int bullet_number) {
-		getHighestScoreFromFile();
-		setScore(score);
-		if (score > highestScore) {
-			highestScore = score;
-			updateHighestScore(highestScore);
-		}
-		
+	public ScoreBoard(Handler handler) {
+		score = 0;
+		bullet_number=0;
+		health=0;
 		for (int i = 0; i <= 9; ++i) {
 			setNumberImage(i);
-		}
-		setHealth(health);
-		setBullet_number(bullet_number);
+		}		
 	}
 
 	private static void setNumberImage(int i) {
 		numberImager[i] = board.getSubimage(i*width, 0, width, height);
         }
-	
+	public static void tick() {
+		getHighestScoreFromFile();
+		setScore(Player.score);
+		if (score > highestScore) {
+			highestScore = score;
+			updateHighestScore(highestScore);
+		}
+		
+		setHealth(Player.getPlayer_health());
+		setBullet_number(Player.getBullet_number());
+	}
 	public static void render(Graphics g) {
 		g.setColor(Color.BLACK);
 		g.fillRect(0, 0, 800, 33);
