@@ -1,6 +1,7 @@
 package game.worlds;
 
 import java.awt.Graphics;
+import java.awt.Rectangle;
 
 import game.Handler;
 import game.entities.EntityManager;
@@ -22,7 +23,7 @@ public class World {
     private int[][] tile;
     private int[] monsters, keys;
     private EntityManager entityManager;
-
+    public Rectangle bounds;
     private ItemManager itemManager;
     private Item  key=Item.key;
     
@@ -105,7 +106,7 @@ public class World {
         exitX = Utils.parseInt(tokens[4]);
         exitY = Utils.parseInt(tokens[5]);
 
-
+        bounds = new Rectangle(exitX, exitY, 32, 32);
         //Monster
         numberOfMonster = Utils.parseInt(tokens[6]);
         monsters = new int[numberOfMonster * 3];

@@ -155,10 +155,8 @@ public class Game implements Runnable {
                     gameOver();
                     stop();
 
-                }else if(handler.getWorld().getNumberOfKey()==0) {
-                	int x = handler.getWorld().getExitX();
-                	int y = handler.getWorld().getExitY();
-                    if(((player.getX()>=x)&&player.getX()<=x+32)&&((player.getY()>=y)&&player.getY()<=y+32)){
+                }else if(handler.getWorld().getNumberOfKey()==0) {                	
+                    if(player.getCollisionBounds(0f, 0f).intersects(handler.getWorld().bounds)){
                     	Player.score+= BONUS_SCORE[level];
                         keyManager.refresh();
                         q++;
