@@ -156,7 +156,9 @@ public class Game implements Runnable {
                     stop();
 
                 }else if(handler.getWorld().getNumberOfKey()==0) {
-                    if( player.getX() == handler.getWorld().getExitX() && player.getY() == handler.getWorld().getExitY()){
+                	int x = handler.getWorld().getExitX();
+                	int y = handler.getWorld().getExitY();
+                    if(((player.getX()>=x)&&player.getX()<=x+32)&&((player.getY()>=y)&&player.getY()<=y+32)){
                     	Player.score+= BONUS_SCORE[level];
                         keyManager.refresh();
                         q++;
@@ -181,34 +183,21 @@ public class Game implements Runnable {
     	q=0;
     	display.close();
     	try {
-            gamewin=new Gamewin(handler);
-            try{
-                thread.sleep(600);
-            }
-            catch(Exception e){
-                e.printStackTrace();
-             }
+            gamewin=new Gamewin(handler);           
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-    	player.setcore();
+    	player.setCore();
     }
     public void gameOver() {
     	q=0;
     	display.close();
     	try {
-			gameover=new Gameover(handler);
-			try{
-
-                thread.sleep(300);
-                }
-            catch(Exception e){
-                 e.printStackTrace();
-                }
+			gameover=new Gameover(handler);			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-    	player.setcore();
+    	player.setCore();
     }
     public GameCamera getGameCamera() {
         return gameCamera;
@@ -238,7 +227,7 @@ public class Game implements Runnable {
     public void setLevel(int level) {
         this.level = level;
         this.getPlayer().setPlayer_health(this.getPlayer().DEFAULT_HEALTH[level]);
-        this.getPlayer().initBullet_number(this.getPlayer().BULLET_NUMBER[level]);
+        this.getPlayer().initBullet_number(this.getPlayer().BULLET_NUMBER[level]);         
     }
 
     public Display getDisplay() {

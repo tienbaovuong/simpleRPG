@@ -24,7 +24,6 @@ public class Assets {
         SpriteSheet items = new SpriteSheet(ImageLoader.loadImage("/textures/10oop.png"));
         SpriteSheet doors = new SpriteSheet(ImageLoader.loadImage("/textures/door.png"));
 		SpriteSheet hust = new SpriteSheet(ImageLoader.loadImage("/textures/character.png"));
-        SpriteSheet floor = new SpriteSheet(ImageLoader.loadImage("/textures/floortileset.png"));
         SpriteSheet quit = new SpriteSheet(ImageLoader.loadImage("/textures/Newbutton.png"));
         SpriteSheet scoreImages = new SpriteSheet(ImageLoader.loadImage("/textures/score.png"));
         SpriteSheet bullets = new SpriteSheet(ImageLoader.loadImage("/textures/bomb.png"));
@@ -33,9 +32,7 @@ public class Assets {
         SpriteSheet bullets4 = new SpriteSheet(ImageLoader.loadImage("/textures/bomb4.png"));
         SpriteSheet background = new SpriteSheet(ImageLoader.loadImage("/textures/backgroud1.jpg"));
         SpriteSheet logo = new SpriteSheet(ImageLoader.loadImage("/textures/logo.png"));
-        SpriteSheet gameOver = new SpriteSheet(ImageLoader.loadImage("/textures/gameover.jpg"));
-
-        gameover = gameOver.crop(0,0,800,608);
+        
 
         logoMenu = logo.crop(0,0,371,76);
         backgroundMenu = background.crop(0,0,800,608);
@@ -142,18 +139,18 @@ public class Assets {
 		monster_left = new BufferedImage[3];
 		monster_right = new BufferedImage[3];
 		
-		monster_down[0] = Monster.crop(9*width, height * 4, width , height );
+		monster_down[0] = Monster.crop(width*9, height * 4, width , height );
 		monster_down[1] = Monster.crop(width * 10, height * 4, width , height );
 		monster_down[2] = Monster.crop(width * 11, height * 4, width , height );
-		monster_up[0] = Monster.crop(width * 9, height * 5, width , height );
-		monster_up[1] = Monster.crop(width * 10, height * 5, width , height );
-		monster_up[2] = Monster.crop(width*11, height *5, width , height );
+		monster_up[0] = Monster.crop(width * 9, height * 7, width , height );
+		monster_up[1] = Monster.crop(width * 10, height * 7, width , height );
+		monster_up[2] = Monster.crop(width*11, height *7, width , height );
 		monster_right[0] = Monster.crop(width * 9, height * 6, width , height );
 		monster_right[1] = Monster.crop(width * 10, height * 6, width , height );
 		monster_right[2] = Monster.crop(width * 11, height * 6, width , height );
-		monster_left[0] = Monster.crop(width * 9, height * 7, width , height );
-		monster_left[1] = Monster.crop(width * 10, height * 7, width , height );
-		monster_left[2] = Monster.crop(width * 11, height * 7, width , height );
+		monster_left[0] = Monster.crop(width * 9, height * 5, width , height );
+		monster_left[1] = Monster.crop(width * 10, height * 5, width , height );
+		monster_left[2] = Monster.crop(width * 11, height * 5, width , height );
 		
         // solid
 		door = doors.crop(0,0,width,height);
@@ -162,7 +159,7 @@ public class Assets {
         grass = mapIcon.crop(3*32, height * 0, width, height);
         wall = mapIcon.crop(32, 0, width, height);
         stone = mapIcon.crop(0, height * 1 , width , height);
-        water = floor.crop(width * 3, height * 5, width, height);
+        water = mapIcon.crop(width * 5, height * 0, width, height);
         flower = mapIcon.crop(width * 4, 0, width, height);
         bridge =   mapIcon.crop(width * 6, 32, width, height);
 

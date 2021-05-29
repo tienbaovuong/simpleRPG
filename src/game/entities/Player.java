@@ -15,29 +15,36 @@ public class Player extends Entity {
     //Bullet
     private ArrayList<Bullet> bullets;
     public static final int[] BULLET_NUMBER = {40,60,60};
-
-
-
-
+    
     private static int bullet_number = 40;
     //Score
     public static long score = 0;
     private static int player_health=3;
+    //image
+    public static int characterNumber = 0 ;
     public Player(Handler handler, float x, float y) {
         super(handler, x, y, Entity.DEFAULT_CREATURE_WIDTH, Entity.DEFAULT_CREATURE_HEIGHT);
    
-        bounds.x = 1;
+        bounds.x = 3;
         bounds.y = 10;
-        bounds.width = 30;
+        bounds.width = 26;
         bounds.height = 20;
   
         //Animation
-
+        if(characterNumber==0) {
             animDown = new Animation(200, Assets.player1_down);
             animUp = new Animation(200, Assets.player1_up);
             animLeft = new Animation(200, Assets.player1_left);
             animRight = new Animation(200, Assets.player1_right);
             currentImage = animDown;
+        }
+        else if(characterNumber==1){
+        	animDown = new Animation(200, Assets.player2_down);
+            animUp = new Animation(200, Assets.player2_up);
+            animLeft = new Animation(200, Assets.player2_left);
+            animRight = new Animation(200, Assets.player2_right);
+            currentImage = animDown;
+        }
         //Bullets
         bullets = new ArrayList<Bullet>();
         
@@ -59,7 +66,6 @@ public class Player extends Entity {
         //Attack 
         attack();
         checkAttacks();
-        setAnimation();
         //Bullet 
         Iterator<Bullet> it = bullets.iterator();
         while(it.hasNext()){
@@ -192,14 +198,7 @@ public class Player extends Entity {
     }
 
     public void setAnimation(){
-        if (characterNumber == 0){
-
-            animDown = new Animation(200, Assets.player1_down);
-            animUp = new Animation(200, Assets.player1_up);
-            animLeft = new Animation(200, Assets.player1_left);
-            animRight = new Animation(200, Assets.player1_right);
-            currentImage = animDown;
-        }
+        if (characterNumber == 0) return;
         else if (characterNumber  == 1){
             animDown = new Animation(200, Assets.player2_down);
             animUp = new Animation(200, Assets.player2_up);
@@ -219,7 +218,7 @@ public class Player extends Entity {
     public void setScore(long score) {
         this.score += score;
     }
-    public void setcore() {
+    public void setCore() {
     	this.score = 0;
     	this.player_health=3;
     	this.bullet_number=30;

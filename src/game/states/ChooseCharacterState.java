@@ -2,6 +2,7 @@ package game.states;
 
 import game.Handler;
 import game.entities.Entity;
+import game.entities.Player;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -19,12 +20,7 @@ public class ChooseCharacterState extends JFrame {
         rb1 = new JButton("Male");
         rb1.setBounds(100,100,100,30);
         rb1.addActionListener((ActionEvent e) -> {
-
-            Iterator<Entity> it = this.handler.getWorld().getEntityManager().getEntities().iterator();
-            while(it.hasNext()){
-                Entity entity = it.next();
-                entity.characterNumber = 0;
-            }
+        	
             handler.getGame().menuState.setActive(false);
             State.setState(handler.getGame().gameState);
             dispose();
@@ -35,15 +31,13 @@ public class ChooseCharacterState extends JFrame {
         rb2.setBounds(100,150,100,30);
         rb2.addActionListener((ActionEvent e) -> {
 
-                    Iterator<Entity> it = this.handler.getWorld().getEntityManager().getEntities().iterator();
-                    while(it.hasNext()){
-                        Entity entity = it.next();
-                        entity.characterNumber = 1;
-                    }
-                    handler.getGame().menuState.setActive(false);
-                    State.setState(handler.getGame().gameState);
-                    dispose();
-                }
+                    
+             Player.characterNumber=1;
+             handler.getGame().getPlayer().setAnimation();
+             handler.getGame().menuState.setActive(false);
+             State.setState(handler.getGame().gameState);
+             dispose();
+        }
         );
 
 
