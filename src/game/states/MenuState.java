@@ -48,7 +48,7 @@ public class MenuState extends State {
         g.drawImage(Assets.logoMenu,225,112,371,76,null);
 
         uiManager.render(g);
-        new ScoreBoard(handler);
+        new ScoreBoard(0,0, 0);
         long highestScore = ScoreBoard.getHighestScoreFromFile();
         g.setColor(Color.black);
         g.setFont(new Font("TimesRoman", Font.PLAIN, 40));

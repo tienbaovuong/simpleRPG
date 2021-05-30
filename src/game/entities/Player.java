@@ -225,7 +225,7 @@ public class Player extends Entity {
     }
 
 
-    public static int getBullet_number() {
+    public int getBullet_number() {
         return bullet_number;
     }
     public void initBullet_number(int bullet_number) {
@@ -234,7 +234,7 @@ public class Player extends Entity {
     public void setBullet_number(int bullet_number) {
         this.bullet_number += bullet_number;
     }
-	public static int getPlayer_health() {
+	public int getPlayer_health() {
 		return player_health;
 	}
 	public  void setPlayer_health(int player_health) {

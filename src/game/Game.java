@@ -19,7 +19,6 @@ import game.states.Gameover;
 import game.states.Gamewin;
 import game.states.MenuState;
 import game.states.State;
-import game.worlds.ScoreBoard;
 
 public class Game implements Runnable {
     
@@ -159,7 +158,6 @@ public class Game implements Runnable {
                 }else if(handler.getWorld().getNumberOfKey()==0) {                	
                     if(player.getCollisionBounds(0f, 0f).intersects(handler.getWorld().bounds)){
                     	Player.score+= BONUS_SCORE[level];
-                    	ScoreBoard.tick();
                         keyManager.refresh();
                         q++;
                         running = false;
