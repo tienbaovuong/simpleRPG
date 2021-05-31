@@ -19,10 +19,10 @@ public class Monster extends Entity {
     public Monster(Handler handler, float x, float y) {
         super(handler, x, y, Entity.DEFAULT_CREATURE_WIDTH, Entity.DEFAULT_CREATURE_HEIGHT);
         level = handler.getGame().getLevel();
-        bounds.x = 1;
-        bounds.y = 1;
-        bounds.width = 28;
-        bounds.height = 28;
+        bounds.x = 3;
+        bounds.y = 3;
+        bounds.width = 26;
+        bounds.height = 26;
         
         //Animation
         currentImage = new Animation(200, Assets.zombie_down);

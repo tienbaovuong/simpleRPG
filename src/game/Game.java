@@ -29,7 +29,7 @@ public class Game implements Runnable {
     private Player player;
     private EntityManager entityManager;
     private ArrayList<Entity> entity;
-    private int q=0;
+    private int stage=0;
     private boolean die_player;
     private int level = 0;
     private boolean running = false;
@@ -54,9 +54,10 @@ public class Game implements Runnable {
     private Gamewin gamewin;
 
 
-    //gamecamera
+    //Game camera
     private GameCamera gameCamera;
     private int[] BONUS_SCORE= {500,100,1500};
+    
     public Game(String title, int width, int height) {
         this.width = width;
         this.height = height;
@@ -65,7 +66,7 @@ public class Game implements Runnable {
         mouseManager = new MouseManager();
     }
     
-    private void init(String path) {
+    private void init() {
         display = new Display(title, width, height);
         display.getFrame().addKeyListener(keyManager);
         display.getFrame().addMouseListener(mouseManager);
@@ -73,13 +74,14 @@ public class Game implements Runnable {
         display.getCanvas().addMouseListener(mouseManager);
         display.getCanvas().addMouseMotionListener(mouseManager);
         Assets.init();
-        
+    }
+    private void initMap(String path) {
         handler = new Handler(this);
         gameCamera = new GameCamera(handler, 0, 0);
         player = new Player(handler, 0, 0);
         gameState = new GameState(handler, player,path);
         menuState = new MenuState(handler);
-        if(q==0) {
+        if(stage==0) {
         	menuState.setActive(true);
         	State.setState(menuState);
         }
@@ -122,9 +124,9 @@ public class Game implements Runnable {
     	path[0]="res/world/world1.txt";
     	path[1]="res/world/world2.txt";
     	path[2]="res/world/world3.txt";
-    	
+    	init();
     	while(true) {
-            init(path[q]);
+            initMap(path[stage]);
             int fps = 60;
             double timePerTick = 1000000000 / fps;
             double delta = 0;
@@ -148,10 +150,8 @@ public class Game implements Runnable {
                 }
                 
                 if(die_player){
-                    q++;
                     running = false;
-                    die_player = false;
-                    System.out.println(q);
+                    die_player = false;                   
                     last = System.currentTimeMillis();
                     gameOver();
                     stop();
@@ -161,15 +161,14 @@ public class Game implements Runnable {
                     	Player.score+= BONUS_SCORE[level];
                     	ScoreBoard.tick();
                         keyManager.refresh();
-                        q++;
-                        running = false;
-                        System.out.println(q);
+                        stage++;
+                        running = false;                        
                         last = System.currentTimeMillis();
-                        if(q == 3) {
+                        if(stage == 3) {
                             gameWin();
                             stop();
                         }
-                        display.close();
+                        //display.close();
                         break;
                     }
 
@@ -180,7 +179,7 @@ public class Game implements Runnable {
     }
     
     public void gameWin() {
-    	q=0;
+    	stage=0;
     	display.close();
     	try {
             gamewin=new Gamewin(handler);           
@@ -190,7 +189,7 @@ public class Game implements Runnable {
     	player.setCore();
     }
     public void gameOver() {
-    	q=0;
+    	stage=0;
     	display.close();
     	try {
 			gameover=new Gameover(handler);			
@@ -242,12 +241,12 @@ public class Game implements Runnable {
         this.die_player=die_player;
     }
     
-    public int getQ() {
-	return q;
+    public int getStage() {
+	return stage;
     }
 
-    public void setQ(int q) {
-        this.q = q;
+    public void setStage(int stage) {
+        this.stage = stage;
     }  
 
     public synchronized void start() {

@@ -23,7 +23,7 @@ public class Monster2 extends Monster {
         xZ=x;
         yZ=y;
         speed = ZOMBIE_SPEED[level];
-        xMove = speed;
+        xMove = 0;
         yMove = 0;
   
         //Animation
@@ -97,7 +97,7 @@ public class Monster2 extends Monster {
     public void move() {
     	xPlayer=handler.getWorld().getEntityManager().getPlayer().getX();
         yPlayer=handler.getWorld().getEntityManager().getPlayer().getY();
-        if(Math.abs(yPlayer-yZ)>150 || Math.abs(xPlayer-xZ)>150) {
+        if(Math.abs(yPlayer-y)>150  || Math.abs(xPlayer-x)>150) {
         	return;
         }
         if((Math.abs(x-xPlayer)>Math.abs(y-yMove))||x==xPlayer) {
@@ -108,7 +108,7 @@ public class Monster2 extends Monster {
         	moveY();
         }
         	
-        else {
+        else  {
         	if(x>xPlayer)
         		xMove=-speed;
         	else

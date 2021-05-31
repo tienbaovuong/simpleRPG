@@ -39,6 +39,7 @@ public class Gamewin {
         panel.setLayout(null);
         f.add(panel);
         f.setVisible(true);
+        f.setResizable(false);
         okButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 Game game = new Game("Title Game!", 800, 608);
