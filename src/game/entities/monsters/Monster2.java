@@ -100,7 +100,8 @@ public class Monster2 extends Monster {
         if(Math.abs(yPlayer-y)>150  || Math.abs(xPlayer-x)>150) {
         	return;
         }
-        if((Math.abs(x-xPlayer)>Math.abs(y-yMove))||x==xPlayer) {
+        if(Math.abs(yPlayer-y)>Math.abs(xPlayer-x)) {
+        if(x==xPlayer) {
         	if(y>yPlayer)
         		yMove=-speed;
         	else
@@ -115,7 +116,24 @@ public class Monster2 extends Monster {
         		xMove=+speed;
         	moveX();
         } 
-        
+        }
+        else {
+        	if(y==yPlayer) {
+            	if(x>xPlayer)
+            		xMove=-speed;
+            	else
+            		xMove=+speed;
+            	moveX();
+            }
+            	
+            else  {
+            	if(y>yPlayer)
+            		yMove=-speed;
+            	else
+            		yMove=+speed;
+            	moveY();
+            } 
+        }
     }
     
     @Override
