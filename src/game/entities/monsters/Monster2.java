@@ -9,7 +9,7 @@ import game.gfx.Animation;
 import game.gfx.Assets;
 import game.tiles.Tile;
 
-public class Zombie2 extends Zombie {    
+public class Monster2 extends Monster {    
     private long lastAttackTimer, attackCooldown = 1000, attackTimer = attackCooldown;
     private static final int[] BONUS = {200, 400,500};
 
@@ -18,7 +18,7 @@ public class Zombie2 extends Zombie {
     
     private ArrayList<Bullet> bullets;
     
-    public Zombie2(Handler handler, float x, float y) {
+    public Monster2(Handler handler, float x, float y) {
         super(handler, x, y);
         xZ=x;
         yZ=y;

@@ -6,9 +6,9 @@ import java.awt.Rectangle;
 import game.Handler;
 import game.entities.EntityManager;
 import game.entities.Player;
-import game.entities.monsters.Zombie;
-import game.entities.monsters.Zombie1;
-import game.entities.monsters.Zombie2;
+import game.entities.monsters.Monster;
+import game.entities.monsters.Monster1;
+import game.entities.monsters.Monster2;
 import game.items.Item;
 import game.items.ItemManager;
 import game.tiles.Tile;
@@ -36,11 +36,11 @@ public class World {
         for(int i = 0; i < monsters.length; i += 3) {
             
             if(monsters[i] == 1)
-                entityManager.addEntity(new Zombie(handler, monsters[i+1], monsters[i+2]));
+                entityManager.addEntity(new Monster(handler, monsters[i+1], monsters[i+2]));
             else if(monsters[i] == 2)
-                entityManager.addEntity(new Zombie1(handler, monsters[i+1], monsters[i+2]));
+                entityManager.addEntity(new Monster1(handler, monsters[i+1], monsters[i+2]));
             else if(monsters[i] == 3)
-                entityManager.addEntity(new Zombie2(handler, monsters[i+1], monsters[i+2]));
+                entityManager.addEntity(new Monster2(handler, monsters[i+1], monsters[i+2]));
         }
         
         //Add Food

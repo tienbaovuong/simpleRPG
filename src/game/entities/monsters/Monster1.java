@@ -11,7 +11,7 @@ import game.gfx.Animation;
 import game.gfx.Assets;
 import game.tiles.Tile;
 
-public class Zombie1 extends Zombie {
+public class Monster1 extends Monster {
     private static final int[] LIMIT = {3,5,5};
     private static final int[] BONUS = {100, 150,200};
 
@@ -21,7 +21,7 @@ public class Zombie1 extends Zombie {
    
     private ArrayList<Bullet> bullets;
     
-    public Zombie1(Handler handler, float x, float y) {
+    public Monster1(Handler handler, float x, float y) {
         super(handler, x, y);
         animDown = new Animation(200, Assets.zombie1_down);
         animUp = new Animation(200, Assets.zombie1_up);

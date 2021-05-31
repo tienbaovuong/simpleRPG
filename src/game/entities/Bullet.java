@@ -3,7 +3,7 @@ package game.entities;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import game.Handler;
-import game.entities.monsters.Zombie;
+import game.entities.monsters.Monster;
 import game.gfx.Assets;
 import game.tiles.Tile;
 
@@ -58,7 +58,7 @@ public class Bullet extends Entity {
     
     public void checkAttacks() {
         Rectangle cb = getCollisionBounds(0, 0);
-        if(this.owner instanceof Zombie) {
+        if(this.owner instanceof Monster) {
             for(Entity e : handler.getWorld().getEntityManager().getEntities()) {
                 if(e.getCollisionBounds(0, 0).intersects(cb)){
                      if(e.equals(handler.getWorld().getEntityManager().getPlayer())) {

@@ -9,14 +9,14 @@ import game.gfx.Animation;
 import game.gfx.Assets;
 import game.items.Item;
 
-public class Zombie extends Entity {
+public class Monster extends Entity {
     
     protected static final int[] ZOMBIE_SPEED = {1, 2,3};
     private static final int[] BONUS = {50, 100, 150};
     protected Animation animDown, animUp, animLeft, animRight, currentImage;
     protected Item[] items = {Item.muoiOOP, Item.blood, Item.bomb};
     
-    public Zombie(Handler handler, float x, float y) {
+    public Monster(Handler handler, float x, float y) {
         super(handler, x, y, Entity.DEFAULT_CREATURE_WIDTH, Entity.DEFAULT_CREATURE_HEIGHT);
         level = handler.getGame().getLevel();
         bounds.x = 1;
