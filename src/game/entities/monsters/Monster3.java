@@ -20,13 +20,12 @@ public class Monster3 extends Monster{
     private final float xZ, yZ;
 
     private ArrayList<Bullet> bullets;
-    private ArrayList<Monster2> monster2s;
 
     public Monster3(Handler handler, float x, float y) {
         super(handler, x, y);
         xZ=x;
         yZ=y;
-        speed = ZOMBIE_SPEED[level];
+        speed = ZOMBIE_SPEED[level]/4;
         xMove = 0;
         yMove = 0;
 
@@ -47,6 +46,7 @@ public class Monster3 extends Monster{
         currentImage.tick();
         move();
         attack();
+
         Iterator<Bullet> it = bullets.iterator();
         while(it.hasNext()){
             Bullet b = it.next();
@@ -81,8 +81,7 @@ public class Monster3 extends Monster{
 
         float xx=x+width/4;
         float yy=y+height/4;
-
-        monster2s.add(new Monster2(handler,xx,yy));
+        handler.getWorld().getEntityManager().addEntity(new Monster2(handler, xx, yy));
         createTimer = 0;
     }
 
@@ -100,7 +99,7 @@ public class Monster3 extends Monster{
     public void move() {
         xPlayer=handler.getWorld().getEntityManager().getPlayer().getX();
         yPlayer=handler.getWorld().getEntityManager().getPlayer().getY();
-        if(Math.abs(yPlayer-y)>500  || Math.abs(xPlayer-x)>500 ) {
+        if(Math.abs(yPlayer-y)>200  || Math.abs(xPlayer-x)>200 ) {
             return;
         }
         if(Math.abs(yPlayer-y)>Math.abs(xPlayer-x)) {
