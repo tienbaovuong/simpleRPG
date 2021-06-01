@@ -168,7 +168,7 @@ public class Game implements Runnable {
                             Player.score += BONUS_SCORE[level];
                             ScoreBoard.tick();
                             keyManager.refresh();
-                            stage+=4;
+                            stage++;
                             running = false;
                             last = System.currentTimeMillis();
                             if (stage == 4) {
