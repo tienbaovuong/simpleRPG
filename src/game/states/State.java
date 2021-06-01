@@ -7,7 +7,7 @@ public abstract class State {
     
     private static State currentState = null;
     protected Handler handler;
-    
+    protected boolean isActive=false;
     public static void setState(State state) {
         currentState = state;
     }
@@ -16,7 +16,15 @@ public abstract class State {
         return currentState;
     }
     
-    public State(Handler handler) {
+    public boolean isActive() {
+		return isActive;
+	}
+
+	public void setActive(boolean isActive) {
+		this.isActive = isActive;
+	}
+
+	public State(Handler handler) {
         this.handler = handler;
     }  
     public abstract void tick();

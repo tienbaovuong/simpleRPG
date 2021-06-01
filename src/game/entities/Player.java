@@ -18,8 +18,6 @@ public class Player extends Entity {
     private ArrayList<Bullet> bullets;
     public static final int[] BULLET_NUMBER = {40,60,60};
 
-    private PauseState pauseState;
-
     private static int bullet_number = 40;
     //Score
     public static long score = 0;
@@ -144,15 +142,7 @@ public class Player extends Entity {
                 }
             }
             attackTimer = 0;
-        if(handler.getKeyManager().esc ){
-            attackTimer += System.currentTimeMillis() - lastAttackTimer;
-            lastAttackTimer = System.currentTimeMillis();
-            if(attackTimer < attackCooldown)
-                return;
-            pauseState = new PauseState(handler);
-        }
-        attackTimer = 0;
-
+        
     }
     public void hurt(int amt) {
         player_health -= amt;
@@ -214,7 +204,7 @@ public class Player extends Entity {
     }
 
     public void setAnimation(){
-        if (characterNumber == 0) return;
+        if (characterNumber == 0) currentImage = animDown;
         else if (characterNumber  == 1){
             animDown = new Animation(200, Assets.player2_down);
             animUp = new Animation(200, Assets.player2_up);
@@ -234,12 +224,7 @@ public class Player extends Entity {
     public void setScore(long score) {
         this.score += score;
     }
-    public void setCore() {
-    	this.score = 0;
-    	this.player_health=3;
-    	this.bullet_number=30;
-    }
-
+    
 
     public static int getBullet_number() {
         return bullet_number;
@@ -257,10 +242,5 @@ public class Player extends Entity {
 		this.player_health = player_health;
 	}
 
-    public PauseState getPauseState() {
-        return pauseState;
-    }
-    public void setPauseState(PauseState pauseState) {
-        this.pauseState = pauseState;
-    }
+   
 }

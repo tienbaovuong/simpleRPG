@@ -13,16 +13,17 @@ public class MenuState extends State {
     private UIManager uiManager;
     private ChooseState c;
     private HowToPlayState h;
-    private boolean isActive=false;
     public MenuState(Handler handler) {
         super(handler);
         uiManager = new UIManager(handler);
         handler.getMouseManager().setUiManager(uiManager);
         
         uiManager.addObject(new UIImageButton(336, 300, 128, 64, Assets.btn_start, () -> {
-        	if(isActive)
-        	c = new ChooseState(handler);            
-        }));
+        	if(isActive) {
+        	c = new ChooseState(handler); 
+        	handler.getGame().gameState = new GameState(handler,handler.getGame().getPlayer(),"res/world/world1.txt");
+        	handler.getGame().menuState.setActive(false);           
+        	}}));
         
         uiManager.addObject(new UIImageButton(336, 364, 128, 64, Assets.how_to_play_button, () ->{
         	if(isActive) {
@@ -58,11 +59,6 @@ public class MenuState extends State {
     public UIManager getUiManager() {
         return uiManager;
     }
-
-	public void setActive(boolean isActive) {
-		this.isActive = isActive;
-	}
-    
     
     
 }

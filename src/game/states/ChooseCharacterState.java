@@ -21,12 +21,10 @@ public class ChooseCharacterState extends JFrame {
         rb1.setBounds(100,100,100,30);
         rb1.addActionListener((ActionEvent e) -> {
         	
-            handler.getGame().menuState.setActive(false);
-
-            handler.getGame().gameState = new GameState(handler,handler.getGame().getPlayer(),"res/world/world1.txt");
+            handler.getGame().getPlayer().setAnimation();
             handler.getGame().gameState.setActive(true);
 
-            State.setState(handler.getGame().gameState);
+            State.setState(handler.getGame().gameState);       
             dispose();
         });
 
@@ -38,12 +36,11 @@ public class ChooseCharacterState extends JFrame {
                     
              Player.characterNumber=1;
              handler.getGame().getPlayer().setAnimation();
-             handler.getGame().menuState.setActive(false);
-
-             handler.getGame().gameState = new GameState(handler,handler.getGame().getPlayer(),"res/world/world1.txt");
+            
              handler.getGame().gameState.setActive(true);
 
              State.setState(handler.getGame().gameState);
+             
              dispose();
         }
         );

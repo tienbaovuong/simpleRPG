@@ -6,23 +6,33 @@ import game.entities.Player;
 import game.worlds.World;
 
 public class GameState extends State {
-    
     private World world;
     private Player player;
-    private boolean isActive=false;
-    private  PauseState pauseState;
-
+    private PauseState pauseState;
+    private boolean isActive=false;  
     public GameState(Handler handler, Player player, String path) {
         super(handler);
         this.player = player;
-        player.setCore();
         world = new World(handler, player, path);
         handler.setWorld(world);
+        isActive=false;
     }
 
     @Override
     public void tick() {
-        world.tick();
+    	
+    	if(isActive) {
+            world.tick();
+            
+    	}
+    	if(handler.getKeyManager().esc ){    
+        	    		
+            pauseState = new PauseState(handler);
+            pauseState.setActive(true);
+            State.setState(pauseState);
+            }
+  
+    	
     }
     
     @Override

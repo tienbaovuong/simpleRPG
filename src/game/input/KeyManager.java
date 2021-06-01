@@ -36,7 +36,6 @@ public class KeyManager implements KeyListener {
         space = keys[KeyEvent.VK_SPACE];
         shift = keys[KeyEvent.VK_SHIFT];
         esc = keys[KeyEvent.VK_ESCAPE];
-
     }
     
     public void refresh() {

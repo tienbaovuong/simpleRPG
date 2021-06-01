@@ -2,46 +2,52 @@ package game.states;
 
 
 import game.Handler;
-
+import game.gfx.Assets;
+import game.ui.UIImageButton;
+import game.ui.UIManager;
 
 import javax.swing.*;
+
+import java.awt.Color;
+import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 
-public class PauseState extends JFrame{
-    private Handler handler;
-    private boolean isActive;
-    private JButton rb1,rb2;
+public class PauseState extends State{
+    private UIManager uiManager;
     public PauseState(Handler handler) {
-        this.handler = handler;
-
-        rb1 = new JButton("Continue");
-        rb1.setBounds(100,100,125,30);
-        rb1.addActionListener((ActionEvent e) -> {
-            dispose();
-        });
-
-        rb2 = new JButton("Back to menu");
-        rb2.setBounds(100,150,125,30);
-        rb2.addActionListener((ActionEvent e) -> {
-                    dispose();
-                    State.setState(handler.getGame().menuState);
-                    handler.getGame().menuState.setActive(true);
-
-                }
-        );
-
-        ButtonGroup bg = new ButtonGroup();
-        bg.add(rb1);bg.add(rb2);
-        add(rb1);
-        add(rb2);
-        setUndecorated(true);
-        setSize(300,300);
-        setLayout(null);
-        setLocationRelativeTo(null);
-        setVisible(true);
-        setResizable(false);
-
-    }
+        super(handler);
+        uiManager = new UIManager(handler);
+        handler.getMouseManager().setUiManager(uiManager);
+        
+        uiManager.addObject(new UIImageButton(336, 300, 128, 64, Assets.btn_start, () -> {
+        	if(isActive) {
+        	State.setState(handler.getGame().gameState);
+            handler.getGame().gameState.setActive(true);         
+            this.isActive=false;
+        	}}));             
+        
+        uiManager.addObject(new UIImageButton(336, 364, 128, 64, Assets.quit_button, () ->{
+        	if(isActive) {
+        		handler.getGame().menuState=new MenuState(handler);
+        		State.setState(handler.getGame().menuState);
+                handler.getGame().menuState.setActive(true);
+                this.isActive=false;
+        	}}));
+       
+    }	
+	@Override
+	public void tick() {
+		// TODO Auto-generated method stub
+		uiManager.tick();
+	}
+	@Override
+	public void render(Graphics g) {
+		// TODO Auto-generated method stub
+		handler.getGame().gameState.render(g);
+		g.setColor(Color.GRAY);
+		g.fillRect(336,300, 128, 128);
+		uiManager.render(g);
+	}
 
 
 }

@@ -3,12 +3,10 @@ package game;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 import java.io.IOException;
-import java.util.ArrayList;
 
 
 import game.display.Display;
-import game.entities.Entity;
-import game.entities.EntityManager;
+
 import game.entities.Player;
 import game.gfx.Assets;
 import game.gfx.GameCamera;
@@ -18,6 +16,7 @@ import game.states.GameState;
 import game.states.Gameover;
 import game.states.Gamewin;
 import game.states.MenuState;
+import game.states.PauseState;
 import game.states.State;
 import game.worlds.ScoreBoard;
 
@@ -27,8 +26,6 @@ public class Game implements Runnable {
     private int width, height;
     private String title;
     private Player player;
-    private EntityManager entityManager;
-    private ArrayList<Entity> entity;
     private int stage=0;
     private boolean die_player;
     private int level = 0;
@@ -42,7 +39,7 @@ public class Game implements Runnable {
     //States
     public GameState gameState;
     public MenuState menuState;
-
+    public PauseState pauseState;
     
     //Input
     private KeyManager keyManager;
@@ -87,7 +84,7 @@ public class Game implements Runnable {
         }
         
         else {
-
+        	gameState.setActive(true);
         	State.setState(gameState);
         }
         
@@ -97,9 +94,7 @@ public class Game implements Runnable {
     
     private void tick() {
         keyManager.tick();
-        State.getState().tick();
-        entityManager = handler.getWorld().getEntityManager();
-        entity = entityManager.getEntities();
+        State.getState().tick();        
     }
     
     private void render() {
@@ -157,7 +152,7 @@ public class Game implements Runnable {
                     gameOver();
                     stop();
 
-                } else if(gameState.isActive()) {
+                }
                     if (handler.getWorld().getNumberOfKey() == 0) {
                         if (player.getCollisionBounds(0f, 0f).intersects(handler.getWorld().bounds)) {
                             Player.score += BONUS_SCORE[level];
@@ -173,12 +168,12 @@ public class Game implements Runnable {
                             //display.close();
                             break;
                         }
-
+                    
                     }
                 }
             }
     	} 
-    }
+    
     
     public void gameWin() {
     	stage=0;
@@ -188,7 +183,7 @@ public class Game implements Runnable {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-    	player.setCore();
+    	
     }
     public void gameOver() {
     	stage=0;
@@ -198,7 +193,7 @@ public class Game implements Runnable {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-    	player.setCore();
+    	
     }
     public GameCamera getGameCamera() {
         return gameCamera;
@@ -227,6 +222,7 @@ public class Game implements Runnable {
 
     public void setLevel(int level) {
         this.level = level;
+        Player.score=0;
         this.getPlayer().setPlayer_health(this.getPlayer().DEFAULT_HEALTH[level]);
         this.getPlayer().initBullet_number(this.getPlayer().BULLET_NUMBER[level]);         
     }
@@ -250,7 +246,7 @@ public class Game implements Runnable {
     public void setStage(int stage) {
         this.stage = stage;
     }  
-
+    
     public synchronized void start() {
         if(running)
             return;
