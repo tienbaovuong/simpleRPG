@@ -33,7 +33,40 @@ public class Bullet extends Entity {
         bounds.width = width / 2;
         bounds.height = height / 2;
     }
-    
+    public Bullet(Handler handler, Entity owner, float x, float y,int bullerDirect) {
+        super(handler, x, y, Entity.DEFAULT_CREATURE_WIDTH, Entity.DEFAULT_CREATURE_HEIGHT);
+        level = this.handler.getGame().getLevel();
+        this.owner = owner;
+        X=x;
+        Y=y;
+        if(this.owner instanceof Player){
+            speed = BULLET_SPEED[0];
+
+        } else{
+            speed = BULLET_SPEED[level];
+
+        }
+        if(bullerDirect ==1){
+            xMove = speed;
+            yMove = 0;
+        } else if(bullerDirect ==2){
+            xMove = -speed;
+            yMove = 0;
+        }
+        else if(bullerDirect ==3){
+            yMove = -speed;
+            xMove = 0;
+        }
+        else if(bullerDirect ==4){
+            yMove = speed;
+            xMove = 0;
+        }
+
+        bounds.x = 3;
+        bounds.y = 3;
+        bounds.width = width / 2;
+        bounds.height = height / 2;
+    }
     @Override
     public void tick() {
         move();

@@ -9,12 +9,13 @@ public class Assets {
     public static BufferedImage[] player1_down, player1_up, player1_left, player1_right, bullet;
     public static BufferedImage exitGame= ImageLoader.loadImage("/textures/return to menu.png");
     public static BufferedImage[] player2_down, player2_up, player2_left, player2_right;
-//    public static BufferedImage[] player3_down, player3_up, player3_left, player3_right;
-//    public static BufferedImage[] player4_down, player4_up, player4_left, player4_right;
+
 
     public static BufferedImage[] zombie_down, zombie_up, zombie_left, zombie_right;
     public static BufferedImage[] zombie1_down, zombie1_up, zombie1_left, zombie1_right;
     public static BufferedImage[] monster_down, monster_up, monster_left, monster_right;
+    public static BufferedImage[] boss_down, boss_up, boss_left, boss_right;
+
     public static BufferedImage btn_start, how_to_play_button, quit_button;
     public static BufferedImage easy,normal,hard;
     public static BufferedImage gameOver= ImageLoader.loadImage("/textures/gameover.jpg");
@@ -79,35 +80,7 @@ public class Assets {
         player2_right[0] = hust.crop(9*width, height*6, width, height);
         player2_right[1] = hust.crop(width*10, height*6, width, height);
 
-//        player3_down = new BufferedImage[2];
-//        player3_up = new BufferedImage[2];
-//        player3_left = new BufferedImage[2];
-//        player3_right = new BufferedImage[2];
-//
-//        player3_down[0] = hust.crop(6*width, 0*height, width, height);
-//        player3_down[1] = hust.crop(7*width , 0*height, width, height);
-//        player3_up[0] = hust.crop(6*width, height*3, width, height);
-//        player3_up[1] = hust.crop(7*width , height*3, width, height);
-//        player3_left[0] = hust.crop(6*width, height*1, width, height);
-//        player3_left[1] = hust.crop(width *7, height*1, width, height);
-//        player3_right[0] = hust.crop(6*width, height*2, width, height);
-//        player3_right[1] = hust.crop(width*7, height*2, width, height);
-//
-//
-//        player4_down = new BufferedImage[2];
-//        player4_up = new BufferedImage[2];
-//        player4_left = new BufferedImage[2];
-//        player4_right = new BufferedImage[2];
-//
-//        player4_down[0] = hust.crop(6*width, 4*height, width, height);
-//        player4_down[1] = hust.crop(7*width , 4*height, width, height);
-//        player4_up[0] = hust.crop(6*width, height*7, width, height);
-//        player4_up[1] = hust.crop(7*width , height*7, width, height);
-//        player4_left[0] = hust.crop(6*width, height*5, width, height);
-//        player4_left[1] = hust.crop(width *7, height*5, width, height);
-//        player4_right[0] = hust.crop(6*width, height*6, width, height);
-//        player4_right[1] = hust.crop(width*7, height*6, width, height);
-        
+
         
         zombie_down = new BufferedImage[2];
         zombie_up = new BufferedImage[2];
@@ -156,7 +129,24 @@ public class Assets {
 		monster_left[0] = Monster.crop(width * 9, height * 5, width , height );
 		monster_left[1] = Monster.crop(width * 10, height * 5, width , height );
 		monster_left[2] = Monster.crop(width * 11, height * 5, width , height );
-		
+
+        boss_down = new BufferedImage[3];
+        boss_up = new BufferedImage[3];
+        boss_left = new BufferedImage[3];
+        boss_right = new BufferedImage[3];
+
+        boss_down[0] = Monster.crop(width*9, height * 0, width , height );
+        boss_down[1] = Monster.crop(width * 10, height * 0, width , height );
+        boss_down[2] = Monster.crop(width * 11, height * 0, width , height );
+        boss_up[0] = Monster.crop(width * 9, height * 3, width , height );
+        boss_up[1] = Monster.crop(width * 10, height * 3, width , height );
+        boss_up[2] = Monster.crop(width*11, height *3, width , height );
+        boss_right[0] = Monster.crop(width * 9, height * 2, width , height );
+        boss_right[1] = Monster.crop(width * 10, height * 2, width , height );
+        boss_right[2] = Monster.crop(width * 11, height * 2, width , height );
+        boss_left[0] = Monster.crop(width * 9, height * 1, width , height );
+        boss_left[1] = Monster.crop(width * 10, height * 1, width , height );
+        boss_left[2] = Monster.crop(width * 11, height * 1, width , height );
         // solid
 		door = doors.crop(0,0,width,height);
 		tree = mapIcon.crop(width * 7, height * 0, width, height);

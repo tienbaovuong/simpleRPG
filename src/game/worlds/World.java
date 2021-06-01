@@ -9,6 +9,7 @@ import game.entities.Player;
 import game.entities.monsters.Monster;
 import game.entities.monsters.Monster1;
 import game.entities.monsters.Monster2;
+import game.entities.monsters.Monster3;
 import game.items.Item;
 import game.items.ItemManager;
 import game.tiles.Tile;
@@ -41,6 +42,8 @@ public class World {
                 entityManager.addEntity(new Monster1(handler, monsters[i+1], monsters[i+2]));
             else if(monsters[i] == 3)
                 entityManager.addEntity(new Monster2(handler, monsters[i+1], monsters[i+2]));
+            else if(monsters[i] == 4)
+                entityManager.addEntity(new Monster3(handler, monsters[i+1], monsters[i+2]));
         }
         
         //Add Food
