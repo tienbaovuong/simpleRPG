@@ -27,6 +27,7 @@ public class HowToPlayState extends JFrame{
         });
         add(b1);
         getContentPane().add(new JScrollPane(tf));
+        setUndecorated(true);
         setSize(500,400);
         setLocationRelativeTo(null);;
         setVisible(true);

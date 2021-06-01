@@ -67,6 +67,7 @@ public class ChooseState extends JFrame{
         add(rb2); 
         add(rb3);
         add(tf);
+        setUndecorated(true);
         setSize(300,300);    
         setLayout(null); 
         setLocationRelativeTo(null);

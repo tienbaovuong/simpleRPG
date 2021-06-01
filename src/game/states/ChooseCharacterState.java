@@ -48,6 +48,7 @@ public class ChooseCharacterState extends JFrame {
         add(rb1);
         add(rb2);
         add(tf);
+        setUndecorated(true);
         setSize(300,300);
         setLayout(null);
         setLocationRelativeTo(null);
