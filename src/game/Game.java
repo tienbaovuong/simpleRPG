@@ -40,6 +40,8 @@ public class Game implements Runnable {
     public GameState gameState;
     public MenuState menuState;
     public PauseState pauseState;
+    private Gameover gameOver;
+    private Gamewin gameWin;
     
     //Input
     private KeyManager keyManager;
@@ -47,8 +49,7 @@ public class Game implements Runnable {
     
     //Handler
     private Handler handler;
-    private Gameover gameover;
-    private Gamewin gamewin;
+   
 
 
     //Game camera
@@ -179,7 +180,7 @@ public class Game implements Runnable {
     	stage=0;
     	display.close();
     	try {
-            gamewin=new Gamewin(handler);           
+            gameWin=new Gamewin(handler);           
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -189,7 +190,7 @@ public class Game implements Runnable {
     	stage=0;
     	display.close();
     	try {
-			gameover=new Gameover(handler);			
+			gameOver=new Gameover(handler);			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

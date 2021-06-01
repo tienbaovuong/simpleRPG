@@ -1,5 +1,8 @@
 package game.states;
 
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.util.Iterator;
 import javax.swing.ButtonGroup;
@@ -8,71 +11,74 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import game.Handler;
 import game.entities.Entity;
+import game.gfx.Assets;
+import game.ui.UIImageButton;
+import game.ui.UIManager;
 
-public class ChooseState extends JFrame{
-    private Handler handler;
-    
-    private JButton rb1,rb2,rb3;      
+public class ChooseState extends State{
+	private UIManager uiManager;
+    private ChooseCharacterState a;
     public ChooseState(Handler handler) {
-        this.handler = handler;
+        super(handler);
+        uiManager = new UIManager(handler);
+        handler.getMouseManager().setUiManager(uiManager);
         
-        final JLabel tf = new JLabel("Choose your level:");  
-        tf.setBounds(75, 50, 150, 20); 
-        rb1 = new JButton("Easy");    
-        rb1.setBounds(100,100,100,30); 
-        rb1.addActionListener((ActionEvent e) -> {
-           
-                this.handler.getGame().setLevel(0);
+        uiManager.addObject(new UIImageButton(100, 200, 600, 128, Assets.easy, () -> {
+        	if(isActive) {
+        		handler.getGame().setLevel(0);
                 Iterator<Entity> it = this.handler.getWorld().getEntityManager().getEntities().iterator();
                 while(it.hasNext()){
                     Entity entity = it.next();
                     entity.setLevel(0);              
                 }
-                ChooseCharacterState a = new ChooseCharacterState(handler);
-                dispose();
-        });
-    
+                a = new ChooseCharacterState(handler);
+                a.setActive(true);
+                State.setState(a);
+                ;
+        	}}));
         
-        rb2 = new JButton("Hard");    
-        rb2.setBounds(100,150,100,30);
-        rb2.addActionListener((ActionEvent e) -> {   
-        	
-                this.handler.getGame().setLevel(1);
+        uiManager.addObject(new UIImageButton(100, 328, 600, 128, Assets.normal, () ->{
+        	if(isActive) {
+        		handler.getGame().setLevel(1);
                 Iterator<Entity> it = this.handler.getWorld().getEntityManager().getEntities().iterator();
                 while(it.hasNext()){
                     Entity entity = it.next();
                     entity.setLevel(1);
                 }
-                ChooseCharacterState a = new ChooseCharacterState(handler);
-                dispose();
-            }
-        );
-        rb3 = new JButton("Extreme");    
-        rb3.setBounds(100,200,100,30); 
-        rb3.addActionListener((ActionEvent e) -> {
-           
-                this.handler.getGame().setLevel(2);
+                a = new ChooseCharacterState(handler);
+                a.setActive(true);
+                State.setState(a);
+                
+        }}));
+        
+        uiManager.addObject(new UIImageButton(100, 456, 600, 128, Assets.hard, () ->{
+        	if(isActive) {
+        		this.handler.getGame().setLevel(2);
                 Iterator<Entity> it = this.handler.getWorld().getEntityManager().getEntities().iterator();
                 while(it.hasNext()){
                     Entity entity = it.next();
                     entity.setLevel(2);              
                 }
-                ChooseCharacterState a = new ChooseCharacterState(handler);
-                dispose();
-        });
-        ButtonGroup bg = new ButtonGroup();    
-        bg.add(rb1);bg.add(rb2); bg.add(rb3);
+                a = new ChooseCharacterState(handler);
+                a.setActive(true);
+                State.setState(a);
+                
+        	}}));
         
-        add(rb1);
-        add(rb2); 
-        add(rb3);
-        add(tf);
-        setUndecorated(true);
-        setSize(300,300);    
-        setLayout(null); 
-        setLocationRelativeTo(null);
-        setVisible(true);    
-    }    
+    }
+	@Override
+	public void tick() {
+		 uiManager.tick();     
+		
+	}
+	@Override
+	public void render(Graphics g) {
+		g.drawImage(Assets.backgroundMenu,0,0,800,608,null);
+		uiManager.render(g);
+		 g.setColor(Color.black);
+	        g.setFont(new Font("TimesRoman", Font.PLAIN, 40));
+	        g.drawString("Choose the difficulty ", 250, 150);
+	}    
 
 
 }

@@ -21,6 +21,8 @@ public class MenuState extends State {
         uiManager.addObject(new UIImageButton(336, 300, 128, 64, Assets.btn_start, () -> {
         	if(isActive) {
         	c = new ChooseState(handler); 
+        	State.setState(c);
+        	c.setActive(true);
         	handler.getGame().gameState = new GameState(handler,handler.getGame().getPlayer(),"res/world/world1.txt");
         	handler.getGame().menuState.setActive(false);           
         	}}));
@@ -28,6 +30,9 @@ public class MenuState extends State {
         uiManager.addObject(new UIImageButton(336, 364, 128, 64, Assets.how_to_play_button, () ->{
         	if(isActive) {
             h = new HowToPlayState(handler);
+            State.setState(h);
+            h.setActive(true);
+            handler.getGame().menuState.setActive(false);   
 		
         }}));
         

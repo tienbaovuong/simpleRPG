@@ -7,7 +7,7 @@ public class Assets {
     public static BufferedImage dirt, grass, wall, tree,  stone, water, bridge,gameover,
                                 flower,  tutorial,  scoreImage, door,backgroundMenu,logoMenu, item;
     public static BufferedImage[] player1_down, player1_up, player1_left, player1_right, bullet;
-
+    public static BufferedImage exitGame= ImageLoader.loadImage("/textures/return to menu.png");
     public static BufferedImage[] player2_down, player2_up, player2_left, player2_right;
 //    public static BufferedImage[] player3_down, player3_up, player3_left, player3_right;
 //    public static BufferedImage[] player4_down, player4_up, player4_left, player4_right;
@@ -16,6 +16,7 @@ public class Assets {
     public static BufferedImage[] zombie1_down, zombie1_up, zombie1_left, zombie1_right;
     public static BufferedImage[] monster_down, monster_up, monster_left, monster_right;
     public static BufferedImage btn_start, how_to_play_button, quit_button;
+    public static BufferedImage easy,normal,hard;
     public static BufferedImage tym= ImageLoader.loadImage("/textures/heart.png");
     public static BufferedImage key= ImageLoader.loadImage("/textures/key.png");
     public static void init() {
@@ -32,7 +33,7 @@ public class Assets {
         SpriteSheet bullets4 = new SpriteSheet(ImageLoader.loadImage("/textures/bomb4.png"));
         SpriteSheet background = new SpriteSheet(ImageLoader.loadImage("/textures/backgroud1.jpg"));
         SpriteSheet logo = new SpriteSheet(ImageLoader.loadImage("/textures/logo.png"));
-        
+        SpriteSheet difficulty = new SpriteSheet(ImageLoader.loadImage("/textures/difficulty.png"));
 
         logoMenu = logo.crop(0,0,371,76);
         backgroundMenu = background.crop(0,0,800,608);
@@ -45,7 +46,9 @@ public class Assets {
         how_to_play_button = quit.crop(0,112,270,110);
         
         quit_button = quit.crop(0, 230, 270, 110);
-
+        easy = difficulty.crop(0, 0, 799, 170);
+        normal = difficulty.crop(0, 225, 799, 170);
+        hard = difficulty.crop(0, 450, 799, 166);
         player1_down = new BufferedImage[2];
         player1_up = new BufferedImage[2];
         player1_left = new BufferedImage[2];
