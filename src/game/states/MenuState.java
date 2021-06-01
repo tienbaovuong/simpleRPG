@@ -23,7 +23,7 @@ public class MenuState extends State {
         	c = new ChooseState(handler); 
         	State.setState(c);
         	c.setActive(true);
-        	handler.getGame().gameState = new GameState(handler,handler.getGame().getPlayer(),"res/world/world1.txt");
+        	handler.getGame().gameState = new GameState(handler,handler.getGame().getPlayer(),"res/world/world4.txt");
         	handler.getGame().menuState.setActive(false);           
         	}}));
         

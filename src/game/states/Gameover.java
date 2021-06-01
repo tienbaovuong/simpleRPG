@@ -1,58 +1,47 @@
 package game.states;
 
-import java.awt.Dimension;
-import java.io.IOException;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
 
-import game.Game;
 import game.Handler;
+import game.gfx.Assets;
+import game.gfx.ImageLoader;
+import game.ui.UIImageButton;
 import game.ui.UIManager;
 import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
+import java.awt.image.BufferedImage;
 
-public class Gameover {
+
+public class Gameover extends State {
     private UIManager uiManager;
-    private JFrame f;
-
-    public Gameover(Handler handler) throws IOException{
+    
+    public Gameover(Handler handler) {
+    	super(handler);
         uiManager = new UIManager(handler);
-        f = new JFrame();
         handler.getMouseManager().setUiManager(uiManager);
-
-        final JLabel label2=new JLabel("<html>YOU DIE<br/> Score: "
-                + handler.getGame().getPlayer().getScore()+"<htmt/",JLabel.CENTER);
-        label2.setForeground(Color.red);
-        label2.setFont(new Font("Courier", Font.BOLD,40));
-        JPanel panel = new JPanel();
-        f.getContentPane().add(label2);
-        f.setSize(500,400);
-        f.setLocationRelativeTo(null);
-        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        Dimension size = label2.getPreferredSize();
-        label2.setBounds(150, 100, size.width, size.height);
-        panel.setLayout(null);
-        panel.add(label2);
-        JButton okButton = new JButton("Return to main menu");
-        panel.add(okButton);
-        f.getContentPane().add(panel);
-        Dimension size1 = okButton.getPreferredSize();
-        okButton.setBounds(150, 300, size1.width, size1.height);
-        panel.setLayout(null);
-        f.add(panel);
-        f.setVisible(true);
-        f.setResizable(false);
-        okButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                Game game = new Game("Title Game!", 800, 608);
-                game.start();
-                f.dispose();
-            }
-        });
+        uiManager.addObject(new UIImageButton(336, 550, 128, 32, Assets.exitGame, () ->{
+        	if(isActive) {
+        		handler.getGame().setLose(true);
+        		handler.getGame().menuState=new MenuState(handler);
+        		State.setState(handler.getGame().menuState);
+                handler.getGame().menuState.setActive(true);
+                this.isActive=false;
+        	}}));    
+        
     }
 
-    public void close() {
-        f.dispose();
-    }
+  
+	@Override
+	public void tick() {
+		// TODO Auto-generated method stub
+		uiManager.tick();
+	}
+
+	@Override
+	public void render(Graphics g) {
+		// TODO Auto-generated method stub
+		g.drawImage(Assets.gameOver, 0, 0, 800, 608, null);
+		g.setColor(Color.white);
+        g.setFont(new Font("TimesRoman", Font.PLAIN, 40));
+        g.drawString("Score "+ handler.getGame().getPlayer().getScore(), 300, 500);
+        uiManager.render(g);
+	}
 }

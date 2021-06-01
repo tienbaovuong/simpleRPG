@@ -30,8 +30,8 @@ public class Game implements Runnable {
     private boolean die_player;
     private int level = 0;
     private boolean running = false;
-
-    
+    private boolean lose=false;
+    private boolean won=false;
     private Thread thread;
     private BufferStrategy bs;
     private Graphics g;
@@ -79,7 +79,13 @@ public class Game implements Runnable {
         player = new Player(handler, 0, 0);
         gameState = new GameState(handler, player,path);
         menuState = new MenuState(handler);
-        if(stage==0) {
+        if(lose) {
+        	gameOver();
+        }
+        else if (won) {
+        	gameWin();
+        }
+        else if(stage==0) {
         	menuState.setActive(true);
         	State.setState(menuState);
         }
@@ -117,10 +123,11 @@ public class Game implements Runnable {
     @Override
     public void run() {
     	long last = 0;
-    	String[] path=new String[3];
-    	path[0]="res/world/world1.txt";
+    	String[] path=new String[5];
+    	path[3]="res/world/world1.txt";
     	path[1]="res/world/world2.txt";
     	path[2]="res/world/world3.txt";
+    	path[0]="res/world/world4.txt";
     	init();
     	while(true) {
             initMap(path[stage]);
@@ -141,6 +148,7 @@ public class Game implements Runnable {
                 
                 if(delta >= 1) {
                     tick();
+                    System.out.println(lose);
                     render();
                     ticks++;
                     delta--; 
@@ -150,21 +158,24 @@ public class Game implements Runnable {
                     running = false;
                     die_player = false;                   
                     last = System.currentTimeMillis();
-                    gameOver();
-                    stop();
-
-                }
+                    //gameOver();
+                    lose=true;
+                    //stop();
+          
+                }	
                     if (handler.getWorld().getNumberOfKey() == 0) {
                         if (player.getCollisionBounds(0f, 0f).intersects(handler.getWorld().bounds)) {
                             Player.score += BONUS_SCORE[level];
                             ScoreBoard.tick();
                             keyManager.refresh();
-                            stage++;
+                            stage+=4;
                             running = false;
                             last = System.currentTimeMillis();
-                            if (stage == 3) {
-                                gameWin();
-                                stop();
+                            if (stage == 4) {
+                                //gameWin();
+                                won = true;
+                                stage=0;
+                                //stop();
                             }
                             //display.close();
                             break;
@@ -178,23 +189,17 @@ public class Game implements Runnable {
     
     public void gameWin() {
     	stage=0;
-    	display.close();
-    	try {
-            gameWin=new Gamewin(handler);           
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-    	
+        gameWin=new Gamewin(handler);    
+        gameWin.setActive(true);
+        State.setState(gameWin);
+		
     }
     public void gameOver() {
     	stage=0;
-    	display.close();
-    	try {
-			gameOver=new Gameover(handler);			
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-    	
+        gameOver=new Gameover(handler);		
+		State.setState(gameOver);
+		gameOver.setActive(true);
+		
     }
     public GameCamera getGameCamera() {
         return gameCamera;
@@ -240,7 +245,24 @@ public class Game implements Runnable {
         this.die_player=die_player;
     }
     
-    public int getStage() {
+    
+	public boolean isLose() {
+		return lose;
+	}
+
+	public void setLose(boolean lose) {
+		this.lose = lose;
+	}
+
+	public boolean isWon() {
+		return won;
+	}
+
+	public void setWon(boolean won) {
+		this.won = won;
+	}
+
+	public int getStage() {
 	return stage;
     }
 

@@ -97,7 +97,7 @@ public class Monster2 extends Monster {
     public void move() {
     	xPlayer=handler.getWorld().getEntityManager().getPlayer().getX();
         yPlayer=handler.getWorld().getEntityManager().getPlayer().getY();
-        if(Math.abs(yPlayer-y)>150  || Math.abs(xPlayer-x)>150) {
+        if(Math.abs(yPlayer-y)>150  || Math.abs(xPlayer-x)>150 ) {
         	return;
         }
         if(Math.abs(yPlayer-y)>Math.abs(xPlayer-x)) {

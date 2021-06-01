@@ -17,6 +17,8 @@ public class Assets {
     public static BufferedImage[] monster_down, monster_up, monster_left, monster_right;
     public static BufferedImage btn_start, how_to_play_button, quit_button;
     public static BufferedImage easy,normal,hard;
+    public static BufferedImage gameOver= ImageLoader.loadImage("/textures/gameover.jpg");
+    public static BufferedImage gameWin= ImageLoader.loadImage("/textures/win.png");
     public static BufferedImage tym= ImageLoader.loadImage("/textures/heart.png");
     public static BufferedImage key= ImageLoader.loadImage("/textures/key.png");
     public static void init() {
