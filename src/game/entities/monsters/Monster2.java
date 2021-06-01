@@ -3,6 +3,8 @@ package game.entities.monsters;
 import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Random;
+
 import game.Handler;
 import game.entities.Bullet;
 import game.gfx.Animation;
@@ -12,7 +14,7 @@ import game.tiles.Tile;
 public class Monster2 extends Monster {    
     private long lastAttackTimer, attackCooldown = 1000, attackTimer = attackCooldown;
     private static final int[] BONUS = {200, 400,500};
-
+   
     private float xPlayer, yPlayer;
     private final float xZ, yZ;
     
@@ -91,13 +93,18 @@ public class Monster2 extends Monster {
             b.render(g);
         });
     }
-
+    public void die() {
+        Random rand = new Random();
+        handler.getWorld().getItemManager().addItem(items[rand.nextInt(3)].createNew((int) x, (int) y));
+        handler.getWorld().getEntityManager().getPlayer().setScore(BONUS[level]);
+        handler.getWorld().setNumberOfMonster(-1);    
+    }
     
     @Override
     public void move() {
     	xPlayer=handler.getWorld().getEntityManager().getPlayer().getX();
         yPlayer=handler.getWorld().getEntityManager().getPlayer().getY();
-        if(Math.abs(yPlayer-y)>150  || Math.abs(xPlayer-x)>150 ) {
+        if(Math.abs(yPlayer-y)>200  || Math.abs(xPlayer-x)>200 ) {
         	return;
         }
         if(Math.abs(yPlayer-y)>Math.abs(xPlayer-x)) {

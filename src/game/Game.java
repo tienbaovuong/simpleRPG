@@ -124,10 +124,10 @@ public class Game implements Runnable {
     public void run() {
     	long last = 0;
     	String[] path=new String[5];
-    	path[3]="res/world/world1.txt";
+    	path[0]="res/world/world1.txt";
     	path[1]="res/world/world2.txt";
     	path[2]="res/world/world3.txt";
-    	path[0]="res/world/world4.txt";
+    	path[3]="res/world/world4.txt";
     	init();
     	while(true) {
             initMap(path[stage]);
@@ -147,8 +147,7 @@ public class Game implements Runnable {
                 lastTime = now;
                 
                 if(delta >= 1) {
-                    tick();
-                    System.out.println(lose);
+                    tick();               
                     render();
                     ticks++;
                     delta--; 

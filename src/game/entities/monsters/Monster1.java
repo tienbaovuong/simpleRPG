@@ -83,7 +83,12 @@ public class Monster1 extends Monster {
                 b.render(g);
         });
     }
-    
+    public void die() {
+        Random rand = new Random();
+        handler.getWorld().getItemManager().addItem(items[rand.nextInt(3)].createNew((int) x, (int) y));
+        handler.getWorld().getEntityManager().getPlayer().setScore(BONUS[level]);
+        handler.getWorld().setNumberOfMonster(-1);    
+    }
     private BufferedImage getCurrentAnimationFrame() {
         if(xMove < 0){
             currentImage = animLeft;

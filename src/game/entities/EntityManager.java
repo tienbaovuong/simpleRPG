@@ -5,11 +5,13 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Iterator;
 import game.Handler;
+import game.entities.monsters.Monster3;
 
 public class EntityManager {
     private Handler handler;
     private Player player;
     private ArrayList<Entity> entities;
+    private ArrayList<Entity> subEntities;
     private Comparator<Entity> renderSorter = new Comparator<Entity>(){
         @Override
         public int compare(Entity a, Entity b) {
@@ -23,10 +25,11 @@ public class EntityManager {
         this.handler = handler;
         this.player = player;
         entities = new ArrayList<Entity>();
+        subEntities = new ArrayList<Entity>();
         addEntity(player);
     }
     public void tick() {
-
+    	subEntities.clear();    	
         Iterator<Entity> it = entities.iterator();
         while(it.hasNext()){
             Entity e = it.next();
@@ -34,6 +37,8 @@ public class EntityManager {
             if(!e.isActive())
                 it.remove();
         }
+        if(subEntities.isEmpty()==false)
+        	entities.addAll(subEntities);
         entities.sort(renderSorter);
     }
     
@@ -70,6 +75,12 @@ public class EntityManager {
     public void setEntities(ArrayList<Entity> entities) {
         this.entities = entities;
     }
+	public ArrayList<Entity> getSubEntities() {
+		return subEntities;
+	}
+	public void setSubEntities(ArrayList<Entity> subEntities) {
+		this.subEntities = subEntities;
+	}
     
     
 }

@@ -9,18 +9,19 @@ import game.tiles.Tile;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Random;
 
 public class Monster3 extends Monster{
     private long lastAttackTimer, attackCooldown = 1000, attackTimer = attackCooldown;
-    private long lastCreateTimer, createCooldown = 20000, createTimer = attackCooldown;
+    private long lastCreateTimer, createCooldown = 10000, createTimer = attackCooldown;
 
-    private static final int[] BONUS = {200, 400,500};
-
+    private static final int[] BONUS = {2000, 3000,5000};
+    private static final int[] BOSS_HEALTH = {10,20,30};
     private float xPlayer, yPlayer;
     private final float xZ, yZ;
 
     private ArrayList<Bullet> bullets;
-
+    private ArrayList<Monster2> children; 
     public Monster3(Handler handler, float x, float y) {
         super(handler, x, y);
         xZ=x;
@@ -28,7 +29,7 @@ public class Monster3 extends Monster{
         speed = ZOMBIE_SPEED[level]/4;
         xMove = 0;
         yMove = 0;
-
+        health=BOSS_HEALTH[level];
         //Animation
         animDown = new Animation(200, Assets.boss_down);
         animUp = new Animation(200, Assets.boss_up);
@@ -38,6 +39,7 @@ public class Monster3 extends Monster{
         currentImage = animDown;
 
         bullets = new ArrayList<Bullet>();
+        children = new ArrayList<Monster2>();
     }
 
     @Override
@@ -46,17 +48,19 @@ public class Monster3 extends Monster{
         currentImage.tick();
         move();
         attack();
-
+        create();
         Iterator<Bullet> it = bullets.iterator();
         while(it.hasNext()){
             Bullet b = it.next();
-            b.setSpeed(b.BULLET_SPEED[level]);
+            b.setSpeed(Bullet.BULLET_SPEED[level]);
             b.tick();
             if(!b.isActive())
                 it.remove();
         }
+        
+        
     }
-
+    
     @Override
     public void attack() {
         attackTimer += System.currentTimeMillis() - lastAttackTimer;
@@ -74,17 +78,31 @@ public class Monster3 extends Monster{
     }
 
     public void create() {
+    	if(handler.getGame().gameState.getWorld().getEntityManager().getEntities().size()==8) return;
         createTimer += System.currentTimeMillis() - lastCreateTimer;
         lastCreateTimer = System.currentTimeMillis();
         if(createTimer < createCooldown)
             return;
-
-        float xx=x+width/4;
-        float yy=y+height/4;
-        handler.getWorld().getEntityManager().addEntity(new Monster2(handler, xx, yy));
+        xPlayer=handler.getWorld().getEntityManager().getPlayer().getX();
+        yPlayer=handler.getWorld().getEntityManager().getPlayer().getY();
+        if(Math.abs(yPlayer-y)>200  || Math.abs(xPlayer-x)>200 ) {
+        	return;
+        }
+        Random rand = new Random();
+        int i =rand.nextInt(2);
+        if(i==0) 
+        handler.getGame().gameState.getWorld().getEntityManager().getSubEntities().add(new Monster2(handler,x+width,y+height));
+        //handler.getGame().gameState.getWorld().getEntityManager().getSubEntities().add(new Monster1(handler,x+width,y-height));}
+        else
+        {handler.getGame().gameState.getWorld().getEntityManager().getSubEntities().add(new Monster1(handler,x-width,y+height));
+        //handler.getGame().gameState.getWorld().getEntityManager().getSubEntities().add(new Monster2(handler,x-width,y-height));
+        }
         createTimer = 0;
     }
-
+    public void die() {       
+        handler.getWorld().getEntityManager().getPlayer().setScore(BONUS[level]);
+        handler.getWorld().setNumberOfMonster(-1);    
+    }
     @Override
     public void render(Graphics g) {
         g.drawImage(currentImage.getCurrentFrame(), (int) (x-handler.getGame().getGameCamera().getxOffset()),
@@ -92,105 +110,36 @@ public class Monster3 extends Monster{
         bullets.forEach((b) -> {
             b.render(g);
         });
+      
     }
-
+    public void setLevel(int level) {
+        speed = ZOMBIE_SPEED[level];
+        health = BOSS_HEALTH[level];
+        this.level = level;
+    }
 
     @Override
     public void move() {
-        xPlayer=handler.getWorld().getEntityManager().getPlayer().getX();
-        yPlayer=handler.getWorld().getEntityManager().getPlayer().getY();
-        if(Math.abs(yPlayer-y)>200  || Math.abs(xPlayer-x)>200 ) {
-            return;
-        }
-        if(Math.abs(yPlayer-y)>Math.abs(xPlayer-x)) {
-            if(x==xPlayer) {
-                if(y>yPlayer)
-                    yMove=-speed;
-                else
-                    yMove=+speed;
-                moveY();
-            }
-
-            else  {
-                if(x>xPlayer)
-                    xMove=-speed;
-                else
-                    xMove=+speed;
-                moveX();
-            }
-        }
-        else {
-            if(y==yPlayer) {
-                if(x>xPlayer)
-                    xMove=-speed;
-                else
-                    xMove=+speed;
-                moveX();
-            }
-
-            else  {
-                if(y>yPlayer)
-                    yMove=-speed;
-                else
-                    yMove=+speed;
-                moveY();
-            }
-        }
+        
     }
 
     @Override
     public void moveX(){
-        if(xMove > 0){ //Tiếp tục di chuyển sang trái nếu không chạm vào tile
-            int tx = (int) (x + xMove + bounds.x + bounds.width) / Tile.TILEWIDTH;
-            if(!collisionWithTile(tx, (int) (y + bounds.y) / Tile.TILEHEIGHT) &&
-                    !collisionWithTile(tx, (int) (y + bounds.y + bounds.height) / Tile.TILEHEIGHT)){
-                x += xMove;
-                currentImage=animRight;
-            } else{ //Di chuyển đến sát bound của tile và biến mất
-                x = tx * Tile.TILEWIDTH - bounds.x - bounds.width - 1;
-                xMove = -xMove;
-                moveY();
-            }
-        } else if (xMove < 0) { //Moving right
-            int tx = (int) (x + xMove + bounds.x) / Tile.TILEWIDTH;
-            if(!collisionWithTile(tx, (int) (y + bounds.y) / Tile.TILEHEIGHT) &&
-                    !collisionWithTile(tx, (int) (y + bounds.y + bounds.height) / Tile.TILEHEIGHT)){
-                x += xMove;
-                currentImage = animLeft;
-            } else {
-                x = tx * Tile.TILEWIDTH + Tile.TILEWIDTH - bounds.x;
-                xMove = -xMove;
-                moveY();
-            }
-        }
+       
     }
 
     @Override
     public void moveY(){
-        if(yMove < 0) {
-            int ty = (int) (y + yMove + bounds.y) / Tile.TILEHEIGHT;
-
-            if(!collisionWithTile((int) (x + bounds.x) / Tile.TILEWIDTH, ty)  &&
-                    !collisionWithTile((int) (x + bounds.x + bounds.width) / Tile.TILEWIDTH, ty)){
-                y += yMove;
-                currentImage=animUp;
-            } else {
-                y = ty * Tile.TILEHEIGHT + Tile.TILEHEIGHT - bounds.y;
-                yMove = -yMove;
-                moveX();
-            }
-        } else if(yMove > 0){
-            int ty = (int) (y + yMove + bounds.y + bounds.height) / Tile.TILEHEIGHT;
-
-            if(!collisionWithTile((int) (x + bounds.x) / Tile.TILEWIDTH, ty)  &&
-                    !collisionWithTile((int) (x + bounds.x + bounds.width) / Tile.TILEWIDTH, ty)){
-                y += yMove;
-                currentImage=animDown;
-            } else {
-                y = ty * Tile.TILEHEIGHT - bounds.y - bounds.height;
-                yMove = -yMove;
-                moveX();
-            }
-        }
+        
+     
     }
+
+	public ArrayList<Monster2> getChildren() {
+		return children;
+	}
+
+	public void setChildren(ArrayList<Monster2> children) {
+		this.children = children;
+	}
+    
 }
