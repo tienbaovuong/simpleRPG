@@ -9,10 +9,13 @@ public class GameState extends State {
     
     private World world;
     private Player player;
+    private boolean isActive=false;
+    private  PauseState pauseState;
 
     public GameState(Handler handler, Player player, String path) {
         super(handler);
         this.player = player;
+        player.setCore();
         world = new World(handler, player, path);
         handler.setWorld(world);
     }
@@ -20,7 +23,6 @@ public class GameState extends State {
     @Override
     public void tick() {
         world.tick();
-        
     }
     
     @Override
@@ -39,7 +41,13 @@ public class GameState extends State {
 
     public void setWorld(World world) {
         this.world = world;
-    }   
+    }
 
-    
+    public void setActive(boolean isActive) {
+        this.isActive = isActive;
+    }
+
+    public boolean isActive() {
+        return isActive;
+    }
 }

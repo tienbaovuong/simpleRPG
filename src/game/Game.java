@@ -40,7 +40,7 @@ public class Game implements Runnable {
     private Graphics g;
     
     //States
-    public State gameState;
+    public GameState gameState;
     public MenuState menuState;
 
     
@@ -87,6 +87,7 @@ public class Game implements Runnable {
         }
         
         else {
+
         	State.setState(gameState);
         }
         
@@ -156,24 +157,25 @@ public class Game implements Runnable {
                     gameOver();
                     stop();
 
-                }else if(handler.getWorld().getNumberOfKey()==0) {                	
-                    if(player.getCollisionBounds(0f, 0f).intersects(handler.getWorld().bounds)){
-                    	Player.score+= BONUS_SCORE[level];
-                    	ScoreBoard.tick();
-                        keyManager.refresh();
-                        stage++;
-                        running = false;                        
-                        last = System.currentTimeMillis();
-                        if(stage == 3) {
-                            gameWin();
-                            stop();
+                } else if(gameState.isActive()) {
+                    if (handler.getWorld().getNumberOfKey() == 0) {
+                        if (player.getCollisionBounds(0f, 0f).intersects(handler.getWorld().bounds)) {
+                            Player.score += BONUS_SCORE[level];
+                            ScoreBoard.tick();
+                            keyManager.refresh();
+                            stage++;
+                            running = false;
+                            last = System.currentTimeMillis();
+                            if (stage == 3) {
+                                gameWin();
+                                stop();
+                            }
+                            //display.close();
+                            break;
                         }
-                        //display.close();
-                        break;
-                    }
 
+                    }
                 }
-                 
             }
     	} 
     }

@@ -8,6 +8,8 @@ import java.util.Iterator;
 import game.Handler;
 import game.gfx.Animation;
 import game.gfx.Assets;
+import game.states.ChooseCharacterState;
+import game.states.PauseState;
 
 public class Player extends Entity {
     //Attack timer
@@ -15,7 +17,9 @@ public class Player extends Entity {
     //Bullet
     private ArrayList<Bullet> bullets;
     public static final int[] BULLET_NUMBER = {40,60,60};
-    
+
+    private PauseState pauseState;
+
     private static int bullet_number = 40;
     //Score
     public static long score = 0;
@@ -61,10 +65,12 @@ public class Player extends Entity {
         //Animation
         currentImage.tick();
         //Movement
+
         getInput();
         move();
         //Attack 
         attack();
+
         checkAttacks();
         //Bullet 
         Iterator<Bullet> it = bullets.iterator();
@@ -138,7 +144,14 @@ public class Player extends Entity {
                 }
             }
             attackTimer = 0;
-
+        if(handler.getKeyManager().esc ){
+            attackTimer += System.currentTimeMillis() - lastAttackTimer;
+            lastAttackTimer = System.currentTimeMillis();
+            if(attackTimer < attackCooldown)
+                return;
+            pauseState = new PauseState(handler);
+        }
+        attackTimer = 0;
 
     }
     public void hurt(int amt) {
@@ -155,6 +168,7 @@ public class Player extends Entity {
     }
     
     private void getInput() {
+
         xMove = 0;
         yMove = 0;
         if(handler.getKeyManager().up)
@@ -173,6 +187,8 @@ public class Player extends Entity {
         	xMove= -speed*(float)1.5;
         if(handler.getKeyManager().right &&handler.getKeyManager().shift) 
         	xMove= speed*(float)1.5;
+
+
     }
 
     @Override
@@ -240,5 +256,11 @@ public class Player extends Entity {
 	public  void setPlayer_health(int player_health) {
 		this.player_health = player_health;
 	}
-    
+
+    public PauseState getPauseState() {
+        return pauseState;
+    }
+    public void setPauseState(PauseState pauseState) {
+        this.pauseState = pauseState;
+    }
 }

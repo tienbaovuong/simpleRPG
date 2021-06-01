@@ -10,7 +10,7 @@ import java.util.Iterator;
 
 public class ChooseCharacterState extends JFrame {
     private Handler handler;
-
+    private GameState gameState;
     private JButton rb1,rb2;
     public ChooseCharacterState(Handler handler) {
         this.handler = handler;
@@ -22,6 +22,10 @@ public class ChooseCharacterState extends JFrame {
         rb1.addActionListener((ActionEvent e) -> {
         	
             handler.getGame().menuState.setActive(false);
+
+            handler.getGame().gameState = new GameState(handler,handler.getGame().getPlayer(),"res/world/world1.txt");
+            handler.getGame().gameState.setActive(true);
+
             State.setState(handler.getGame().gameState);
             dispose();
         });
@@ -35,6 +39,10 @@ public class ChooseCharacterState extends JFrame {
              Player.characterNumber=1;
              handler.getGame().getPlayer().setAnimation();
              handler.getGame().menuState.setActive(false);
+
+             handler.getGame().gameState = new GameState(handler,handler.getGame().getPlayer(),"res/world/world1.txt");
+             handler.getGame().gameState.setActive(true);
+
              State.setState(handler.getGame().gameState);
              dispose();
         }
