@@ -108,7 +108,7 @@ public class Monster2 extends Monster {
         	return;
         }
         if(Math.abs(yPlayer-y)>Math.abs(xPlayer-x)) {
-        if(x==xPlayer) {
+        //if(x==xPlayer) {
         	if(y>yPlayer)
         		yMove=-speed;
         	else
@@ -116,16 +116,16 @@ public class Monster2 extends Monster {
         	moveY();
         }
         	
-        else  {
-        	if(x>xPlayer)
-        		xMove=-speed;
-        	else
-        		xMove=+speed;
-        	moveX();
-        } 
-        }
+       // else  {
+        //	if(x>xPlayer)
+        	//	xMove=-speed;
+        	//else
+        	//	xMove=+speed;
+        	//moveX();
+      //  } 
+       // }
         else {
-        	if(y==yPlayer) {
+        	//if(y==yPlayer) {
             	if(x>xPlayer)
             		xMove=-speed;
             	else
@@ -133,20 +133,20 @@ public class Monster2 extends Monster {
             	moveX();
             }
             	
-            else  {
-            	if(y>yPlayer)
-            		yMove=-speed;
-            	else
-            		yMove=+speed;
-            	moveY();
-            } 
-        }
+          //  else  {
+            //	if(y>yPlayer)
+            //		yMove=-speed;
+            //	else
+            //		yMove=+speed;
+            //	moveY();
+           // } 
+       // }
     }
     
     @Override
     public void moveX(){
         if(xMove > 0){ //Tiếp tục di chuyển sang trái nếu không chạm vào tile 
-            int tx = (int) (x + xMove + bounds.x + bounds.width) / Tile.TILEWIDTH;
+            int tx = (int) (x + xMove + bounds.x + bounds.width) / (Tile.TILEWIDTH);
             if(!collisionWithTile(tx, (int) (y + bounds.y) / Tile.TILEHEIGHT) &&
                !collisionWithTile(tx, (int) (y + bounds.y + bounds.height) / Tile.TILEHEIGHT)){
                 x += xMove;
@@ -157,7 +157,7 @@ public class Monster2 extends Monster {
                 moveY();
             }
         } else if (xMove < 0) { //Moving right
-            int tx = (int) (x + xMove + bounds.x) / Tile.TILEWIDTH;
+            int tx = (int) (x + xMove + bounds.x) / (Tile.TILEWIDTH);
             if(!collisionWithTile(tx, (int) (y + bounds.y) / Tile.TILEHEIGHT) &&
                !collisionWithTile(tx, (int) (y + bounds.y + bounds.height) / Tile.TILEHEIGHT)){
                 x += xMove;
@@ -173,7 +173,7 @@ public class Monster2 extends Monster {
     @Override
     public void moveY(){
         if(yMove < 0) {
-            int ty = (int) (y + yMove + bounds.y) / Tile.TILEHEIGHT;
+            int ty = (int) (y + yMove + bounds.y) / (Tile.TILEHEIGHT);
             
             if(!collisionWithTile((int) (x + bounds.x) / Tile.TILEWIDTH, ty)  &&
                !collisionWithTile((int) (x + bounds.x + bounds.width) / Tile.TILEWIDTH, ty)){
@@ -185,7 +185,7 @@ public class Monster2 extends Monster {
                 moveX();
             }
         } else if(yMove > 0){
-            int ty = (int) (y + yMove + bounds.y + bounds.height) / Tile.TILEHEIGHT;
+            int ty = (int) (y + yMove + bounds.y + bounds.height) / (Tile.TILEHEIGHT);
             
             if(!collisionWithTile((int) (x + bounds.x) / Tile.TILEWIDTH, ty)  &&
                !collisionWithTile((int) (x + bounds.x + bounds.width) / Tile.TILEWIDTH, ty)){
