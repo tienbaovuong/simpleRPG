@@ -14,7 +14,7 @@ import game.tiles.Tile;
 public class Monster2 extends Monster {    
     private long lastAttackTimer, attackCooldown = 1000, attackTimer = attackCooldown;
     private static final int[] BONUS = {200, 400,500};
-   
+    private static final float[] ZOMBIE_SPEED = {1, 1, 1.5f};
     private float xPlayer, yPlayer;
     private final float xZ, yZ;
     
@@ -107,40 +107,23 @@ public class Monster2 extends Monster {
         if(Math.abs(yPlayer-y)>200  || Math.abs(xPlayer-x)>200 ) {
         	return;
         }
-        if(Math.abs(yPlayer-y)>Math.abs(xPlayer-x)) {
-        //if(x==xPlayer) {
-        	if(y>yPlayer)
-        		yMove=-speed;
-        	else
-        		yMove=+speed;
+        if(y>yPlayer)
+    		yMove=-speed;
+    	else
+    		yMove=+speed;
+        if(x>xPlayer)
+    		xMove=-speed;
+    	else
+    		xMove=+speed;
+        //if(Math.abs(yPlayer-y)>Math.abs(xPlayer-x)) {
         	moveY();
-        }
+       // }
         	
-       // else  {
-        //	if(x>xPlayer)
-        	//	xMove=-speed;
-        	//else
-        	//	xMove=+speed;
-        	//moveX();
+      //  else  {
+        	
+        	moveX();
       //  } 
-       // }
-        else {
-        	//if(y==yPlayer) {
-            	if(x>xPlayer)
-            		xMove=-speed;
-            	else
-            		xMove=+speed;
-            	moveX();
-            }
-            	
-          //  else  {
-            //	if(y>yPlayer)
-            //		yMove=-speed;
-            //	else
-            //		yMove=+speed;
-            //	moveY();
-           // } 
-       // }
+       
     }
     
     @Override
@@ -151,10 +134,10 @@ public class Monster2 extends Monster {
                !collisionWithTile(tx, (int) (y + bounds.y + bounds.height) / Tile.TILEHEIGHT)){
                 x += xMove;
                 currentImage=animRight;
-            } else{ //Di chuyển đến sát bound của tile và biến mất 
-                x = tx * Tile.TILEWIDTH - bounds.x - bounds.width - 1;
-                xMove = -xMove;
-                moveY();
+            //} else{ //Di chuyển đến sát bound của tile và biến mất 
+               // x = tx * Tile.TILEWIDTH - bounds.x - bounds.width - 1;
+               // xMove = -xMove;
+               // moveY();
             }
         } else if (xMove < 0) { //Moving right
             int tx = (int) (x + xMove + bounds.x) / (Tile.TILEWIDTH);
@@ -162,11 +145,11 @@ public class Monster2 extends Monster {
                !collisionWithTile(tx, (int) (y + bounds.y + bounds.height) / Tile.TILEHEIGHT)){
                 x += xMove;
                 currentImage = animLeft;
-            } else {
-                x = tx * Tile.TILEWIDTH + Tile.TILEWIDTH - bounds.x;
-                xMove = -xMove;
-                moveY();
-            }
+            } //else {
+               // x = tx * Tile.TILEWIDTH + Tile.TILEWIDTH - bounds.x;
+               // xMove = -xMove;
+               // moveY();
+           // }
         }
     }
 
@@ -179,11 +162,11 @@ public class Monster2 extends Monster {
                !collisionWithTile((int) (x + bounds.x + bounds.width) / Tile.TILEWIDTH, ty)){
                 y += yMove;
                 currentImage=animUp;
-            } else {
-                y = ty * Tile.TILEHEIGHT + Tile.TILEHEIGHT - bounds.y;
-                yMove = -yMove;
-                moveX();
-            }
+            } //else {
+                //y = ty * Tile.TILEHEIGHT + Tile.TILEHEIGHT - bounds.y;
+               // yMove = -yMove;
+               // moveX();
+           // }
         } else if(yMove > 0){
             int ty = (int) (y + yMove + bounds.y + bounds.height) / (Tile.TILEHEIGHT);
             
@@ -191,12 +174,16 @@ public class Monster2 extends Monster {
                !collisionWithTile((int) (x + bounds.x + bounds.width) / Tile.TILEWIDTH, ty)){
                 y += yMove;
                 currentImage=animDown;
-            } else {
-                y = ty * Tile.TILEHEIGHT - bounds.y - bounds.height;
-                yMove = -yMove;
-                moveX();
-            }
+            } //else {
+               // y = ty * Tile.TILEHEIGHT - bounds.y - bounds.height;
+               // yMove = -yMove;
+               // moveX();
+           // }
         }
     }
-    
+    public void setLevel(int level) {
+        speed = ZOMBIE_SPEED[level];
+        health = DEFAULT_HEALTH[level];
+        this.level = level;
+    }
 }
