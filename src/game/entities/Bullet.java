@@ -39,13 +39,7 @@ public class Bullet extends Entity {
         this.owner = owner;
         X=x;
         Y=y;
-        if(this.owner instanceof Player){
-            speed = BULLET_SPEED[0];
-
-        } else{
-            speed = BULLET_SPEED[level];
-
-        }
+        
         if(bullerDirect ==1){
             xMove = speed;
             yMove = 0;
