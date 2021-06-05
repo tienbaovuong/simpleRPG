@@ -16,7 +16,7 @@ public class Player extends Entity {
     private long lastAttackTimer, attackCooldown = 300, attackTimer = attackCooldown;
     //Bullet
     private ArrayList<Bullet> bullets;
-    public static final int[] BULLET_NUMBER = {40,60,60};
+    public static final int[] BULLET_NUMBER = {40,60,80};
 
     private static int bullet_number = 40;
     //Score

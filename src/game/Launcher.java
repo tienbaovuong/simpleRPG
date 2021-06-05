@@ -10,7 +10,7 @@ import java.io.FileNotFoundException;
 public class Launcher {
     
     public static void main(String[] args) {
-        Game game = new Game("RPG GAME!", 800, 608);
+        Game game = new Game("Grand Escape", 800, 608);
         game.start();
         try {
             FileInputStream fileInputStream = new FileInputStream("hello.mp3");
