@@ -204,7 +204,13 @@ public class Player extends Entity {
     }
 
     public void setAnimation(){
-        if (characterNumber == 0) currentImage = animDown;
+        if (characterNumber == 0) {
+        	animDown = new Animation(200, Assets.player1_down);
+            animUp = new Animation(200, Assets.player1_up);
+            animLeft = new Animation(200, Assets.player1_left);
+            animRight = new Animation(200, Assets.player1_right);
+            currentImage = animDown;
+        }
         else if (characterNumber  == 1){
             animDown = new Animation(200, Assets.player2_down);
             animUp = new Animation(200, Assets.player2_up);

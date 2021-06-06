@@ -24,6 +24,7 @@ public class ChooseCharacterState extends State {
         
         uiManager.addObject(new UIImageButton(100, 300, 300, 300, Assets.player1_down[1], () -> {
         	if(isActive) {
+        		Player.characterNumber=0;
         		handler.getGame().getPlayer().setAnimation();
                 handler.getGame().gameState.setActive(true);
                 State.setState(handler.getGame().gameState);     

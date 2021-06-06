@@ -188,6 +188,7 @@ public class Game implements Runnable {
     
     public void gameWin() {
     	stage=0;
+    	won=false;
         gameWin=new Gamewin(handler);    
         gameWin.setActive(true);
         State.setState(gameWin);
@@ -195,6 +196,7 @@ public class Game implements Runnable {
     }
     public void gameOver() {
     	stage=0;
+    	lose=false;
         gameOver=new Gameover(handler);		
 		State.setState(gameOver);
 		gameOver.setActive(true);

@@ -16,7 +16,7 @@ public class Launcher {
             FileInputStream fileInputStream = new FileInputStream("hello.mp3");
 
             Player player = new Player(fileInputStream);
-            //player.play();
+            player.play();
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();

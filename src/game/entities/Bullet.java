@@ -39,7 +39,7 @@ public class Bullet extends Entity {
         this.owner = owner;
         X=x;
         Y=y;
-        
+     
         if(bullerDirect ==1){
             xMove = speed;
             yMove = 0;
