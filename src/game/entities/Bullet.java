@@ -30,6 +30,10 @@ public class Bullet extends Entity {
         setMove();
         bounds.x = 3;
         bounds.y = 3;
+        if(owner instanceof Player) {
+        	bounds.width = 2*width / 3;
+            bounds.height = 2*height / 3;
+        }
         bounds.width = width / 2;
         bounds.height = height / 2;
     }
@@ -69,6 +73,21 @@ public class Bullet extends Entity {
     
     @Override
     public void render(Graphics g) {
+    	if(this.owner instanceof Player) {
+    	if(((int)(x)+(int)(y))%32 <8)
+            g.drawImage(Assets.bullet[0], (int) (x-handler.getGame().getGameCamera().getxOffset()),
+                    (int) (y-handler.getGame().getGameCamera().getyOffset()), 2*width/3 , 2*height/3, null);
+        	else if(((int)(x-handler.getGame().getGameCamera().getxOffset())+(int)(y-handler.getGame().getGameCamera().getyOffset()))%32 <16)
+        	g.drawImage(Assets.bullet[3], (int) (x-handler.getGame().getGameCamera().getxOffset()),
+                    (int) (y-handler.getGame().getGameCamera().getyOffset()), 2*width/3 , 2*height/3, null);
+        	else if(((int)(x-handler.getGame().getGameCamera().getxOffset())+(int)(y-handler.getGame().getGameCamera().getyOffset()))%32 <24)
+            g.drawImage(Assets.bullet[2], (int) (x-handler.getGame().getGameCamera().getxOffset()),
+                     (int) (y-handler.getGame().getGameCamera().getyOffset()), 2*width/3 , 2*height/3, null);
+        	else  
+            g.drawImage(Assets.bullet[1], (int) (x-handler.getGame().getGameCamera().getxOffset()),
+                     (int) (y-handler.getGame().getGameCamera().getyOffset()), 2*width/3 , 2*height/3, null);
+    	}
+    	else {
     	if(((int)(x)+(int)(y))%32 <8)
         g.drawImage(Assets.bullet[0], (int) (x-handler.getGame().getGameCamera().getxOffset()),
                 (int) (y-handler.getGame().getGameCamera().getyOffset()), width/2 , height/2, null);
@@ -81,6 +100,7 @@ public class Bullet extends Entity {
     	else  
         g.drawImage(Assets.bullet[3], (int) (x-handler.getGame().getGameCamera().getxOffset()),
                  (int) (y-handler.getGame().getGameCamera().getyOffset()), width/2 , height/2, null);
+    	}
     }
     
     public void checkAttacks() {

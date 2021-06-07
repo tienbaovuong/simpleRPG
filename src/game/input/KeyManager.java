@@ -27,7 +27,6 @@ public class KeyManager implements KeyListener {
                 justPressed[i] = true;
             }
         }
-        
         up = keys[KeyEvent.VK_UP];
         down = keys[KeyEvent.VK_DOWN];
         left = keys[KeyEvent.VK_LEFT];
