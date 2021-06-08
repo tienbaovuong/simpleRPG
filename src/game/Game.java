@@ -40,8 +40,8 @@ public class Game implements Runnable {
     public GameState gameState;
     public MenuState menuState;
     public PauseState pauseState;
-    private Gameover gameOver;
-    private Gamewin gameWin;
+    public Gameover gameOver;
+    public Gamewin gameWin;
     
     //Input
     private KeyManager keyManager;
@@ -54,7 +54,7 @@ public class Game implements Runnable {
 
     //Game camera
     private GameCamera gameCamera;
-    private int[] BONUS_SCORE= {500,100,1500};
+    private int[] BONUS_SCORE= {500,1000,1500};
     
     public Game(String title, int width, int height) {
         this.width = width;

@@ -49,15 +49,17 @@ public class ScoreBoard {
 	public static void render(Graphics g) {
 		g.setColor(Color.BLACK);
 		g.fillRect(0, 0, 800, 33);
+		int van =(int)(score/10000)%10;
         int nghin = (int)(score/1000) %10;
 		int tram = (int)(score/100) %10;
 		int chuc = (int)(score/10) %10 ;
 		int donVi = (int) score%10;
 		g.drawImage(scoreImagers, 0, 0,108, height, null);
-        g.drawImage(numberImager[nghin], 108, 3,width,height, null);
-		g.drawImage(numberImager[tram], 108 + 32, 3,width,height, null);
-		g.drawImage(numberImager[chuc], 108 + 64, 3, width, height, null);
-		g.drawImage(numberImager[donVi], 108 + 96, 3, width, height, null);
+        g.drawImage(numberImager[van], 108, 3,width,height, null);
+		g.drawImage(numberImager[nghin], 108 + 32, 3,width,height, null);
+		g.drawImage(numberImager[tram], 108 + 64, 3, width, height, null);
+		g.drawImage(numberImager[chuc], 108 + 96, 3, width, height, null);
+		g.drawImage(numberImager[donVi], 108+128, 3,width,height, null);
 		g.drawImage(x,580,0,width,height,null);
 		g.drawImage(numberImager[health],612,0, width,height,null);
 
